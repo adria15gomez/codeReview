@@ -17,8 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('autoevaluation_id');
             $table->unsignedBigInteger('coevaluation_id');
 
-            $table->foreignId('autoevaluation_id')->references('id')->on('autoevaluations')->onDelete('cascade');
-            $table->foreignId('coevaluation_id')->references('id')->on('coevaluations')->onDelete('cascade');
+            $table->foreign('autoevaluation_id')->references('id')->on('autoevaluations')->onDelete('cascade');
+            $table->foreign('coevaluation_id')->references('id')->on('coevaluations')->onDelete('cascade');
 
             $table->date('date');
 

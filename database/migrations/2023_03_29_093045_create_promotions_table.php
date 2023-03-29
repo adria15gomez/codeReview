@@ -17,11 +17,13 @@ return new class extends Migration
             $table->string('trainer');
             $table->date('start_date');
             $table->date('end_date');
-            $table->foreignId('topic_id')->constrained('topics');
+            $table->foreignId('topic_id')->on('topics');
             $table->string('evaluation1')->nullable();
             $table->string('evaluation2')->nullable();
             $table->string('evaluation3')->nullable();
             $table->string('evaluation4')->nullable();
+            $table->string('zoom_url')->nullable();
+            $table->string('slack_url')->nullable();
             $table->timestamps();
         });
     }
