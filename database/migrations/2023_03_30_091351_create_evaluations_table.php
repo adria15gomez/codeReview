@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('autoevaluations', function (Blueprint $table) {
+        Schema::create('evaluations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_topic')->constrained('topics');
-            $table->tinyInteger('level');
-            $table->foreignId('id_user')->constrained('users');
+            $table->date('evaluation_date');
+            $table->foreignId('id_user_evaluated')->on('users');
+            $table->foreignId('id_user_coevaluator')->nullable()->on('users');
+            $table->tinyInteger('pp_autoeval')->nullable();
+            $table->tinyInteger('pp_coeval')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('autoevaluations');
+        Schema::dropIfExists('evaluations');
     }
 };

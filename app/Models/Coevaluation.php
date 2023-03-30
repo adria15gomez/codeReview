@@ -20,9 +20,4 @@ class Coevaluation extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    public function autoevaluations()
-    {
-        return $this->belongsToMany(Autoevaluation::class)->withPivot('date');
-    }
 }
