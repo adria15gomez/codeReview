@@ -9,7 +9,7 @@ class Autoevaluation extends Model
 {
     use HasFactory;
 
-    protected $table = 'autoevaluations';
+    protected $table = 'evaluations_topics_autoevaluations';
 
     public function topics()
     {
