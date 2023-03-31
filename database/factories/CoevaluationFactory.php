@@ -2,7 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Topic;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Evaluation;
+
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Coevaluation>
@@ -16,9 +19,12 @@ class CoevaluationFactory extends Factory
      */
     public function definition(): array
     {
+        $topic = Topic::factory()->create();
+        $evaluation = Evaluation::factory()->create();
+
         return [
-            'topic_id' => $this->faker->numberBetween(0, 50),
-            'evaluation_id' => $this->faker->randomNumber(),
+            'topic_id' => $topic->id,
+            'evaluation_id' => $evaluation->id,
             'level' => $this->faker->numberBetween(0, 7)
         ];
     }

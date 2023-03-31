@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\Topic;
 
 class TopicSeeder extends Seeder
 {
@@ -13,13 +13,6 @@ class TopicSeeder extends Seeder
      */
     public function run(): void
     {
-        $data = [
-            'id' => 1,
-            'name' => 'html',
-            'competence_id' => 5
-
-        ];
-
-        DB::table('topics')->insert($data);
+        Topic::factory(10)->create();
     }
 }

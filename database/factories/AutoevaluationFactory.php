@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Evaluation;
+use App\Models\Topic;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,9 +18,12 @@ class AutoevaluationFactory extends Factory
      */
     public function definition(): array
     {
+        $topic = Topic::factory()->create();
+        $evaluation = Evaluation::factory()->create();
+
         return [
-            'topic_id' => $this->faker->numberBetween(0, 50),
-            'evaluation_id' => $this->faker->randomNumber(),
+            'topic_id' => $topic->id,
+            'evaluation_id' => $evaluation->id,
             'level' => $this->faker->numberBetween(0, 7)
         ];
     }
