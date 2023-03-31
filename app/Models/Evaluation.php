@@ -9,7 +9,7 @@ class Evaluation extends Model
 {
     use HasFactory;
 
-    protected $table = 'promotions';
+    protected $table = 'evaluations';
 
     public function users()
     {
