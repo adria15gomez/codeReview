@@ -9,7 +9,7 @@ class Coevaluation extends Model
 {
     use HasFactory;
 
-    protected $table = 'coevaluations';
+    protected $table = 'evaluations_topics_coevaluations';
 
     public function topics()
     {
