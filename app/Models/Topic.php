@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Topic extends Model
 {
     protected $table = 'topics';
+     public $timestamp =false;
 
     public function competence()
     {
@@ -18,4 +19,5 @@ class Topic extends Model
     {
         return $this->hasMany(Promotion::class);
     }
+
 }
