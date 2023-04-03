@@ -16,3 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Estas rutas son para poder visualizar los layouts, luego deben borrarse
+Route::get('/layout-coder', function () {
+    return view('layouts.coder');
+});
+
+Route::get('/layout-formador', function () {
+    return view('layouts.formador');
+});
+
+Route::get('/layout-superadmin', function () {
+    return view('layouts.superadmin');
+});
