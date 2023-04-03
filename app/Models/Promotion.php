@@ -23,6 +23,6 @@ class Promotion extends Model
 
     public function promotions()
     {
-        return $this->hasMany(Promotion::class);
+        return $this->hasMany(User::class);
     }
 }

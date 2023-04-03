@@ -19,4 +19,9 @@ class User extends Model
     {
         return $this->belongsTo(Promotion::class, 'promotion_id');
     }
+
+    public function evaluation()
+    {
+        return $this->hasOne(Evaluation::class, 'evaluation_id');
+    }
 }

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('evaluations', function (Blueprint $table) {
             $table->id();
             $table->date('evaluation_date');
-            $table->foreignId('id_user_evaluated')->on('users');
-            $table->foreignId('id_user_coevaluator')->nullable()->on('users');
+            $table->foreignId('id_user_evaluated')->references('id')->on('users');
+            $table->foreignId('id_user_coevaluator')->nullable()->references('id')->on('users');
             $table->tinyInteger('pp_autoeval')->nullable();
             $table->tinyInteger('pp_coeval')->nullable();
             $table->timestamps();

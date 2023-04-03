@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Promotion;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -17,12 +18,14 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $promotion = Promotion::factory()->create();
+
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->email(),
             'password' => $this->faker->password(),
             'rol' => $this->faker->randomElement(['admin', 'coder', 'trainer']),
-            'promotion_id' => $this->faker->numberBetween(1, 50)
+            'promotion_id' => $promotion->id,
         ];
     }
 
