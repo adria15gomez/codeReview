@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Aquí cambiamos para que cuando entremos a la web automáticamente nos redirija a la view de login
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
+});
+
+// Para poder visualizar la view de Register
+Route::get('/register', function () {
+    return view('auth.register');
 });
