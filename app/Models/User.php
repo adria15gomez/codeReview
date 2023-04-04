@@ -24,4 +24,9 @@ class User extends Model
     {
         return $this->hasOne(Evaluation::class, 'evaluation_id');
     }
+
+    public function setPasswordAtributte($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
 }
