@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CompetenceController;
+use App\Models\Competence;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,4 +30,14 @@ Route::get('/layout-formador', function () {
 
 Route::get('/layout-superadmin', function () {
     return view('layouts.superadmin');
+});
+
+Route::controller(CompetenceController::class)->group(function() {
+    Route::get('competence', 'index')->name('competence');
+    Route::get('agregar-competencia', 'create')->name('addCompetence.create');
+    Route::post('agregar-competencia', 'store')->name('addCompetence.store');
+    Route::get('editar-competencia/{id}', 'edit')->name('editCompetence.edit');
+    Route::put('editar-competencia/{id}', 'update')->name('editCompetence.update');
+    Route::put('editar-competencia/{id}', 'update')->name('editCompetence.update');
+    Route::delete('eliminar-competencia/{id}', 'destroy')->name('deleteCompetence.distroy');
 });
