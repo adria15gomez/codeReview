@@ -26,7 +26,7 @@
     </button>
 </div>
 
-<div>
+<div class="mr-5 mt-2 py-4 px-2">
     <h3 class="font-semibold text-2xl pt-0 ml-2 pl-2">Lista de Topics</h3><br>
     <p><strong>Frontend:</strong> HTML, CSS, JavaScript </p>
     <p><strong>Backend:</strong> PHP,MySQL</p>
