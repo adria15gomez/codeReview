@@ -29,3 +29,7 @@ Route::get('/layout-formador', function () {
 Route::get('/layout-superadmin', function () {
     return view('layouts.superadmin');
 });
+
+Route::get('/mi-bootcamp', function () {
+    return view('miBootcamp');
+});

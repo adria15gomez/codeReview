@@ -1,4 +1,4 @@
-<nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
+<nav class="bg-white border-t shadow border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
     <div class="container flex flex-wrap items-center justify-between mx-auto">
         <a href="#" class="flex items-center">
             <img src="img\isotype.svg" class="h-9 mr-3 ml-2" alt="Factoria F5 Logo" />
@@ -18,7 +18,7 @@
                 {{-- En este botón tenemos luego que incluir en el href la ruta que lleve a la vista de login  --}}
                 <a href="#" class="inline-block px-4 py-2 bg-black text-white text-center rounded hover:bg-orange-600 active:text-orange-600">
                 Sign Out
-                </a>            
+                </a>
             </ul>
         </div>
     </div>
