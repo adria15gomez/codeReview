@@ -18,7 +18,7 @@
 
     </head>
 
-    <body>
+    <body class="font-poppins">
         {{-- Pasamos un array de los links que va a tener el navbar para el layout para las vistas de coder --}}
         @php
             $links = [
@@ -32,7 +32,7 @@
 
         {{-- Aqui va a ir el contenido de la vista --}}
         @yield('content')
-        
+
 
         {{-- Importamos el componente footer --}}
         @include('components.footer')
