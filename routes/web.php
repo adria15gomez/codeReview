@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,15 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Estas rutas son para poder visualizar los layouts, luego deben borrarse
-Route::get('/layout-coder', function () {
-    return view('layouts.coder');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/layout-formador', function () {
-    return view('layouts.formador');
-});
-
-Route::get('/layout-superadmin', function () {
-    return view('layouts.superadmin');
-});
+require __DIR__.'/auth.php';

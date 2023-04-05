@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('email_verified_at')->nullable();
             $table->enum('rol', ['admin', 'coder', 'trainer']);
-            $table->foreignId('promotion_id')->constrained();
+            $table->foreignId('promotion_id')->nullable();
             $table->timestamps();
         });
     }
