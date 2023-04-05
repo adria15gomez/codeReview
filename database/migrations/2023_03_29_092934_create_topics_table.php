@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('topics', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('competence_id')->constrained();
+            $table->foreignId('competence_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

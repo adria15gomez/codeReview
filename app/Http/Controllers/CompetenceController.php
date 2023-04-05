@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Competence;
+use App\Models\Topic;
 use Illuminate\Http\Request;
 
 class CompetenceController extends Controller
@@ -36,20 +37,30 @@ class CompetenceController extends Controller
 
     public function update(Request $request, $id)
     {
-        $competences = Competence::findOrFail($id);
-
-        $competences->name = $request->name;
-        $competences->save();
-
-        return redirect()->route('competences', $competences);
-    }
-
-    public function destroy(Request $request, $id)
-    {
         $competence = Competence::findOrFail($id);
-        $competence->id = $request->id;
-        $competence->delete();
+
+        $competence->name = $request->name;
+        $competence->save();
 
         return redirect()->route('competence', $competence);
     }
+
+    // public function destroy(Request $request, $id)
+    // {
+    //     $competence = Competence::findOrFail($id);
+    //     $competence->id = $request->id;
+    //     $competence->delete();
+
+    //     return redirect()->route('competence', $competence);
+    // }
+
+        public function destroy($competence_id)
+        {
+            $competence = Competence::find($competence_id);
+            $topics = Topic::where('competence_id', $competence_id)->get();
+            foreach ($topics as $topic) {
+                $topic->delete();
+            }
+            $competence->delete();
+        }
 }

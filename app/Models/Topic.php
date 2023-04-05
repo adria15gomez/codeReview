@@ -21,4 +21,13 @@ class Topic extends Model
     {
         return $this->hasMany(Promotion::class);
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($topic) {
+            $topic->promotions()->update(['topic_id' => null]);
+        });
+    }
 }
