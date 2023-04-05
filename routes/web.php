@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PromotionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +29,15 @@ Route::get('/layout-formador', function () {
 
 Route::get('/layout-superadmin', function () {
     return view('layouts.superadmin');
+});
+
+
+Route::controller(PromotionController::class)->group(function () {
+    Route::get('promociones', 'index')->name('promotions');
+    Route::get('agregar-promocion', 'create')->name('addPromotion.create');
+    Route::post('agregar-promocion', 'store')->name('addPromotion.store');
+    Route::get('editar-promocion/{id}', 'edit')->name('editPromotion.edit');
+    Route::put('editar-promocion/{id}', 'update')->name('editPromotion.update');
+    Route::put('editar-promocion/{id}', 'update')->name('editPromotion.update');
+    Route::delete('eliminar-promocion/{id}', 'destroy')->name('deletePromotion.destroy');
 });

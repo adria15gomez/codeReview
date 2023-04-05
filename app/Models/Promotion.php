@@ -9,19 +9,18 @@ class Promotion extends Model
 {
     protected $table = 'promotions';
 
-    protected $fillable = ['name', 'trainer', 'start_date', 'end_date', 'topic_id', 'evaluation1', 'evaluation2', 'evaluation3', 'evaluation4', 'zoom_url', 'slack_url'];
+    protected $fillable = ['name', 'trainer', 'start_date', 'end_date', 'evaluation1', 'evaluation2', 'evaluation3', 'evaluation4', 'zoom_url', 'slack_url'];
 
     public $timestamps = false;
 
     use HasFactory;
 
-    public function competence()
+    public function topic()
     {
-        //return $this->belongsTo(Competence::class);
-        return $this->hasMany(Competence::class);
+        return $this->hasMany(Topic::class);
     }
 
-    public function promotions()
+    public function user()
     {
         return $this->hasMany(User::class);
     }
