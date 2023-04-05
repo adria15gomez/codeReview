@@ -15,10 +15,10 @@ class Promotion extends Model
 
     use HasFactory;
 
-    public function competence()
+    public function topics()
     {
         //return $this->belongsTo(Competence::class);
-        return $this->hasMany(Competence::class);
+        return $this->hasMany(Topic::class);
     }
 
     public function promotions()

@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\CompetenceController;
-use App\Models\Competence;
+use App\Http\Controllers\TopicController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,4 +40,14 @@ Route::controller(CompetenceController::class)->group(function() {
     Route::put('editar-competencia/{id}', 'update')->name('editCompetence.update');
     Route::put('editar-competencia/{id}', 'update')->name('editCompetence.update');
     Route::delete('eliminar-competencia/{id}', 'destroy')->name('deleteCompetence.distroy');
+});
+
+Route::controller(TopicController::class)->group(function() {
+    Route::get('topic', 'index')->name('topic');
+    Route::get('agregar-topic', 'create')->name('addTopic.create');
+    Route::post('agregar-topic', 'store')->name('addTopic.store');
+    Route::get('editar-topic/{id}', 'edit')->name('editTopic.edit');
+    Route::put('editar-topic/{id}', 'update')->name('editTopic.update');
+    Route::put('editar-topic/{id}', 'update')->name('editTopic.update');
+    Route::delete('eliminar-topic/{id}', 'destroy')->name('deleteTopic.distroy');
 });

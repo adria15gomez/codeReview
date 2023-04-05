@@ -36,12 +36,12 @@ class CompetenceController extends Controller
 
     public function update(Request $request, $id)
     {
-        $competence = Competence::findOrFail($id);
+        $competences = Competence::findOrFail($id);
 
-        $competence->name = $request->name;
-        $competence->save();
+        $competences->name = $request->name;
+        $competences->save();
 
-        return redirect()->route('competence', $competence);
+        return redirect()->route('competences', $competences);
     }
 
     public function destroy(Request $request, $id)
