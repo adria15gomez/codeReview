@@ -34,7 +34,8 @@ class TopicController extends Controller
     public function edit($id)
     {
         $topic = Topic::find($id);
-        return view('editTopic', compact('topic'));
+        $competences = Competence::all();
+        return view('editTopic', compact('topic', 'competences'));
     }
 
     public function update(Request $request, $id)
