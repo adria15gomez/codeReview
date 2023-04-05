@@ -24,15 +24,17 @@
 
     <label for="topics">
         <select name="topics[]" id="topics">
-            @if($topics)
+            <option value="">Select or enter a topic</option>
             @foreach($topics as $topic)
             <option value="{{ $topic->id}}">{{$topic->name}}</option>
             @endforeach
-            @endif
         </select>
     </label>
-    <button type="submit" id="add-topic-btn">Agregar tema</button>
-    <ul id="selected-topics-list"></ul>
+
+    <div id="new-topic-input" style="display: none;">
+        <label for="new-topic">New topic:</label>
+        <input type="text" name="new_topic" id="new-topic">
+    </div>
 
     <br><br>
 
@@ -73,21 +75,15 @@
 </form>
 
 <script>
-    const addTopicButton = document.querySelector('#add-topic');
-    const topicsList = document.querySelector('#topics-list');
-    const topicsSelect = document.querySelector('select[name="topics[]"]');
+const selectElement = document.getElementById('topics');
+const newTopicInput = document.getElementById('new-topic-input');
 
-    addTopicButton.addEventListener('click', (event) => {
-        event.preventDefault();
-
-        // Get the selected option
-        const selectedOption = topicsSelect.options[topicsSelect.selectedIndex];
-        const topicId = selectedOption.value;
-        const topicName = selectedOption.text;
-
-        // Add the selected topic to the topics list
-        const topicItem = document.createElement('div');
-        topicItem.innerText = topicName;
-        topicsList.appendChild(topicItem);
-    });
+selectElement.addEventListener('change', () => {
+    const selectedValue = selectElement.value;
+    if (selectedValue === '') {
+        newTopicInput.style.display = 'block';
+    } else {
+        newTopicInput.style.display = 'none';
+    }
+});
 </script>

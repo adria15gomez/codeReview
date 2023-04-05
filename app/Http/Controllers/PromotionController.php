@@ -31,7 +31,7 @@ class PromotionController extends Controller
         $promotion->trainer = $request->trainer;
         $promotion->start_date = $request->start_date;
         $promotion->end_date = $request->end_date;
-        $promotion->topic_id = $request->topic_id;
+        //$promotion->topic_id = $request->topic_id;
         $promotion->evaluation1 = $request->evaluation1;
         $promotion->evaluation2 = $request->evaluation2;
         $promotion->evaluation3 = $request->evaluation3;
@@ -39,13 +39,14 @@ class PromotionController extends Controller
         $promotion->zoom_url = $request->zoom_url;
         $promotion->slack_url = $request->slack_url;
 
-        $promotion->topic_id = $request->topic_id ?? 1;
+        //$promotion->topic_id = $request->topic_id ?? 1;
         $promotion->save();
 
-        $topic = new Topic;
-        $topic->name = 'Some topic';
-        $promotion->topic()->save($topic);
+        // $topic = new Topic;
+        // $topic->name = 'Some topic';
+        // $promotion->topic()->save($topic);
 
+        $promotion->topics()->sync($request->topics);
 
         $topics = Topic::all();
 

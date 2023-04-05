@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Promotion extends Model
 {
-    protected $table = 'promotions';
+    protected $guarded = [];
 
     protected $fillable = ['name', 'trainer', 'start_date', 'end_date', 'evaluation1', 'evaluation2', 'evaluation3', 'evaluation4', 'zoom_url', 'slack_url'];
 
@@ -15,9 +15,9 @@ class Promotion extends Model
 
     use HasFactory;
 
-    public function topic()
+    public function topics()
     {
-        return $this->hasMany(Topic::class);
+        return $this->belongsToMany(Topic::class);
     }
 
     public function user()
