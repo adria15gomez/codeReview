@@ -54,13 +54,15 @@ class CompetenceController extends Controller
     //     return redirect()->route('competence', $competence);
     // }
 
-        public function destroy($competence_id)
-        {
-            $competence = Competence::find($competence_id);
-            $topics = Topic::where('competence_id', $competence_id)->get();
-            foreach ($topics as $topic) {
-                $topic->delete();
-            }
-            $competence->delete();
+    public function destroy($competence_id)
+    {
+        $competence = Competence::find($competence_id);
+        $topics = Topic::where('competence_id', $competence_id)->get();
+        foreach ($topics as $topic) {
+            $topic->delete();
         }
+        $competence->delete();
+
+        return redirect()->route('competence', $competence);
+    }
 }

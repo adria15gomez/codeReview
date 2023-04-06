@@ -32,7 +32,7 @@ Route::get('/layout-superadmin', function () {
     return view('layouts.superadmin');
 });
 
-Route::controller(CompetenceController::class)->group(function() {
+Route::controller(CompetenceController::class)->group(function () {
     Route::get('competence', 'index')->name('competence');
     Route::get('agregar-competencia', 'create')->name('addCompetence.create');
     Route::post('agregar-competencia', 'store')->name('addCompetence.store');
@@ -42,7 +42,7 @@ Route::controller(CompetenceController::class)->group(function() {
     Route::delete('eliminar-competencia/{id}', 'destroy')->name('deleteCompetence.distroy');
 });
 
-Route::controller(TopicController::class)->group(function() {
+Route::controller(TopicController::class)->group(function () {
     Route::get('topic', 'index')->name('topic');
     Route::get('agregar-topic', 'create')->name('addTopic.create');
     Route::post('agregar-topic', 'store')->name('addTopic.store');
