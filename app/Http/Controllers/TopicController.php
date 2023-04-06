@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Competence;
 use App\Models\Topic;
+use Illuminate\Http\Request;
 
 class TopicController extends Controller
 {
@@ -35,7 +34,8 @@ class TopicController extends Controller
     public function edit($id)
     {
         $topic = Topic::find($id);
-        return view('editTopic', compact('topic'));
+        $competences = Competence::all();
+        return view('editTopic', compact('topic', 'competences'));
     }
 
     public function update(Request $request, $id)
