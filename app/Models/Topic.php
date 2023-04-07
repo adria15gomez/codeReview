@@ -19,6 +19,6 @@ class Topic extends Model
 
     public function promotions()
     {
-        return $this->belongsTo(Promotion::class);
+        return $this->hasMany(Promotion::class);
     }
 }
