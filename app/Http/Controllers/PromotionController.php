@@ -11,7 +11,7 @@ class PromotionController extends Controller
 {
     public function index()
     {
-        $promotion = Promotion::all();
+        $promotions = Promotion::all();
         $topics = Topic::all();
         return view('promotions', compact('promotions'));
     }

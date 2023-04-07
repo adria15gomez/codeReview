@@ -8,23 +8,23 @@
     </label><br><br>
 
     <label>
-        Trainer
+        Formador
         <input type="text" name="trainer">
     </label><br><br>
 
     <label>
-        Start Date
+        Fecha de inicio
         <input type="date" name="start_date">
     </label><br><br>
 
     <label>
-        End Date
+        Fecha de final
         <input type="date" name="end_date">
     </label><br><br>
 
     <label for="topics">
-        <select name="topics[]" id="topics">
-            <option value="">Select or enter a topic</option>
+        <p>Selecciona las habilidades, (CTRL para enviar varias):</p>
+        <select name="topics[]" id="topics" multiple>
             @foreach($topics as $topic)
             <option value="{{ $topic->id}}">{{$topic->name}}</option>
             @endforeach
@@ -39,35 +39,35 @@
     <br><br>
 
     <label>
-        Evaluation Date 1
+        Fecha de evaluación 1
         <input type="date" name="evaluation1">
     </label><br><br>
 
     <label>
-        Evaluation Date 2
+        fecha de evaluación 2
         <input type="date" name="evaluation2">
     </label><br><br>
 
 
     <label>
-        Evaluation Date 3
+        Fecha de evaluación 3
         <input type="date" name="evaluation3">
     </label><br><br>
 
 
     <label>
-        Evaluation Date 4
+        Fecha de evaluación 4
         <input type="date" name="evaluation4">
     </label><br><br>
 
 
     <label>
-        Zoom URL
+        Enlace a Zoom
         <input type="url" name="zoom_url">
     </label><br><br>
 
     <label>
-        Slack URL
+        Enlace al Slack
         <input type="url" name="slack_url">
     </label><br><br>
 
@@ -75,15 +75,15 @@
 </form>
 
 <script>
-const selectElement = document.getElementById('topics');
-const newTopicInput = document.getElementById('new-topic-input');
+    const selectElement = document.getElementById('topics');
+    const newTopicInput = document.getElementById('new-topic-input');
 
-selectElement.addEventListener('change', () => {
-    const selectedValue = selectElement.value;
-    if (selectedValue === '') {
-        newTopicInput.style.display = 'block';
-    } else {
-        newTopicInput.style.display = 'none';
-    }
-});
+    selectElement.addEventListener('change', () => {
+        const selectedValue = selectElement.value;
+        if (selectedValue === '') {
+            newTopicInput.style.display = 'block';
+        } else {
+            newTopicInput.style.display = 'none';
+        }
+    });
 </script>
