@@ -39,12 +39,7 @@ class PromotionController extends Controller
         $promotion->zoom_url = $request->zoom_url;
         $promotion->slack_url = $request->slack_url;
 
-        //$promotion->topic_id = $request->topic_id ?? 1;
         $promotion->save();
-
-        // $topic = new Topic;
-        // $topic->name = 'Some topic';
-        // $promotion->topic()->save($topic);
 
         $promotion->topics()->sync($request->topics);
 
@@ -58,21 +53,22 @@ class PromotionController extends Controller
     }
 
 
-    public function edit($id)
+    public function edit($promotion)
     {
-        $promotion = Promotion::find($id);
-        return view('editPromotion', compact('promotion'));
+        $promotion = Promotion::find($promotion);
+        $topics = Topic::all();
+
+        return view('editPromotion', compact('promotion', 'topics'));
     }
 
     public function update(Request $request, Promotion $promotion)
     {
-        $promotion = Promotion::findOrFail($promotion);
+        $promotion->id = $promotion->id;
 
         $promotion->name = $request->name;
         $promotion->trainer = $request->trainer;
         $promotion->start_date = $request->start_date;
         $promotion->end_date = $request->end_date;
-        $promotion->topic_id = $request->topic_id;
         $promotion->evaluation1 = $request->evaluation1;
         $promotion->evaluation2 = $request->evaluation2;
         $promotion->evaluation3 = $request->evaluation3;
@@ -81,15 +77,22 @@ class PromotionController extends Controller
         $promotion->slack_url = $request->slack_url;
 
         $promotion->save();
-        return redirect()->route('promotion', $promotion);
+
+        $promotion->topics()->sync($request->topics);
+        $topics = Topic::all();
+        $promotion->topic_id = $request->topic_id;
+
+        //return view('editPromotion', ['promotion' => $promotion, 'topics' => $topics]);
+
+        return redirect()->route('promotions', $promotion);
     }
 
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request, $promotion)
     {
-        $promotion = Promotion::findOrFail($id);
+        $promotion = Promotion::findOrFail($promotion);
         $promotion->id = $request->id;
         $promotion->delete();
 
-        return redirect()->route('promotion', $promotion);
+        return redirect()->route('promotions');
     }
 }
