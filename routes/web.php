@@ -24,6 +24,10 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 |
 */
 
+Route::get('/', function () {
+    return view('superadmin');
+});
+
 // Aquí cambiamos para que cuando entremos a la web automáticamente nos redirija a la view de login
 Route::get('/', function () {
     return view('auth.login');
@@ -43,5 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::post('/users/assign-role', [UserController::class, 'assignRole'])->name('users.assign-role');
 
 require __DIR__ . '/auth.php';
