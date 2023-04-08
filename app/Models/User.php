@@ -2,16 +2,25 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Auth\Authenticatable as AuthenticableTrait;
+use Illuminate\Contracts\Auth\Access\Authorizable;
 
 
-class User extends Model
+
+
+class User extends Authenticatable implements Authorizable, MustVerifyEmail
+
 {
-    use HasFactory;
+    use HasFactory, Notifiable, AuthenticableTrait;
 
     protected $table = 'users';
-    protected $fillable = ['name', 'email', 'password', 'role', 'promotion_id'];
+    protected $fillable = ['name', 'email', 'password', 'rol', 'promotion_id'];
 
     public $timestamps = false;
 
@@ -29,4 +38,12 @@ class User extends Model
     {
         $this->attributes['password'] = bcrypt($value);
     }
+<<<<<<< HEAD
+=======
+    const ROLES = [
+        'admin' => 'Admin',
+        'coder' => 'Coder',
+        'trainer' => 'Trainer',
+    ];
+>>>>>>> 5f0032a078a568a35fe95a16da897d82a2d1d2b2
 }
