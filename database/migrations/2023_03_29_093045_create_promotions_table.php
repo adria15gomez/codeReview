@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('trainer');
             $table->date('start_date');
             $table->date('end_date');
-            $table->foreignId('topic_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('topic_id')->default(1);
+            $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
             $table->string('evaluation1')->nullable();
             $table->string('evaluation2')->nullable();
             $table->string('evaluation3')->nullable();

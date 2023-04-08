@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CompetenceController;
 use App\Http\Controllers\TopicController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -91,6 +92,15 @@ Route::get('/autoevaluacion', function () {
     return view('coder.autoevaluacion');
 });
 
+Route::controller(PromotionController::class)->group(function () {
+    Route::get('promociones', 'index')->name('promotions');
+    Route::get('agregar-promocion', 'create')->name('addPromotion.create');
+    Route::post('agregar-promocion', 'store')->name('addPromotion.store');
+    Route::get('editar-promocion/{promotion}', 'edit')->name('editPromotion.edit');
+    Route::put('editar-promocion/{promotion}', 'update')->name('editPromotion.update');
+    Route::delete('eliminar-promocion/{promotion}', 'destroy')->name('deletePromotion.destroy');
+});
+
 Route::get('/coevaluacion', function () {
     return view('coder.coevaluacion');
 });
@@ -102,3 +112,4 @@ require __DIR__ . '/auth.php';
 Route::get('/resultados-evaluacion', function () {
     return view('coder.resultadosEvaluacion');
 });
+

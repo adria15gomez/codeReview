@@ -59,4 +59,3 @@ class TopicController extends Controller
         return redirect()->route('topic', $topic);
     }
 }
-

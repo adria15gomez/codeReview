@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Promotion extends Model
 {
-    protected $table = 'promotions';
+    protected $guarded = [];
 
-    protected $fillable = ['name', 'trainer', 'start_date', 'end_date', 'topic_id', 'evaluation1', 'evaluation2', 'evaluation3', 'evaluation4', 'zoom_url', 'slack_url'];
+    protected $fillable = ['name', 'trainer', 'start_date', 'end_date', 'evaluation1', 'evaluation2', 'evaluation3', 'evaluation4', 'zoom_url', 'slack_url'];
 
     public $timestamps = false;
 
@@ -17,11 +17,10 @@ class Promotion extends Model
 
     public function topics()
     {
-        //return $this->belongsTo(Competence::class);
-        return $this->hasMany(Topic::class);
+        return $this->belongsToMany(Topic::class);
     }
 
-    public function promotions()
+    public function user()
     {
         return $this->hasMany(User::class);
     }
