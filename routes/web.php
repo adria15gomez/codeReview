@@ -33,3 +33,7 @@ Route::get('/layout-superadmin', function () {
 Route::get('/mi-bootcamp', function () {
     return view('miBootcamp');
 });
+
+Route::get('/bootcamps', function () {
+    return view('layouts.bootcamps');
+});

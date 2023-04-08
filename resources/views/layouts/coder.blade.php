@@ -32,6 +32,9 @@
 
         {{-- Aqui va a ir el contenido de la vista --}}
         @yield('content')
+        @yield('bootcamps')
+
+
 
 
         {{-- Importamos el componente footer --}}
