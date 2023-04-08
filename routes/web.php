@@ -51,3 +51,28 @@ Route::controller(TopicController::class)->group(function () {
     Route::put('editar-topic/{id}', 'update')->name('editTopic.update');
     Route::delete('eliminar-topic/{id}', 'destroy')->name('deleteTopic.distroy');
 });
+
+Route::get('/mi-bootcamp', function () {
+    return view('miBootcamp');
+});
+
+Route::get('/bootcamps', function () {
+    return view('layouts.bootcamps');
+});
+
+//Para ver las vistas del Coder "Evaluaciones"
+Route::get('/mis-evaluaciones', function () {
+    return view('coder.misEvaluaciones');
+});
+
+Route::get('/autoevaluacion', function () {
+    return view('coder.autoevaluacion');
+});
+
+Route::get('/coevaluacion', function () {
+    return view('coder.coevaluacion');
+});
+
+Route::get('/resultados-evaluacion', function () {
+    return view('coder.resultadosEvaluacion');
+});
