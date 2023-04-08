@@ -15,7 +15,6 @@ use Illuminate\Contracts\Auth\Access\Authorizable;
 
 
 class User extends Authenticatable implements Authorizable, MustVerifyEmail
-
 {
     use HasFactory, Notifiable, AuthenticableTrait;
 
@@ -38,12 +37,4 @@ class User extends Authenticatable implements Authorizable, MustVerifyEmail
     {
         $this->attributes['password'] = bcrypt($value);
     }
-<<<<<<< HEAD
-=======
-    const ROLES = [
-        'admin' => 'Admin',
-        'coder' => 'Coder',
-        'trainer' => 'Trainer',
-    ];
->>>>>>> 5f0032a078a568a35fe95a16da897d82a2d1d2b2
 }
