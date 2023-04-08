@@ -7,12 +7,11 @@
 
         {{-- Para que el título se pueda modificar en cada view --}}
         <title>@yield('title')</title>
-
+        
         {{-- Importando la fuente Poppins en las series Regular, Medium, Bold y Light --}}
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
-
         {{--Font Awasome--}}
         <script src="https://kit.fontawesome.com/afad73b29b.js"crossorigin="anonymous"></script>
 
@@ -29,15 +28,11 @@
 
         {{-- Importamos el componente Navbar y pasamos el array de links como parámetro --}}
         @include('components.navbar', ['links' => $links])
-
+        
         {{-- Aqui va a ir el contenido de la vista --}}
-        @yield('content')
-        @yield('bootcamps')
-
-
-
-
-        {{-- Importamos el componente footer --}}
-        @include('components.footer')
+        <section class="max-h-screen overflow-y-scroll mx-auto">
+            @yield('content')
+        </section>   
+        @include('components.footer')  
     </body>
 </html>

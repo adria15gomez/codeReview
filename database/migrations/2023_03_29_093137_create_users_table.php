@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->enum('rol', ['admin', 'coder', 'trainer']);
-            $table->foreignId('promotion_id')->on('promotions');
+            $table->foreignId('promotion_id')->constrained();
             $table->timestamps();
         });
     }

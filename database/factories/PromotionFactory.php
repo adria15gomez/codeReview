@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Topic;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,12 +17,14 @@ class PromotionFactory extends Factory
      */
     public function definition(): array
     {
+        $topic = Topic::factory()->create();
+
         return [
             'name' => $this->faker->sentence(),
             'trainer' => $this->faker->word(),
             'start_date' => $this->faker->date(),
             'end_date' => $this->faker->date(),
-            'topic_id' => $this->faker->numberBetween(0, 50),
+            'topic_id' => $topic->id,
             'evaluation1' => $this->faker->date(),
             'evaluation2' => $this->faker->date(),
             'evaluation3' => $this->faker->date(),

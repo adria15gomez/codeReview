@@ -2,17 +2,18 @@
 
 namespace Database\Seeders;
 
+use App\Models\Autoevaluation;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Database\Seeder;
-use App\Models\Topic;
 
-class TopicSeeder extends Seeder
+class AutoevaluationSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Topic::factory(10)->create();
+        Autoevaluation::factory(10)->create();
     }
 }

@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('evaluations_topics_coevaluations', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_topic');
-            $table->unsignedBigInteger('id_evaluation');
+            $table->unsignedBigInteger('topic_id');
+            $table->unsignedBigInteger('evaluation_id');
 
-            $table->foreign('id_topic')->references('id')->on('topics')->onDelete('cascade');
-            $table->foreign('id_evaluation')->references('id')->on('evaluations')->onDelete('cascade');
+            $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
+            $table->foreign('evaluation_id')->references('id')->on('evaluations')->onDelete('cascade');
 
             $table->tinyInteger('level');
             $table->timestamps();

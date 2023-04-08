@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
+use App\Models\Evaluation;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Topic;
 
-class TopicSeeder extends Seeder
+class EvaluationSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Topic::factory(10)->create();
+        Evaluation::factory(10)->create();
     }
 }

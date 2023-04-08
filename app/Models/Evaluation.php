@@ -9,9 +9,9 @@ class Evaluation extends Model
 {
     use HasFactory;
 
-    protected $table = 'promotions';
+    protected $table = 'evaluations';
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

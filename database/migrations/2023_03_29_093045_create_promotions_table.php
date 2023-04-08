@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
+
         Schema::create('promotions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('trainer');
             $table->date('start_date');
             $table->date('end_date');
-            $table->foreignId('topic_id')->on('topics');
+            $table->foreignId('topic_id')->constrained();
             $table->string('evaluation1')->nullable();
             $table->string('evaluation2')->nullable();
             $table->string('evaluation3')->nullable();
