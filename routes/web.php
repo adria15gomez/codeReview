@@ -1,8 +1,19 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CompetenceController;
 use App\Http\Controllers\TopicController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\ConfirmablePasswordController;
+use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\Auth\PasswordController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\VerifyEmailController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,21 +27,32 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('superadmin');
 });
 
-// Estas rutas son para poder visualizar los layouts, luego deben borrarse
-Route::get('/layout-coder', function () {
-    return view('layouts.coder');
+// Aquí cambiamos para que cuando entremos a la web automáticamente nos redirija a la view de login
+Route::get('/', function () {
+    return view('auth.login');
 });
 
-Route::get('/layout-formador', function () {
-    return view('layouts.formador');
+// Para poder visualizar la view de Register
+Route::get('/register', function () {
+    return view('auth.register');
 });
 
-Route::get('/layout-superadmin', function () {
-    return view('layouts.superadmin');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::post('/users/assign-role', [UserController::class, 'assignRole'])->name('users.assign-role');
+
+require __DIR__ . '/auth.php';
 
 Route::controller(CompetenceController::class)->group(function () {
     Route::get('competence', 'index')->name('competence');
@@ -72,6 +94,10 @@ Route::get('/autoevaluacion', function () {
 Route::get('/coevaluacion', function () {
     return view('coder.coevaluacion');
 });
+
+Route::post('/users/assign-role', [UserController::class, 'assignRole'])->name('users.assign-role');
+
+require __DIR__ . '/auth.php';
 
 Route::get('/resultados-evaluacion', function () {
     return view('coder.resultadosEvaluacion');
