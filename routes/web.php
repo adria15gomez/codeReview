@@ -30,6 +30,15 @@ Route::get('/layout-superadmin', function () {
     return view('layouts.superadmin');
 });
 
+
+Route::get('/mi-bootcamp', function () {
+    return view('miBootcamp');
+});
+
+Route::get('/bootcamps', function () {
+    return view('layouts.bootcamps');
+});
+
 //Para ver las vistas del Coder "Evaluaciones"
 Route::get('/mis-evaluaciones', function () {
     return view('coder.misEvaluaciones');
@@ -46,3 +55,4 @@ Route::get('/coevaluacion', function () {
 Route::get('/resultados-evaluacion', function () {
     return view('coder.resultadosEvaluacion');
 });
+
