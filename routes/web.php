@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CompetenceController;
+use App\Http\Controllers\TopicController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
@@ -51,3 +53,52 @@ Route::middleware('auth')->group(function () {
 Route::post('/users/assign-role', [UserController::class, 'assignRole'])->name('users.assign-role');
 
 require __DIR__ . '/auth.php';
+
+Route::controller(CompetenceController::class)->group(function () {
+    Route::get('competence', 'index')->name('competence');
+    Route::get('agregar-competencia', 'create')->name('addCompetence.create');
+    Route::post('agregar-competencia', 'store')->name('addCompetence.store');
+    Route::get('editar-competencia/{id}', 'edit')->name('editCompetence.edit');
+    Route::put('editar-competencia/{id}', 'update')->name('editCompetence.update');
+    Route::put('editar-competencia/{id}', 'update')->name('editCompetence.update');
+    Route::delete('eliminar-competencia/{id}', 'destroy')->name('deleteCompetence.distroy');
+});
+
+Route::controller(TopicController::class)->group(function () {
+    Route::get('topic', 'index')->name('topic');
+    Route::get('agregar-topic', 'create')->name('addTopic.create');
+    Route::post('agregar-topic', 'store')->name('addTopic.store');
+    Route::get('editar-topic/{id}', 'edit')->name('editTopic.edit');
+    Route::put('editar-topic/{id}', 'update')->name('editTopic.update');
+    Route::put('editar-topic/{id}', 'update')->name('editTopic.update');
+    Route::delete('eliminar-topic/{id}', 'destroy')->name('deleteTopic.distroy');
+});
+
+Route::get('/mi-bootcamp', function () {
+    return view('miBootcamp');
+});
+
+Route::get('/bootcamps', function () {
+    return view('layouts.bootcamps');
+});
+
+//Para ver las vistas del Coder "Evaluaciones"
+Route::get('/mis-evaluaciones', function () {
+    return view('coder.misEvaluaciones');
+});
+
+Route::get('/autoevaluacion', function () {
+    return view('coder.autoevaluacion');
+});
+
+Route::get('/coevaluacion', function () {
+    return view('coder.coevaluacion');
+});
+
+Route::post('/users/assign-role', [UserController::class, 'assignRole'])->name('users.assign-role');
+
+require __DIR__ . '/auth.php';
+
+Route::get('/resultados-evaluacion', function () {
+    return view('coder.resultadosEvaluacion');
+});
