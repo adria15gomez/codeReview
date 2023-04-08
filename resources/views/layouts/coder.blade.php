@@ -25,11 +25,12 @@
 
         {{-- Importamos el componente Navbar y pasamos el array de links como parámetro --}}
         @include('components.navbar', ['links' => $links])
-
+        
         {{-- Aqui va a ir el contenido de la vista --}}
-        @yield('content')
+        <section class="max-h-screen overflow-y-scroll mx-auto">
+            @yield('content')
+        </section>   
 
-        {{-- Importamos el componente footer --}}
-        @include('components.footer')
+        @include('components.footer')  
     </body>
 </html>

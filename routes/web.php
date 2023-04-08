@@ -29,3 +29,20 @@ Route::get('/layout-formador', function () {
 Route::get('/layout-superadmin', function () {
     return view('layouts.superadmin');
 });
+
+//Para ver las vistas del Coder "Evaluaciones"
+Route::get('/mis-evaluaciones', function () {
+    return view('coder.misEvaluaciones');
+});
+
+Route::get('/autoevaluacion', function () {
+    return view('coder.autoevaluacion');
+});
+
+Route::get('/coevaluacion', function () {
+    return view('coder.coevaluacion');
+});
+
+Route::get('/resultados-evaluacion', function () {
+    return view('coder.resultadosEvaluacion');
+});
