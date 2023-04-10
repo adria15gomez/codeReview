@@ -30,7 +30,7 @@
         @include('components.navbar', ['links' => $links])
         
         {{-- Aqui va a ir el contenido de la vista --}}
-        <section class="max-h-screen overflow-y-scroll mx-auto">
+        <section>
             @yield('content')
         </section>   
         @include('components.footer')  

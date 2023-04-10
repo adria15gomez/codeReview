@@ -23,9 +23,9 @@
 
                 <div class="mb-6">
                     <label for="email"
-                        class="block mb-2 text-sm font-medium text-white dark:text-white">Email</label>
+                        class="block mb-2 text-sm font-medium text-white">Email</label>
                     <input type="email" id="email" name="email"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         placeholder="Escribe tu email" required>
                     @error('email')
                         <p class="mt-2 text-black">{{ $message }}</p>
@@ -33,16 +33,16 @@
                 </div>
                 <div class="mb-6">
                     <label for="password"
-                        class="block mb-2 text-sm font-medium text-white dark:text-white">Contraseña</label>
+                        class="block mb-2 text-sm font-medium text-white">Contraseña</label>
                     <input type="password" id="password" name="password"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         placeholder="Escribe tu contraseña" required>
                     @error('password')
                         <p class="mt-2 text-black">{{ $message }}</p>
                     @enderror
                 </div>
                 <button type="submit"
-                    class="text-white bg-zinc-950 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Iniciar
+                    class="text-white bg-zinc-950 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Iniciar
                     sesión</button>
             </form>
             <p class="block mb-2 mt-5 ml-6 text-sm font-regular text-white">¿Aún no tienes una cuenta?<a
