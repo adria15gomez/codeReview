@@ -76,7 +76,7 @@ Route::controller(TopicController::class)->group(function () {
 });
 
 Route::get('/mi-bootcamp', function () {
-    return view('miBootcamp');
+    return view('coder.miBootcamp');
 });
 
 Route::get('/bootcamps', function () {
