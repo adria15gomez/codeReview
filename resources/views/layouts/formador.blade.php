@@ -7,7 +7,7 @@
 
         {{-- Para que el título se pueda modificar en cada view --}}
         <title>@yield('title')</title>
-        
+
         {{-- Importando la fuente Poppins en las series Regular, Medium, Bold y Light --}}
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +28,8 @@
         @include('components.navbar', ['links' => $links])
 
         {{-- Aqui va a ir el contenido de la vista --}}
-        @yield('content')
+
+            @yield('content')
 
         {{-- Importamos el componente footer --}}
         @include('components.footer')

@@ -93,7 +93,7 @@ Route::get('/autoevaluacion', function () {
 });
 
 Route::controller(PromotionController::class)->group(function () {
-    Route::get('promociones', 'index')->name('promotions');
+    Route::get('/promociones', 'index')->name('trainer.promotions');
     Route::get('agregar-promocion', 'create')->name('addPromotion.create');
     Route::post('agregar-promocion', 'store')->name('addPromotion.store');
     Route::get('editar-promocion/{promotion}', 'edit')->name('editPromotion.edit');
@@ -112,4 +112,3 @@ require __DIR__ . '/auth.php';
 Route::get('/resultados-evaluacion', function () {
     return view('coder.resultadosEvaluacion');
 });
-

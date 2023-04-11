@@ -11,7 +11,7 @@
 
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             {{-- Aqui estamos haciendo que los links pasen a ser dinámicos, por lo que despues, en cada layout le pasaremos el array de links que debe recorrer --}}
-            <ul class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white md:dark:bg-gray-900">
+            <ul class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
                 @foreach ($links as $link)
                 <li><a href="{{ $link['url'] }}" class="block py-2 pl-3 pr-4 text-gray-700 text-center rounded hover:text-orange-600">{{ $link['title'] }}</a></li>
                 @endforeach
