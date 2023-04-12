@@ -17,7 +17,7 @@ class TopicController extends Controller
     public function create()
     {
         $competences = Competence::all();
-        return view('addTopic', compact('competences'));
+        return view('trainer.addTopic', compact('competences'));
     }
 
     public function store(Request $request)

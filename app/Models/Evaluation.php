@@ -18,11 +18,11 @@ class Evaluation extends Model
 
     public function autoevaluation()
     {
-        return $this->belongsToMany(Topic::class, 'evaluations_topics_autoevaluations')->withPivot('level');
+        return $this->belongsToMany(Topic::class, 'evaluations_topics_autoevaluations')->withPivot('level', 'promedio');
     }
 
     public function coevaluation()
     {
-        return $this->belongsToMany(Topic::class, 'evaluations_topics_coevaluations')->withPivot('level');
+        return $this->belongsToMany(Topic::class, 'evaluations_topics_coevaluations')->withPivot('level', 'promedio');
     }
 }
