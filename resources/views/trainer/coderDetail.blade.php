@@ -1,11 +1,11 @@
 @extends('layouts.formador')
 @section('content')
-    <div>
+    <div class="md:items-center">
         <h1 class="font-medium text-4xl pt-0 ml-2 pl-2 mt-10 md:text-5xl grid ">Laura Garcia</h1>
         <img src="img/trainer/coderdetail.svg"alt="bootcamp"
             class="w-full h-60 my-8 sm:h-52 sm:col-span-2 md:h-80 w-100 items-center col-span-full" loading="lazy" />
 
-        <h3 class="font-medium text-2xl  py-4 ml-10 ">Media global</h3>
+        <h3 class="font-medium text-2xl  py-4 ml-10 md:items-center">Media global</h3>
 
         <div class="max-w-sm p-4 mx-5 border-transparent ml-10 mt-2 rounded-lg ">
             <div class="w-full bg-gray-500 rounded-lg">
