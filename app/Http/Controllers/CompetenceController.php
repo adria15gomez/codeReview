@@ -11,12 +11,12 @@ class CompetenceController extends Controller
     public function index()
     {
         $competences = Competence::all();
-        return view('competence', compact('competences'));
+        return view('superAdmin.competence', compact('competences'));
     }
 
     public function create()
     {
-        return view('addCompetence');
+        return view('superAdmin.addCompetence');
     }
 
     public function store(Request $request)
@@ -24,6 +24,7 @@ class CompetenceController extends Controller
         $competences = new Competence();
 
         $competences->name = $request->name;
+        $competences->description = $request->description;
         $competences->save();
 
         return redirect()->route('competence', $competences);
@@ -40,6 +41,7 @@ class CompetenceController extends Controller
         $competence = Competence::findOrFail($id);
 
         $competence->name = $request->name;
+        $competence->description = $request->description;
         $competence->save();
 
         return redirect()->route('competence', $competence);
