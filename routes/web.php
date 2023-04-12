@@ -14,6 +14,8 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\EvaluationController;
+use App\Http\Controllers\AutoevaluationController;
 
 
 /*
@@ -84,9 +86,9 @@ Route::get('/bootcamps', function () {
 });
 
 //Para ver las vistas del Coder "Evaluaciones"
-Route::get('/mis-evaluaciones', function () {
-    return view('coder.misEvaluaciones');
-});
+// Route::get('/mis-evaluaciones', function () {
+//     return view('coder.misEvaluaciones');
+// });
 
 Route::get('/autoevaluacion', function () {
     return view('coder.autoevaluacion');
@@ -113,3 +115,16 @@ Route::get('/resultados-evaluacion', function () {
     return view('coder.resultadosEvaluacion');
 });
 
+Route::controller(EvaluationController::class)->group(function () {
+    Route::get('mis-evaluaciones', 'index')->name('evaluations');
+    Route::get('autoevaluacion', 'create')->name('evaluation.create');    
+    Route::post('evaluacion', 'store')->name('evaluation.store');
+    Route::get('coevaluacion', 'createCoevalua')->name('evaluation.createCoevalua');
+    Route::post('coevaluacion', 'store')->name('evaluation.store');
+    
+});
+
+// Route::controller(AutoevaluationController::class)->group(function () {
+//     Route::get('autoevaluacion', 'create')->name('autoevaluation.create');
+//     Route::post('autoevaluacion', 'store')->name('autoevaluation.store');
+// });
