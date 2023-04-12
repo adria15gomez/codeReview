@@ -16,9 +16,9 @@
             </button>
         </h2>
         <div id="accordion-collapse-body-1" class="hidden bg-gray-900 w-72 ml-10 rounded-xl mt-1" aria-labelledby="accordion-collapse-heading-1">
-            <a href="#" class="block py-2 px-4 font-thin text-white text-xs ml-2 hover:bg-orange-600">Autoevaluar</a>
-            <a href="#" class="block py-2 px-4 font-thin text-white text-xs ml-2 hover:bg-orange-600">Coevaluar</a>
-            <a href="#" class="block py-2 px-4 font-thin text-white text-xs ml-2 hover:bg-orange-600">Ver resultados</a>
+                <a href="{{route('evaluation.create')}}" class="block py-2 px-4 font-thin text-white text-xs ml-2 hover:bg-orange-600">Autoevaluar</a>
+                <a href="{{route('evaluation.createCoevalua')}}" class="block py-2 px-4 font-thin text-white text-xs ml-2 hover:bg-orange-600">Coevaluar</a>
+                <a href="#" class="block py-2 px-4 font-thin text-white text-xs ml-2 hover:bg-orange-600">Ver resultados</a>
         </div>
     </div>
 @endsection
