@@ -86,6 +86,11 @@ Route::get('/bootcamps', function () {
 Route::get('/coders', function () {
     return view('trainer.coders');
 });
+Route::get('/coder-detail', function () {
+    return view('trainer.coderDetail');
+});
+
+
 
 //Para ver las vistas del Coder "Evaluaciones"
 Route::get('/mis-evaluaciones', function () {

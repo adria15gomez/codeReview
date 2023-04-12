@@ -20,7 +20,6 @@
         <h3 class="font-medium text-2xl  py-8 ml-10 ">Lista de coders</h3>
 
         <div class="max-w-sm p-6 mx-5 border ml-10 mt-4 border-gray-200 rounded-lg shadow bg-[#111827]">
-
             <div class="flex justify-between pt-4 mb-1">
                 <span class="text-lg font-medium text-white">Laura Garcia</span>
                 <span>
@@ -31,16 +30,14 @@
                     </svg>
                 </span>
             </div>
-
-
             <div class="w-full bg-gray-200 rounded-full my-10">
                 <div class="h-6 bg-orange-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
                     style="width: 75%">75%</div>
             </div>
             <div class="row-grid">
-            <input type="submit" value="Ver"class="text-white ml-10 cursor-pointer"></input>
-            <input type="submit" value="Editar"class="text-white mx-10 cursor-pointer"></input>
-            <input type="submit" value="Eliminar"class=" mr-4 text-orange-600 cursor-pointer"></input>
+                <input type="submit" value="Ver"class="text-white ml-10 cursor-pointer"></input>
+                <input type="submit" value="Editar"class="text-white mx-10 cursor-pointer"></input>
+                <input type="submit" value="Eliminar"class=" mr-4 text-orange-600 cursor-pointer"></input>
             </div>
         </div>
 
