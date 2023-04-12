@@ -1,3 +1,8 @@
+@extends('layouts.formador')
+
+@section('content')
+
+
 <form action="{{route('addPromotion.store')}}" method="POST">
 
     @csrf
@@ -87,3 +92,4 @@
         }
     });
 </script>
+@endsection
