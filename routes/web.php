@@ -118,8 +118,10 @@ Route::get('/resultados-evaluacion', function () {
 Route::controller(EvaluationController::class)->group(function () {
     Route::get('mis-evaluaciones', 'index')->name('evaluations');
     Route::get('autoevaluacion', 'create')->name('evaluation.create');    
-    Route::get('coevaluacion', 'createCoevalua')->name('evaluation.createCoevalua');
     Route::post('evaluacion', 'store')->name('evaluation.store');
+    Route::get('coevaluacion', 'createCoevalua')->name('evaluation.createCoevalua');
+    Route::post('coevaluacion', 'store')->name('evaluation.store');
+    
 });
 
 // Route::controller(AutoevaluationController::class)->group(function () {

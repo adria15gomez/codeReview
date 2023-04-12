@@ -24,42 +24,53 @@ class EvaluationController extends Controller
         return view('coder.autoevaluacion', compact('topics'));
     }
 
-    // public function createCoevalua ()
-    // {
-    //     $topics = Topic::all();
-    //     $users = User::all();
-    //     return view('coder.coevaluacion', compact('topics', 'users'));
-    // }
+    public function createCoevalua ()
+    {
+        $topics = Topic::all();
+        $users = User::all();
+        return view('coder.coevaluacion', compact('topics', 'users'));
+    }
 
     public function store(Request $request)
     {
         DB::transaction(function () use ($request) {
 
-            // $users = User::findOrFail($request->input('id_user_coevaluator'));
+            $evaluationType = $request->input('evaluationType');
+
+            if ($evaluationType === 'autoevaluacion') {
+                $id_user_evaluated = auth()->id();
+                $id_user_coevaluator = null;
+            } else {
+                $id_user_evaluated = auth()->id();
+                $id_user_coevaluator = $request->input('id_user_coevaluator');
+            }
 
             $evaluation = new Evaluation;
             $evaluation->evaluation_date = now();
-            $evaluation->id_user_evaluated = auth()->id();
-            // $evaluation->id_user_coevaluator = $users->id;
+            $evaluation->id_user_evaluated = $id_user_evaluated;
+            $evaluation->id_user_coevaluator = $id_user_coevaluator;
             $evaluation->save();
 
             foreach ($request->topics as $topicId => $level) {
-                $autoeval = new Autoevaluation();
-                $autoeval->topic_id = $topicId;
-                $autoeval->evaluation_id = $evaluation->id;
-                $autoeval->level = $level;
-                $autoeval->save();
-
-                // $coeval = new Coevaluation();
-                // $coeval->topic_id = $topicId;
-                // $coeval->evaluation_id = $evaluation->id;
-                // $coeval->level = $level;
-                // $coeval->save();
+                if ($evaluationType === 'autoevaluacion') {
+                    $evaluations = new Autoevaluation();
+                } else {
+                    $evaluations = new Coevaluation();
+                }
+    
+                $evaluations->topic_id = $topicId;
+                $evaluations->evaluation_id = $evaluation->id;
+                $evaluations->level = $level;
+                $evaluations->save();
             }
-
-            $evaluation->pp_autoeval = round(collect($request->topics)->flatten()->avg());
-            $evaluation->pp_cooeval = round(collect($request->topics)->flatten()->avg());
-            $evaluation->save();
+    
+            if ($evaluationType === 'autoevaluacion') {
+                $evaluation->pp_autoeval = round(collect($request->topics)->flatten()->avg());
+                $evaluation->save();
+            } else {
+                $evaluation->pp_coeval = round(collect($request->topics)->flatten()->avg());
+                $evaluation->save();
+            }
         });
 
         return redirect()->route('evaluations');

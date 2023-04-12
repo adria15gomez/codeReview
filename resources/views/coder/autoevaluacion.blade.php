@@ -5,11 +5,8 @@
     <p class="font-regular text-xl text-left text-orange-600 mt-5 ml-10 mb-5">Autoevaluación</p>
     <form action="{{route('evaluation.store')}}" method="POST">
         @csrf
-        
-        <div>
-            <label for="date">Fecha evaluación</label>
-            <input type="date" name="evaluation_date" id="date"><br>
-        </div>
+
+        <input type="hidden" name="evaluationType" value="autoevaluacion">
 
         <div class="clasificacion">
             @foreach ($topics as $topic)
