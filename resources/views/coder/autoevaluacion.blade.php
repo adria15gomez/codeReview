@@ -8,7 +8,7 @@
 
         <input type="hidden" name="evaluationType" value="autoevaluacion">
 
-        {{-- <div class="clasificacion">
+        <div class="clasificacion">
             @foreach ($topics as $topic)
                 <p> {{$topic->name}} </p>  
                 @for ($i = 1; $i <= 6; $i++)          
@@ -16,7 +16,7 @@
                     <label for="{{$topic->id}}">★</label>
                 @endfor
             @endforeach
-        </div> --}}
+        </div>
         <div class="clasificacion">
             @foreach ($topics as $topic)
                 <p> {{$topic->name}} </p>    
@@ -45,6 +45,9 @@
           display: none;
         } */
       
+        .cara-input{
+            display: none;
+        }
         .cara {
           margin-right: 1em;
           opacity: 0.7;
@@ -95,49 +98,52 @@
         .cara-input:checked + .cara {
           opacity: 1;
         }
+
       </style>
       
       <form action="{{route('evaluation.store')}}" method="POST" id="rating-form">
-        @csrf
-    
-        <input type="hidden" name="evaluationType" value="autoevaluacion">
-    
-        <div class="rating">
-            @foreach ($topics as $topic)
-            <p>{{$topic->name}}</p>  
-            <div>
-              <input type="radio" name="topics[{{$topic->id}}]" id="{{$topic->id}}" value="1" class="cara-input" />
-              <label for="{{$topic->id}}" class="cara" title="Mal"><img src="img/coder/1cara.svg" alt="Mal" /></label>
-              
-              <input type="radio" name="topics[{{$topic->id}}]" id="{{$topic->id}}" value="2" class="cara-input" />
-              <label for="{{$topic->id}}" class="cara" title="Regular"><img src="img/coder/2cara.svg" alt="Regular" /></label>
-              
-              <input type="radio" name="topics[{{$topic->id}}]" id="{{$topic->id}}" value="3" class="cara-input" />
-              <label for="{{$topic->id}}" class="cara" title="Bien"><img src="img/coder/3cara.svg" alt="Bien" /></label>
-              
-              <input type="radio" name="topics[{{$topic->id}}]" id="{{$topic->id}}" value="4" class="cara-input" />
-              <label for="{{$topic->id}}" class="cara" title="Muy bien"><img src="img/coder/4cara.svg" alt="Muy bien" /></label>
-              
-              <input type="radio" name="topics[{{$topic->id}}]" id="{{$topic->id}}" value="5" class="cara-input" />
-              <label for="{{$topic->id}}" class="cara" title="Genio/a"><img src="img/coder/5cara.svg" alt="Genio/a" /></label>
-              
-              <input type="radio" name="topics[{{$topic->id}}]" id="{{$topic->id}}" value="6" class="cara-input" />
-              <label for="{{$topic->id}}" class="cara" title="Experto/a"><img src="img/coder/6cara.svg" alt="Experto/a" /></label>
+            @csrf
+        
+            <input type="hidden" name="evaluationType" value="autoevaluacion">
+        
+            <div class="rating">
+                @foreach ($topics as $topic)
+                    <p>{{$topic->name}}</p>  
+                    <div>
+                    <input type="radio" name="topics[{{$topic->id}}]" id="{{$topic->id}}-rating-1" value="1" class="cara-input" />
+                    <label for="{{$topic->id}}-rating-1" class="cara" title="Mal"><img src="img/coder/1cara.svg" alt="Mal" /></label>
+                    
+                    <input type="radio" name="topics[{{$topic->id}}]" id="{{$topic->id}}-rating-2" value="2" class="cara-input" />
+                    <label for="{{$topic->id}}-rating-2" class="cara" title="Regular"><img src="img/coder/2cara.svg" alt="Regular" /></label>
+                    
+                    <input type="radio" name="topics[{{$topic->id}}]" id="{{$topic->id}}-rating-3" value="3" class="cara-input" />
+                    <label for="{{$topic->id}}-rating-3" class="cara" title="Bien"><img src="img/coder/3cara.svg" alt="Bien" /></label>
+                    
+                    <input type="radio" name="topics[{{$topic->id}}]" id="{{$topic->id}}-rating-4" value="4" class="cara-input" />
+                    <label for="{{$topic->id}}-rating-4" class="cara" title="Muy bien"><img src="img/coder/4cara.svg" alt="Muy bien" /></label>
+                    
+                    <input type="radio" name="topics[{{$topic->id}}]" id="{{$topic->id}}-rating-5" value="5" class="cara-input" />
+                    <label for="{{$topic->id}}-rating-5" class="cara" title="Genio/a"><img src="img/coder/5cara.svg" alt="Genio/a" /></label>
+                    
+                    <input type="radio" name="topics[{{$topic->id}}]" id="{{$topic->id}}-rating-6" value="6" class="cara-input" />
+                    <label for="{{$topic->id}}-rating-6" class="cara" title="Experto/a"><img src="img/coder/6cara.svg" alt="Experto/a" /></label>
+                    </div>
+                @endforeach
+
+                
+                <button class="bg-gray-900 text-white text-sm font-light  py-2 px-4 rounded-lg mx-auto block">Enviar autoevaluación</button>
             </div>
-              @endforeach
-        </div>
-        <button class="bg-gray-900 text-white text-sm font-light  py-2 px-4 rounded-lg mx-auto block">Enviar autoevaluación</button>
       </form>
     
       <script>
       const images = document.querySelectorAll('.rating img');
     
-      images.forEach(img => {
+
         img.addEventListener('click', () => {
-          images.forEach(otherImg => otherImg.style.opacity = 0.3);
-          img.style.opacity = 1;
-          const input = img.parentElement.previousElementSibling;
-          input.checked = true;
+        images.forEach(otherImg => otherImg.style.opacity = 0.3);
+        img.style.opacity = 1;
+        const input = img.parentElement.previousElementSibling;
+        input.checked = true;
         });
     
         img.addEventListener('mouseover', () => {
@@ -149,7 +155,11 @@
           const tooltip = img.nextElementSibling;
           tooltip.classList.remove('show');
         });
-      });
+    
+  
+
+ 
+
     </script>
     
     @endsection
