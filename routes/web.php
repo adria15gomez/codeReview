@@ -117,11 +117,11 @@ Route::get('/resultados-evaluacion', function () {
 
 Route::controller(EvaluationController::class)->group(function () {
     Route::get('mis-evaluaciones', 'index')->name('evaluations');
-    Route::get('autoevaluacion', 'create')->name('evaluation.create');    
+    Route::get('autoevaluacion', 'create')->name('evaluation.create');
     Route::post('evaluacion', 'store')->name('evaluation.store');
     Route::get('coevaluacion', 'createCoevalua')->name('evaluation.createCoevalua');
     Route::post('coevaluacion', 'store')->name('evaluation.store');
-    
+    Route::get('evaluacion/{user_id}/{date}', 'compare')->name('coder.comparison');
 });
 
 // Route::controller(AutoevaluationController::class)->group(function () {
