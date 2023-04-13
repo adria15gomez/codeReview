@@ -106,6 +106,14 @@ require __DIR__ . '/auth.php';
 //     return view('coder.resultadosEvaluacion')->name('resultadosEvaluacion');
 // });
 
+Route::get('/rating-autoevaluacion', function () {
+    return view('components.ratingAutoevaluacion');
+});
+
+Route::get('/rating-autoevaluacion', function () {
+    return view('components.ratingAutoevaluacion');
+});
+
 Route::controller(EvaluationController::class)->group(function () {
     Route::get('mis-evaluaciones', 'index')->name('evaluations');
     Route::get('autoevaluacion', 'create')->name('evaluation.create');    
