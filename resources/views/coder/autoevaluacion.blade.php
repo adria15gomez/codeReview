@@ -8,13 +8,30 @@
 
         <input type="hidden" name="evaluationType" value="autoevaluacion">
 
-        <div class="clasificacion">
+        {{-- <div class="clasificacion">
             @foreach ($topics as $topic)
                 <p> {{$topic->name}} </p>  
                 @for ($i = 1; $i <= 6; $i++)          
                     <input type="radio" name="topics[{{$topic->id}}]" value="{{$i}}" id="{{$topic->id}}_{{$i}}" >
                     <label for="{{$topic->id}}_{{$i}}">★</label>
                 @endfor
+            @endforeach
+        </div> --}}
+        <div class="clasificacion">
+            @foreach ($topics as $topic)
+                <p> {{$topic->name}} </p>    
+                <input type="radio" name="topics[{{$topic->id}}]" value="1" id="{{$topic->id}}" >
+                <label for="{{$topic->id}}"></label>
+                <input type="radio" name="topics[{{$topic->id}}]" value="2" id="{{$topic->id}}" >
+                <label for="{{$topic->id}}"></label>
+                <input type="radio" name="topics[{{$topic->id}}]" value="3" id="{{$topic->id}}" >
+                <label for="{{$topic->id}}"></label>
+                <input type="radio" name="topics[{{$topic->id}}]" value="4" id="{{$topic->id}}" >
+                <label for="{{$topic->id}}"></label>
+                <input type="radio" name="topics[{{$topic->id}}]" value="5" id="{{$topic->id}}" >
+                <label for="{{$topic->id}}"></label>
+                <input type="radio" name="topics[{{$topic->id}}]" value="6" id="{{$topic->id}}" >
+                <label for="{{$topic->id}}"></label>
             @endforeach
         </div>
 

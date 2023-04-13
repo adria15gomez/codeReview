@@ -14,7 +14,7 @@ class EvaluationController extends Controller
 {
     public function index ()
     {
-        $evaluations = Evaluation::all();
+        $evaluations = auth()->user()->evaluations;
         return view('coder.misEvaluaciones', compact('evaluations'));
     }
 
@@ -74,6 +74,11 @@ class EvaluationController extends Controller
         });
 
         return redirect()->route('evaluations');
+    }
+
+    public function show()
+    {
+        return view('coder.resultadosEvaluacion');
     }
 
 }
