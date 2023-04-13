@@ -113,3 +113,7 @@ Route::get('/resultados-evaluacion', function () {
     return view('coder.resultadosEvaluacion');
 });
 
+Route::get('/rating-autoevaluacion', function () {
+    return view('components.ratingAutoevaluacion');
+});
+
