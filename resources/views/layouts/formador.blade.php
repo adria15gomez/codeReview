@@ -30,7 +30,7 @@
         {{-- Aqui va a ir el contenido de la vista --}}
 
             @yield('content')
-           
+
 
         {{-- Importamos el componente footer --}}
         @include('components.footer')

@@ -90,6 +90,18 @@ Route::get('/coder-detail', function () {
     return view('trainer.coderDetail');
 });
 
+Route::get('/agregar-coder', function () {
+    return view('trainer.agregarCoder');
+});
+
+Route::get('/editar-coder', function () {
+    return view('trainer.editarCoder');
+});
+
+Route::get('/bootcamp-detail', function () {
+    return view('trainer.bootcampDetail');
+});
+
 
 
 //Para ver las vistas del Coder "Evaluaciones"
