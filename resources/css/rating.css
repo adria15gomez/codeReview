@@ -1,39 +1,50 @@
-.rating {
-    border: none;
-    float: left;
-  }
-  
-  .rating > input {
-    display: none;
-  }
-  
-  .rating > label:before {
-    margin: 5px;
-    font-size: 2.25em;
-    font-family: FontAwesome;
-    display: inline-block;
-    content: "\f005";
-  }
-  
-  .rating > label {
-    color: #ddd;
-    float: right;
-  }
-  
-  .rating > input:checked ~ label,
-  .rating > input:checked ~ label ~ label {
-    color: #f70;
-  }
-  
-  .rating:not(:checked) > label:hover,
-  .rating:not(:checked) > label:hover ~ label {
-    color: #ff0;
-  }
-  
-  .rating > input:checked + label:hover,
-  .rating > input:checked + label:hover ~ label,
-  .rating > input:checked ~ label:hover,
-  .rating > input:checked ~ label:hover ~ label,
-  .rating > label:hover ~ input:checked ~ label {
-    color: #ea0;
-  }
+.rating input[type="radio"] {
+  display: none;
+}
+
+.star {
+  margin-right: 1em
+}
+
+.star:hover {
+  cursor: pointer;
+}
+
+.star:hover::before {
+  content: attr(title);
+  position: absolute;
+  top: -4em;
+  left: 50%;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  background-color: #333;
+  color: #fff;
+  white-space: nowrap;
+  z-index: 1;
+  opacity: 0;
+  transform: translate(-50%, -10px);
+  transition: all 0.2s;
+}
+
+.star:hover::after {
+  content: "";
+  position: absolute;
+  top: -1em;
+  left: 50%;
+  border: 0.5em solid transparent;
+  border-top-color: #333;
+  z-index: 1;
+  opacity: 0;
+  transform: translate(-50%, -10px);
+  transition: all 0.2s;
+}
+
+.star:hover::before,
+.star:hover::after {
+  opacity: 1;
+  transform: translate(-50%, -20px);
+}
+
+.star-input:checked + .star {
+  opacity: 1;
+}

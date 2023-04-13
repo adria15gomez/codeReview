@@ -4,99 +4,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://kit.fontawesome.com/afad73b29b.js"crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Document</title>
 </head>
 <body>
-    <style>
-      .stars {
-        display: inline-block;
-      }
+  <style>
+    .rating input[type="radio"] {
+      display: none;
+    }
+  
+    .cara {
+      margin-right: 1em;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+      position: relative;
+    }
+  
+    .cara:hover {
+      cursor: pointer;
+    }
+  
+    .cara:hover::before {
+      content: attr(title);
+      font-family: 'Poppins';
+      position: absolute;
+      top: -4em;
+      left: 50%;
+      padding: 0.5em;
+      border-radius: 0.5em;
+      background-color: #333;
+      color: #fff;
+      white-space: nowrap;
+      z-index: 1;
+      opacity: 0;
+      transform: translate(-50%, -10px);
+      transition: all 0.2s;
+    }
+  
+    .cara:hover::after {
+      content: "";
+      position: absolute;
+      top: -1em;
+      left: 50%;
+      border: 0.5em solid transparent;
+      border-top-color: #333;
+      z-index: 1;
+      opacity: 0;
+      transform: translate(-50%, -10px);
+      transition: all 0.2s;
+    }
+  
+    .cara:hover::before,
+    .cara:hover::after {
+      opacity: 1;
+      transform: translate(-50%, -20px);
+    }
+  
+    .cara-input:checked + .cara {
+      opacity: 1;
+    }
+  </style>
+  
+  <form action="{{route('evaluation.store')}}" method="POST" id="rating-form">
+    @csrf
 
-      .stars input[type="radio"] {
-        display: none;
-      }
+    <input type="hidden" name="evaluationType" value="autoevaluacion">
 
-      .stars label {
-        color: #aaa;
-        font-size: 32px;
-        padding: 10px;
-        float: right;
-      }
+    <div class="rating">
+        @foreach ($topics as $topic)
+        <p>{{$topic->name}}</p> 
+        <div>
+          <input type="radio" name="topics[{{$topic->id}}]" id="{{$topic->id}}" value="1" class="cara-input" />
+          <label for="{{$topic->id}}" class="cara" title="Mal"><img src="img/coder/1cara.svg" alt="Mal" /></label>
 
-      .stars label:before {
-        content: "\f005";
-        font-family: FontAwesome;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 30px;
-        display: inline-block;
-        margin-right: 5px;
-      }
+          <input type="radio" name="topics[{{$topic->id}}]" id="{{$topic->id}}" value="2" class="cara-input" />
+          <label for="{{$topic->id}}" class="cara" title="Regular"><img src="img/coder/2cara.svg" alt="Regular" /></label>
 
-      .stars input[type="radio"]:checked ~ label {
-        color: #ffdd00;
-      }
+          <input type="radio" name="topics[{{$topic->id}}]" id="{{$topic->id}}" value="3" class="cara-input" />
+          <label for="{{$topic->id}}" class="cara" title="Bien"><img src="img/coder/3cara.svg" alt="Bien" /></label>
+      
+          <input type="radio" name="topics[{{$topic->id}}]" id="{{$topic->id}}" value="4" class="cara-input" />
+          <label for="{{$topic->id}}" class="cara" title="Muy bien"><img src="img/coder/4cara.svg" alt="Muy bien" /></label>
+          
+          <input type="radio" name="topics[{{$topic->id}}]" id="{{$topic->id}}" value="5" class="cara-input" />
+          <label for="{{$topic->id}}" class="cara" title="Genio/a"><img src="img/coder/5cara.svg" alt="Genio/a" /></label>
+          
+          <input type="radio" name="topics[{{$topic->id}}]" id="{{$topic->id}}" value="6" class="cara-input" />
+          <label for="{{$topic->id}}" class="cara" title="Experto/a"><img src="img/coder/6cara.svg" alt="Experto/a" /></label>
+        </div>
+        @endforeach
+    </div>
+    <button class="bg-gray-900 text-white text-sm font-light  py-2 px-4 rounded-lg mx-auto block">Enviar autoevaluación</button>
+  </form>
 
-      .stars input[type="radio"]:checked ~ label:before {
-        content: "\f005";
-        color: #ffdd00;
-      }
+  <script>
+  const images = document.querySelectorAll('.rating img');
 
-      .selected:before {
-        color: red;
-      }
+  images.forEach(img => {
+    img.addEventListener('click', () => {
+      images.forEach(otherImg => otherImg.style.opacity = 0.3);
+      img.style.opacity = 1;
+      const input = img.parentElement.previousElementSibling;
+      input.checked = true;
+    });
 
-      .selected-2:before {
-        color: green;
-      }
+    img.addEventListener('mouseover', () => {
+      const tooltip = img.nextElementSibling;
+      tooltip.classList.add('show');
+    });
 
-      .selected-3:before {
-        color: blue;
-      }
-    </style>
-
-    <form>
-      <fieldset>
-          <legend>Valoración:</legend>
-          <div class="stars">
-              <input type="radio" id="star-6" name="level[]" value="6" />
-              <label for="star-6" title="Genio/a"></label>
-              <input type="radio" id="star-5" name="level[]" value="5" />
-              <label for="star-5" title="Excelente"></label>
-              <input type="radio" id="star-4" name="level[]" value="4" />
-              <label for="star-4" title="Muy bueno"></label>
-              <input type="radio" id="star-3" name="level[]" value="3" />
-              <label for="star-3" title="Bueno"></label>
-              <input type="radio" id="star-2" name="level[]" value="2" />
-              <label for="star-2" title="Regular"></label>
-              <input type="radio" id="star-1" name="level[]" value="1" />
-              <label for="star-1" title="Malo"></label>
-          </div>
-      </fieldset>
-    </form>
-
-    <script>
-      const stars = document.querySelectorAll('.stars input[type="radio"]');
-      const labels = document.querySelectorAll('.stars label');
-
-      for (let i = 0; i < stars.length; i++) {
-        stars[i].addEventListener('change', function() {
-          for (let j = 0; j < labels.length; j++) {
-            labels[j].classList.remove('selected', 'selected-2', 'selected-3');
-          }
-          for (let j = 0; j <= i; j++) {
-            if (i >= 0 && i <= 2) {
-              labels[j].classList.add('selected');
-            } else if (i >= 3 && i <= 5) {
-              labels[j].classList.add('selected-2');
-            } else if (i >= 6) {
-              labels[j].classList.add('selected-3');
-            }
-          }
-        });
-      }
-    </script>
+    img.addEventListener('mouseout', () => {
+      const tooltip = img.nextElementSibling;
+      tooltip.classList.remove('show');
+    });
+  });
+</script>
 </body>
 </html>
