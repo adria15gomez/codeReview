@@ -1,7 +1,7 @@
 @extends('layouts.coder')
 
 @section('content')
-    <p class="font-light text-2xl text-left mt-5 ml-10">Hola, <span class="text-orange-600 font-medium">Coder</span></p>
+    <p class="font-light text-2xl text-left mt-5 ml-10">Hola, <span class="text-orange-600 font-medium">{{Auth::user()->name}}</span></p>
     <p class="font-regular text-3xl text-left mt-5 ml-10">Mis evaluaciones</p>
     <img src="img\coder\misevaluaciones.svg" class="h-50 mx-auto" alt="Factoria F5 Logo" />
     <p class="font-regular text-xl text-left mt-5 ml-10 mb-5">Media global</p>
@@ -18,7 +18,7 @@
         <div id="accordion-collapse-body-1" class="hidden bg-gray-900 w-72 ml-10 rounded-xl mt-1" aria-labelledby="accordion-collapse-heading-1">
                 <a href="{{route('evaluation.create')}}" class="block py-2 px-4 font-thin text-white text-xs ml-2 hover:bg-orange-600">Autoevaluar</a>
                 <a href="{{route('evaluation.createCoevalua')}}" class="block py-2 px-4 font-thin text-white text-xs ml-2 hover:bg-orange-600">Coevaluar</a>
-                <a href="#" class="block py-2 px-4 font-thin text-white text-xs ml-2 hover:bg-orange-600">Ver resultados</a>
+                <a href="{{route('evaluations.index')}}" class="block py-2 px-4 font-thin text-white text-xs ml-2 hover:bg-orange-600">Ver resultados</a>
         </div>
     </div>
 @endsection

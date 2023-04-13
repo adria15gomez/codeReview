@@ -21,5 +21,5 @@
         <button class="bg-gray-900 text-white text-sm font-light  py-2 px-4 rounded-lg mx-auto block">Enviar autoevaluación</button>
     </form>
     
-    <button class="bg-black text-white text-sm font-light py-2 px-4 mt-4 rounded-lg mx-auto block">Cancelar</button>
+    <a href="{{route('evaluations')}}" class="bg-black text-white text-sm font-light py-2 px-4 mt-4 rounded-lg mx-auto block w-1/4">Cancelar</a>
 @endsection

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Competence;
 use Illuminate\Http\Request;
 use App\Models\Promotion;
 use App\Models\Topic;
+use App\Models\User;
 
 class PromotionController extends Controller
 {
@@ -87,6 +89,14 @@ class PromotionController extends Controller
         return redirect()->route('promotions', $promotion);
     }
 
+    public function show()
+    {
+        $promotions = Promotion::all();
+        $users = User::all();
+        $topics = Topic::all();
+        $competences = Competence::all();
+        return view('coder.miBootcamp', compact('promotions', 'users', 'topics', 'competences'));
+    }
     public function destroy(Request $request, $promotion)
     {
         $promotion = Promotion::findOrFail($promotion);
