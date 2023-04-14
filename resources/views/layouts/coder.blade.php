@@ -22,7 +22,8 @@
         @php
             $links = [
                 ['url' => '/mis-evaluaciones', 'title' => 'Mis evaluaciones'],
-                ['url' => '/mi-bootcamp', 'title' => 'Mi bootcamp']
+                ['url' => '/mi-bootcamp', 'title' => 'Mi bootcamp'],
+                ['url' => '/profile', 'title' => 'Mi perfil']
             ];
         @endphp
 
