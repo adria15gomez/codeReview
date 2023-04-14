@@ -5,8 +5,7 @@
         <h1 class="font-normal text-4xl pt-0 ml-2 pl-2 md:text-5xl">Mi bootcamp</h1>
         <h2 class="font-normal text-orange-600 text-4xl pt-6 ml-2 pl-2 md:text-5xl">FemCoders Norte</h2>
     </div>
-
-    <img src="img/coder/mibootcamp.svg"
+    <img src="{{('img/coder/mibootcamp.svg')}}"alt="bootcamp"
         alt=" bootcamp"class="w-full h-60 sm:h-52 sm:col-span-2 md:h-80 w-100 items-center col-span-full" loading="lazy" />
 
     <div class="mr-5 mt-2 py-2 px-2 ml-10 md:ml-50 pb-10">

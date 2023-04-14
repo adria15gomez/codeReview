@@ -1,9 +1,9 @@
 @extends('layouts.formador')
-@section
+@section('content')
 
 <div class="md:items-center">
         <h1 class="font-medium text-4xl pt-0 ml-2 pl-2 mt-10 md:text-5xl grid ">Editar Coder</h1>
-        <img src="img/trainer/agregareditarcoder.svg"alt="bootcamp"
+        <img src="{{('img/trainer/agregareditarbootcamp.svg')}}"alt="bootcamp"
             class="w-full h-60 my-8 sm:h-52 sm:col-span-2 md:h-80 w-100 items-center col-span-full" loading="lazy"/>
              <div class="flex md:justify-center">
         <form class="justify-center my-10 mx-4"action="{{ route('addPromotion.store') }}" method="POST">

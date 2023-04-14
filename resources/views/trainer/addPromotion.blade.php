@@ -2,7 +2,8 @@
 
 @section('content')
     <h1 class="gap-6 mb-6 grid-cols-2 font-medium text-4xl pt-0 ml-2 pl-2 mt-10 md:text-5xl grid ">Agregar Bootcamp</h1>
-    <img src="img/trainer/agregareditarbootcamp.svg"alt="bootcamp"
+    <img src="{{('img/trainer/agregareditarbootcamp.svg')}}"alt="bootcamp"
+
         class="w-full h-60 my-8 sm:h-52 sm:col-span-2 md:h-80 w-100 items-center col-span-full" loading="lazy" />
     @csrf
     <div class="flex md:justify-center">

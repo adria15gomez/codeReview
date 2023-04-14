@@ -2,7 +2,7 @@
 
 @section('content')
     <h1 class="font-medium text-4xl pt-0 ml-2 pl-2 mt-10 md:text-5xl ">Bootcamps</h1>
-    <img src="img/trainer/bootcamps.svg"alt="bootcamp"
+    <img src="{{('img/trainer/bootcamps.svg')}}"alt="bootcamp"
         class="w-full h-60 my-8 sm:h-52 sm:col-span-2 md:h-80 w-100 items-center col-span-full" loading="lazy" />
 
     <button

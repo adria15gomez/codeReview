@@ -1,6 +1,5 @@
 @extends('layouts.formador')
 
-
 @section('content')
   <div>
     <div class="flex flex-col mt-2 py-8 px-2 md:items-center">
