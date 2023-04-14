@@ -132,3 +132,4 @@ Route::controller(EvaluationController::class)->group(function () {
     Route::post('coevaluacion', 'store')->name('evaluation.store');
     Route::get('resultados-evaluacion', 'show')->name('evaluationResults.show');
 });
+

@@ -15,7 +15,6 @@ use Illuminate\Contracts\Auth\Access\Authorizable;
 
 
 class User extends Authenticatable implements Authorizable
-
 {
     use HasFactory, Notifiable, AuthenticableTrait;
 

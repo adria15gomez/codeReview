@@ -1,5 +1,5 @@
-<form action="{{route('addTopic.store')}}" method="POST">
-    
+<form action="{{ route('addTopic.store') }}" method="POST">
+
     @csrf
 
     <label for="name">
@@ -12,10 +12,10 @@
         <select name="competence_id" id="comeptence_id">
             <option value="">Selecciona una competencia</option>
             @foreach ($competences as $competence)
-                <option value="{{$competence->id}}">{{$competence->name}}</option>
+                <option value="{{ $competence->id }}">{{ $competence->description }}</option>
             @endforeach
         </select>
     </label>
-    
+
     <button type="submit">Agregar Topic</button>
 </form>
