@@ -131,5 +131,6 @@ Route::controller(EvaluationController::class)->group(function () {
     Route::get('coevaluacion', 'createCoevalua')->name('evaluation.createCoevalua');
     Route::post('coevaluacion', 'store')->name('evaluation.store');
     Route::get('resultados-evaluacion', 'show')->name('evaluationResults.show');
+    Route::get('evaluacion/{user_id}/{date}', 'compare')->name('coder.comparison');
 });
 
