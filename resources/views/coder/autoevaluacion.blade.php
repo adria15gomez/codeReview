@@ -1,8 +1,8 @@
 @extends('layouts.coder')
 
 @section('content')
-    <p class="font-regular text-3xl text-left mt-5 ml-10">Evaluación 1</p>
-    <p class="font-regular text-xl text-left text-orange-600 mt-5 ml-10 mb-5">Autoevaluación</p>
+    <p class="font-regular text-3xl text-left mt-5 ml-10 xl:text-center ml-0">Evaluación 1</p>
+    <p class="font-regular text-xl text-left text-orange-600 mt-5 ml-10 mb-5 xl:text-center ml-0">Autoevaluación</p>
       <form action="{{route('evaluation.store')}}" method="POST" id="rating-form">
             @csrf
         
@@ -10,7 +10,7 @@
         
             <div class="rating">
                 @foreach ($topics as $topic)
-                    <p class="font-bold ml-10 mb-2">{{$topic->name}}</p>  
+                    <p class="font-bold ml-10 mb-2 xl:text-center ml-0">{{$topic->name}}</p>  
                     <div class="flex mb-10 justify-center">
                     <input type="radio" name="topics[{{$topic->id}}]" id="{{$topic->id}}-rating-1" value="1" class="cara-input" />
                     <label for="{{$topic->id}}-rating-1" class="cara" title="Mal"><img src="img/coder/1cara.svg" alt="Mal" /></label>
@@ -64,7 +64,7 @@
       .cara {
         width: 40px;
         margin-right: .5em;
-        opacity: 0.3;
+        opacity: 0.4;
         transition: opacity 0.2s;
         position: relative;
       }
