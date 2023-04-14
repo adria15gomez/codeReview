@@ -42,8 +42,8 @@ class EvaluationController extends Controller
                 $id_user_evaluated = auth()->id();
                 $id_user_coevaluator = null;
             } else {
-                $id_user_evaluated = auth()->id();
-                $id_user_coevaluator = $request->input('id_user_coevaluator');
+                $id_user_evaluated = $request->input('id_user_coevaluator');
+                $id_user_coevaluator = auth()->id();
             }
 
             $evaluation = new Evaluation;
@@ -108,7 +108,7 @@ class EvaluationController extends Controller
         //     $evaluation = 4
         // }
 
-        //dd($coevaluations);
+        dd($coevaluations);
         return view('coder.comparison', [
             'user_id' => $user_id,
             'date' => $date,
