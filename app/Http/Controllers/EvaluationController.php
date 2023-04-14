@@ -108,7 +108,8 @@ class EvaluationController extends Controller
         //     $evaluation = 4
         // }
 
-        dd($coevaluations);
+        //dd($coevaluations);
+
         return view('coder.comparison', [
             'user_id' => $user_id,
             'date' => $date,
