@@ -85,11 +85,6 @@ Route::get('/bootcamps', function () {
     return view('layouts.bootcamps');
 });
 
-//Para ver las vistas del Coder "Evaluaciones"
-// Route::get('/mis-evaluaciones', function () {
-//     return view('coder.misEvaluaciones');
-// });
-
 Route::get('/autoevaluacion', function () {
     return view('coder.autoevaluacion');
 });
@@ -103,16 +98,20 @@ Route::controller(PromotionController::class)->group(function () {
     Route::delete('eliminar-promocion/{promotion}', 'destroy')->name('deletePromotion.destroy');
 });
 
-Route::get('/coevaluacion', function () {
-    return view('coder.coevaluacion');
-});
-
 Route::post('/users/assign-role', [UserController::class, 'assignRole'])->name('users.assign-role');
 
 require __DIR__ . '/auth.php';
 
-Route::get('/resultados-evaluacion', function () {
-    return view('coder.resultadosEvaluacion');
+// Route::get('/resultados-evaluacion', function () {
+//     return view('coder.resultadosEvaluacion')->name('resultadosEvaluacion');
+// });
+
+Route::get('/rating-autoevaluacion', function () {
+    return view('components.ratingAutoevaluacion');
+});
+
+Route::get('/rating-autoevaluacion', function () {
+    return view('components.ratingAutoevaluacion');
 });
 
 Route::controller(EvaluationController::class)->group(function () {
@@ -121,10 +120,5 @@ Route::controller(EvaluationController::class)->group(function () {
     Route::post('evaluacion', 'store')->name('evaluation.store');
     Route::get('coevaluacion', 'createCoevalua')->name('evaluation.createCoevalua');
     Route::post('coevaluacion', 'store')->name('evaluation.store');
-    
+    Route::get('resultados-evaluacion', 'show')->name('evaluationResults.show');
 });
-
-// Route::controller(AutoevaluationController::class)->group(function () {
-//     Route::get('autoevaluacion', 'create')->name('autoevaluation.create');
-//     Route::post('autoevaluacion', 'store')->name('autoevaluation.store');
-// });
