@@ -14,6 +14,8 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\EvaluationController;
+use App\Http\Controllers\AutoevaluationController;
 
 
 /*
@@ -83,6 +85,7 @@ Route::get('/bootcamps', function () {
     return view('layouts.bootcamps');
 });
 
+
 Route::get('/coders', function () {
     return view('trainer.coders');
 });
@@ -103,16 +106,6 @@ Route::get('/bootcamp-detail', function () {
 });
 
 
-
-//Para ver las vistas del Coder "Evaluaciones"
-Route::get('/mis-evaluaciones', function () {
-    return view('coder.misEvaluaciones');
-});
-
-Route::get('/autoevaluacion', function () {
-    return view('coder.autoevaluacion');
-});
-
 Route::controller(PromotionController::class)->group(function () {
     Route::get('/promociones', 'index')->name('trainer.promotions');
     Route::get('agregar-promocion', 'create')->name('addPromotion.create');
@@ -122,14 +115,25 @@ Route::controller(PromotionController::class)->group(function () {
     Route::delete('eliminar-promocion/{promotion}', 'destroy')->name('deletePromotion.destroy');
 });
 
-Route::get('/coevaluacion', function () {
-    return view('coder.coevaluacion');
-});
-
 Route::post('/users/assign-role', [UserController::class, 'assignRole'])->name('users.assign-role');
-
-require __DIR__ . '/auth.php';
 
 Route::get('/resultados-evaluacion', function () {
     return view('coder.resultadosEvaluacion');
+
+Route::get('/rating-autoevaluacion', function () {
+    return view('components.ratingAutoevaluacion');
+});
+
+Route::get('/rating-autoevaluacion', function () {
+    return view('components.ratingAutoevaluacion');
+});
+
+Route::controller(EvaluationController::class)->group(function () {
+    Route::get('mis-evaluaciones', 'index')->name('evaluations');
+    Route::get('autoevaluacion', 'create')->name('evaluation.create');    
+    Route::post('evaluacion', 'store')->name('evaluation.store');
+    Route::get('coevaluacion', 'createCoevalua')->name('evaluation.createCoevalua');
+    Route::post('coevaluacion', 'store')->name('evaluation.store');
+    Route::get('resultados-evaluacion', 'show')->name('evaluationResults.show');
+
 });

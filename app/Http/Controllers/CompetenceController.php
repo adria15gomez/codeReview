@@ -16,7 +16,7 @@ class CompetenceController extends Controller
 
     public function create()
     {
-        return view('addCompetence');
+        return view('superAdmin.addCompetence');
     }
 
     public function store(Request $request)
