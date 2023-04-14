@@ -85,12 +85,29 @@ Route::get('/bootcamps', function () {
     return view('layouts.bootcamps');
 });
 
-Route::get('/autoevaluacion', function () {
-    return view('coder.autoevaluacion');
+
+Route::get('/coders', function () {
+    return view('trainer.coders');
+});
+Route::get('/coder-detail', function () {
+    return view('trainer.coderDetail');
 });
 
+Route::get('/agregar-coder', function () {
+    return view('trainer.agregarCoder');
+});
+
+Route::get('/editar-coder', function () {
+    return view('trainer.editarCoder');
+});
+
+Route::get('/bootcamp-detail', function () {
+    return view('trainer.bootcampDetail');
+});
+
+
 Route::controller(PromotionController::class)->group(function () {
-    Route::get('promociones', 'index')->name('promotions');
+    Route::get('/promociones', 'index')->name('trainer.promotions');
     Route::get('agregar-promocion', 'create')->name('addPromotion.create');
     Route::post('agregar-promocion', 'store')->name('addPromotion.store');
     Route::get('editar-promocion/{promotion}', 'edit')->name('editPromotion.edit');
@@ -100,11 +117,8 @@ Route::controller(PromotionController::class)->group(function () {
 
 Route::post('/users/assign-role', [UserController::class, 'assignRole'])->name('users.assign-role');
 
-require __DIR__ . '/auth.php';
-
-// Route::get('/resultados-evaluacion', function () {
-//     return view('coder.resultadosEvaluacion')->name('resultadosEvaluacion');
-// });
+Route::get('/resultados-evaluacion', function () {
+    return view('coder.resultadosEvaluacion');
 
 Route::get('/rating-autoevaluacion', function () {
     return view('components.ratingAutoevaluacion');
@@ -121,4 +135,5 @@ Route::controller(EvaluationController::class)->group(function () {
     Route::get('coevaluacion', 'createCoevalua')->name('evaluation.createCoevalua');
     Route::post('coevaluacion', 'store')->name('evaluation.store');
     Route::get('resultados-evaluacion', 'show')->name('evaluationResults.show');
+
 });

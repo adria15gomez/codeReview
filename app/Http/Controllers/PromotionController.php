@@ -13,13 +13,13 @@ class PromotionController extends Controller
     {
         $promotions = Promotion::all();
         $topics = Topic::all();
-        return view('promotions', compact('promotions'));
+        return view('trainer.promotions', compact('promotions'));
     }
 
     public function create()
     {
         $topics = Topic::all();
-        return view('addPromotion', compact('topics'));
+        return view('trainer.addPromotion', compact('topics'));
     }
 
 
