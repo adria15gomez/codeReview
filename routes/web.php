@@ -77,14 +77,9 @@ Route::controller(TopicController::class)->group(function () {
     Route::delete('eliminar-topic/{id}', 'destroy')->name('deleteTopic.distroy');
 });
 
-Route::get('/mi-bootcamp', function () {
-    return view('coder.miBootcamp');
-});
-
 Route::get('/bootcamps', function () {
     return view('layouts.bootcamps');
 });
-
 
 Route::get('/coders', function () {
     return view('trainer.coders');
@@ -105,13 +100,13 @@ Route::get('/bootcamp-detail', function () {
     return view('trainer.bootcampDetail');
 });
 
-
 Route::controller(PromotionController::class)->group(function () {
     Route::get('/promociones', 'index')->name('trainer.promotions');
     Route::get('agregar-promocion', 'create')->name('addPromotion.create');
     Route::post('agregar-promocion', 'store')->name('addPromotion.store');
     Route::get('editar-promocion/{promotion}', 'edit')->name('editPromotion.edit');
     Route::put('editar-promocion/{promotion}', 'update')->name('editPromotion.update');
+    Route::get('mi-bootcamp', 'show')->name('promotions.show');
     Route::delete('eliminar-promocion/{promotion}', 'destroy')->name('deletePromotion.destroy');
 });
 
@@ -129,11 +124,11 @@ Route::get('/rating-autoevaluacion', function () {
 });
 
 Route::controller(EvaluationController::class)->group(function () {
-    Route::get('mis-evaluaciones', 'index')->name('evaluations');
+    Route::get('mis-evaluaciones', 'dashboard')->name('evaluations');
+    Route::get('mi-historico-evaluaciones', 'index')->name('evaluations.index');
     Route::get('autoevaluacion', 'create')->name('evaluation.create');    
     Route::post('evaluacion', 'store')->name('evaluation.store');
     Route::get('coevaluacion', 'createCoevalua')->name('evaluation.createCoevalua');
     Route::post('coevaluacion', 'store')->name('evaluation.store');
     Route::get('resultados-evaluacion', 'show')->name('evaluationResults.show');
-
 });

@@ -16,9 +16,15 @@
                 <li><a href="{{ $link['url'] }}" class="block py-2 pl-3 pr-4 text-gray-700 text-center rounded hover:text-orange-600">{{ $link['title'] }}</a></li>
                 @endforeach
                 {{-- En este botón tenemos luego que incluir en el href la ruta que lleve a la vista de login  --}}
-                <a href="#" class="inline-block px-4 py-2 bg-black text-white text-center rounded hover:bg-orange-600 active:text-orange-600">
-                Sign Out
-                </a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <a href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();" 
+                       class="inline-block px-4 py-2 bg-black text-white text-center rounded hover:bg-orange-600 active:text-orange-600">
+                        Sign Out
+                    </a>
+                </form>
+                
             </ul>
         </div>
     </div>

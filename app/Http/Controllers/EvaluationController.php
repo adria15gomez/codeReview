@@ -12,10 +12,17 @@ use Illuminate\Support\Facades\DB;
 
 class EvaluationController extends Controller
 {
+    public function dashboard ()
+    {
+        return view('coder.misEvaluaciones');
+    }
+
     public function index ()
     {
-        $evaluations = auth()->user()->evaluations;
-        return view('coder.misEvaluaciones', compact('evaluations'));
+        $user = auth()->user();
+        $evaluations = Evaluation::where('id_user_evaluated', $user->id)->select('evaluation_date')->get();
+
+        return view('coder.resultadosEvaluacion', compact('user','evaluations'));
     }
 
     public function create ()
@@ -78,7 +85,6 @@ class EvaluationController extends Controller
 
     public function show()
     {
-        return view('coder.resultadosEvaluacion');
+        return view('coder.ResultadosEvaluacion');
     }
-
 }
