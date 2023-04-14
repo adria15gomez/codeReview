@@ -2,7 +2,7 @@
 
 @section('content')
     <p class="font-regular text-3xl text-left mt-5 ml-10">Agregar Competencia</p>
-    <img src="img\admin\agregareditarcompetencia.svg" class="h-50 mx-auto" alt="competencias" />
+    <img src="../img/admin/agregareditarcompetencia.svg" class="h-50 mx-auto" alt="Agregar competencia" />
 
     <form action="{{ route('addCompetence.store') }}" method="POST">
         @csrf
@@ -21,7 +21,7 @@
         </div>
         <button type="submit"
             class="text-white w-5/6 justify-around text-base mt-9  ml-8 md:ml-2 bg-orange-600 hover:bg-orange-600/80 focus:ring-4 focus:outline-none focus:ring-[orange-600]/50 rounded-lg  px-0.5 py-2 inline-flex ">
-            <p class="no-underline text-white" href="">Agregar competencia</p>
+            <p class="no-underline text-white">Agregar competencia</p>
         </button>
 
     </form>

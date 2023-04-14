@@ -33,7 +33,7 @@ class CompetenceController extends Controller
     public function edit($id)
     {
         $competence = Competence::find($id);
-        return view('editCompetence', compact('competence'));
+        return view('superAdmin.editCompetence', compact('competence'));
     }
 
     public function update(Request $request, $id)

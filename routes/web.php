@@ -112,4 +112,3 @@ require __DIR__ . '/auth.php';
 Route::get('/resultados-evaluacion', function () {
     return view('coder.resultadosEvaluacion');
 });
-
