@@ -3,3 +3,66 @@
 @tailwind utilities;
 
 @import "node_modules/font-awesome/scss/font-awesome.scss";
+
+.rating input[type="radio"] {
+  display: none;
+}
+
+.cara .cara-dark {
+  margin-right: 1em;
+  padding: 1px;
+  transition: opacity 0.2s;
+  position: relative;
+}
+
+.cara {
+  opacity: 0.4;
+}
+
+.cara-dark {
+  opacity: 1;
+}
+
+.cara:hover {
+  cursor: pointer;
+}
+
+.cara:hover::before {
+  content: attr(title);
+  font-family: 'Poppins';
+  position: absolute;
+  top: -4em;
+  left: 50%;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  background-color: #333;
+  color: #fff;
+  white-space: nowrap;
+  z-index: 1;
+  opacity: 0;
+  transform: translate(-50%, -10px);
+  transition: all 0.2s;
+}
+
+.cara:hover::after {
+  content: "";
+  position: absolute;
+  top: -1em;
+  left: 50%;
+  border: 0.5em solid transparent;
+  border-top-color: #333;
+  z-index: 1;
+  opacity: 0;
+  transform: translate(-50%, -10px);
+  transition: all 0.2s;
+}
+
+.cara:hover::before,
+.cara:hover::after {
+  opacity: 1;
+  transform: translate(-50%, -20px);
+}
+
+.cara-input:checked + .cara {
+  opacity: 1;
+}
