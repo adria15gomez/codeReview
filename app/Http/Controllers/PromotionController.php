@@ -15,7 +15,7 @@ class PromotionController extends Controller
     {
         $promotions = Promotion::all();
         $topics = Topic::all();
-        return view('trainer.promotions', compact('promotions'));
+        return view('trainer.promotions', compact('promotions', 'topics'));
     }
 
     public function create()
@@ -51,7 +51,7 @@ class PromotionController extends Controller
             $topics[] = Topic::find(1);
         }
 
-        return view('addPromotion', ['promotion' => $promotion, 'topics' => $topics]);
+        return view('trainer.promotions', ['promotion' => $promotion, 'topics' => $topics]);
     }
 
 
@@ -60,7 +60,7 @@ class PromotionController extends Controller
         $promotion = Promotion::find($promotion);
         $topics = Topic::all();
 
-        return view('editPromotion', compact('promotion', 'topics'));
+        return view('trainer.editPromotion', compact('promotion', 'topics'));
     }
 
     public function update(Request $request, Promotion $promotion)
@@ -89,7 +89,16 @@ class PromotionController extends Controller
         return redirect()->route('promotions', $promotion);
     }
 
-    public function show()
+    public function showTrainer()
+    {
+        $promotions = Promotion::all();
+        $users = User::all();
+        $topics = Topic::all();
+        $competences = Competence::all();
+        return view('trainer.bootcampDetail', compact('promotions', 'users', 'topics', 'competences'));
+    }
+
+    public function showCoder()
     {
         $promotions = Promotion::all();
         $users = User::all();
@@ -97,6 +106,7 @@ class PromotionController extends Controller
         $competences = Competence::all();
         return view('coder.miBootcamp', compact('promotions', 'users', 'topics', 'competences'));
     }
+
     public function destroy(Request $request, $promotion)
     {
         $promotion = Promotion::findOrFail($promotion);

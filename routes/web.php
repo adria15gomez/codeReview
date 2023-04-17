@@ -1,22 +1,12 @@
 <?php
 
+use App\Http\Controllers\CoderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CompetenceController;
 use App\Http\Controllers\TopicController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PromotionController;
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\Auth\NewPasswordController;
-use App\Http\Controllers\Auth\PasswordController;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\EvaluationController;
-use App\Http\Controllers\AutoevaluationController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -58,7 +48,7 @@ Route::post('/users/assign-role', [UserController::class, 'assignRole'])->name('
 require __DIR__ . '/auth.php';
 
 Route::controller(CompetenceController::class)->group(function () {
-    Route::get('competence', 'index')->name('competence');
+    Route::get('competencias', 'index')->name('competence');
     Route::get('agregar-competencia', 'create')->name('addCompetence.create');
     Route::post('agregar-competencia', 'store')->name('addCompetence.store');
     Route::get('editar-competencia/{id}', 'edit')->name('editCompetence.edit');
@@ -77,13 +67,13 @@ Route::controller(TopicController::class)->group(function () {
     Route::delete('eliminar-topic/{id}', 'destroy')->name('deleteTopic.distroy');
 });
 
-Route::get('/bootcamps', function () {
-    return view('layouts.bootcamps');
-});
+// Route::get('/bootcamps', function () {
+//     return view('layouts.bootcamps');
+// });
 
-Route::get('/coders', function () {
-    return view('trainer.coders');
-});
+// Route::get('/coders', function () {
+//     return view('trainer.coders');
+// });
 Route::get('/coder-detail', function () {
     return view('trainer.coderDetail');
 });
@@ -96,9 +86,9 @@ Route::get('/editar-coder', function () {
     return view('trainer.editarCoder');
 });
 
-Route::get('/bootcamp-detail', function () {
-    return view('trainer.bootcampDetail');
-});
+// Route::get('/bootcamp-detail', function () {
+//     return view('trainer.bootcampDetail');
+// });
 
 Route::controller(PromotionController::class)->group(function () {
     Route::get('/promociones', 'index')->name('trainer.promotions');
@@ -106,7 +96,8 @@ Route::controller(PromotionController::class)->group(function () {
     Route::post('agregar-promocion', 'store')->name('addPromotion.store');
     Route::get('editar-promocion/{promotion}', 'edit')->name('editPromotion.edit');
     Route::put('editar-promocion/{promotion}', 'update')->name('editPromotion.update');
-    Route::get('mi-bootcamp', 'show')->name('promotions.show');
+    Route::get('bootcamp-detail', 'showTrainer')->name('promotions.show');
+    Route::get('mi-bootcamp', 'showCoder')->name('promotions.showCoder');
     Route::delete('eliminar-promocion/{promotion}', 'destroy')->name('deletePromotion.destroy');
 });
 
@@ -135,3 +126,6 @@ Route::controller(EvaluationController::class)->group(function () {
     Route::get('evaluacion/{user_id}/{date}', 'compare')->name('coder.comparison');
 });
 
+Route::controller(CoderController::class)->group(function () {
+    Route::get('coders', 'index')->name('coders');
+});
