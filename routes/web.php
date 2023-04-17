@@ -99,6 +99,13 @@ Route::get('/editar-coder', function () {
 Route::get('/bootcamp-detail', function () {
     return view('trainer.bootcampDetail');
 });
+Route::get('/bootcamps', function () {
+    return view('trainer.bootcamps');
+});
+
+
+
+
 
 Route::controller(PromotionController::class)->group(function () {
     Route::get('/promociones', 'index')->name('trainer.promotions');
@@ -127,11 +134,10 @@ Route::get('/rating-autoevaluacion', function () {
 Route::controller(EvaluationController::class)->group(function () {
     Route::get('mis-evaluaciones', 'dashboard')->name('evaluations');
     Route::get('mi-historico-evaluaciones', 'index')->name('evaluations.index');
-    Route::get('autoevaluacion', 'create')->name('evaluation.create');    
+    Route::get('autoevaluacion', 'create')->name('evaluation.create');
     Route::post('evaluacion', 'store')->name('evaluation.store');
     Route::get('coevaluacion', 'createCoevalua')->name('evaluation.createCoevalua');
     Route::post('coevaluacion', 'store')->name('evaluation.store');
     Route::get('resultados-evaluacion', 'show')->name('evaluationResults.show');
     Route::get('evaluacion/{user_id}/{date}', 'compare')->name('coder.comparison');
 });
-
