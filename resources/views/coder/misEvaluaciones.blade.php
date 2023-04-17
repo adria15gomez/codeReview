@@ -1,3 +1,7 @@
+@php
+    $progressBarData = app('\App\Http\Controllers\EvaluationController')->showProgressBar();
+@endphp
+
 @extends('layouts.coder')
 
 @section('content')
@@ -5,7 +9,7 @@
     <p class="font-regular text-3xl text-left mt-5 ml-10">Mis evaluaciones</p>
     <img src="img\coder\misevaluaciones.svg" class="h-50 mx-auto" alt="Factoria F5 Logo" />
     <p class="font-regular text-xl text-left mt-5 ml-10 mb-5">Media global</p>
-    @include('components.progressBar')
+    <x-progressBar :average="$progressBarData['average']"/>
     <p class="font-regular text-xl text-left mt-10 ml-10 mb-5">Lista de evaluaciones</p>
 
     <div id="accordion-collapse" data-accordion="collapse">

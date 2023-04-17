@@ -9,6 +9,7 @@ use App\Models\Topic;
 use App\Models\User;
 use App\Models\Promotion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class EvaluationController extends Controller
@@ -21,7 +22,7 @@ class EvaluationController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $evaluations = Evaluation::where('id_user_evaluated', $user->id)->select('evaluation_date')->get();
+        $evaluations = Evaluation::where('id_user_evaluated', $user->id)->select('evaluation_date')->distinct()->get();
 
         return view('coder.resultadosEvaluacion', compact('user', 'evaluations'));
     }
@@ -125,8 +126,24 @@ class EvaluationController extends Controller
         ]);
     }
 
-    public function show()
-    {
-        return view('coder.ResultadosEvaluacion');
+    public function showProgressBar()
+    {      
+        $user_id = auth()->user()->id;
+
+        $autoevaluacion = Evaluation::where('id_user_evaluated', $user_id)
+            ->whereNull('id_user_coevaluator')
+            ->value('pp_autoeval') ?? 0.0;
+    
+        $coevaluacion = Evaluation::where('id_user_evaluated', $user_id)
+            ->whereNotNull('id_user_coevaluator')
+            ->value('pp_coeval') ?? 0.0;
+    
+        $average = round(($autoevaluacion + $coevaluacion) / 2, 2);
+    
+        return [
+            'average' => $average,
+            'autoevaluacion' => $autoevaluacion,
+            'coevaluacion' => $coevaluacion,
+        ];
     }
 }
