@@ -3,10 +3,18 @@
 @section('content')
 <h1 class="font-regular text-3xl text-left mt-5 ml-10">Evaluación con fecha {{$date}}</h1>
 <h2 class="font-regular text-xl text-left text-orange-600 mt-5 ml-10 mb-5">Resultados de la evaluación </h2>
+
+@if($autoevaluation->isNotEmpty())
 <p class="font-regular text-lg text-left mt-5 ml-10 mb-5">En este apartado, puedes comparar la percepción de tus
     habilidades con la opinión de tu compañero. <br>De izquierda a derecha, la escala cubre desde "Mal" hasta
     "Experto/a". <strong>¡Mira tu evolución con otros ojos!</strong>
 </p>
+@endif
+@if(!$autoevaluation->isNotEmpty())
+<p class="font-regular text-lg text-left mt-5 ml-10 mb-5">Debes autoevaluarte antes de ver la opinión de tu compañero/a.
+</p>
+@endif
+
 <div class="mt-5 ml-10 mb-5">
     @if($autoevaluation->isNotEmpty())
     @foreach ($autoevaluation as $auto)
@@ -90,6 +98,12 @@
         @endforeach
         @endif
     </div>
+
+    <div class="mr-5 mt-5 items-center px-2 ml-28">
+        <a type="submit" value="Volver" href="{{route('evaluations')}}" class=" flex text-white bg-[#050708] hover:bg-[#050708] transition-colors cursor-pointer
+        uppercase font-medium w-36 p-3 rounded-lg justify-center">Volver</a>
+    </div>
+
     <script>
         const images = document.querySelectorAll('.rating img');
 
