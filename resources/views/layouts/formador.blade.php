@@ -19,8 +19,8 @@
         @php
             $links = [
                 ['url' => '/coders', 'title' => 'Coders'],
-                ['url' => '/bootcamps', 'title' => 'Bootcamps'],
-                ['url' => '/topics', 'title' => 'Topics']
+                ['url' => '/promociones', 'title' => 'Bootcamps'],
+                ['url' => '/topic', 'title' => 'Topics']
             ];
         @endphp
 

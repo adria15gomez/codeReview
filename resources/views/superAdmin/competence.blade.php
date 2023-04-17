@@ -13,29 +13,37 @@
         </svg>
     </a>
     <p class="font-regular text-xl text-left mt-10 ml-10 mb-5">Lista de competencias</p>
-    <div class="bg-gray-900 w-5/6 ml-10 rounded-xl mt-1 p-4 shadow-md">
-        <ul>
-            <li>
-                @foreach ($competences as $competence)
+    @foreach ($competences as $competence)
+        <div id="accordion-collapse" data-accordion="collapse" class="mb-6">
+            <ul>
+                <li>
                     <div>
-                        <p class="no-underline text-white text-lg font-medium text-justify">{{ $competence->name }}</p>
-                        <p class="no-underline text-white">{{ $competence->description }}</p>
-                        <div class="flex justify-center items-center">
-                            <a class="no-underline text-white"
-                                href="{{ route('editCompetence.edit', $competence) }}">Editar</a>
-                            <span class="mx-4 text-white">|</span>
-                            <form action="{{ route('deleteCompetence.distroy', $competence) }}" method="POST">
+                        <h2 id="accordion-collapse-heading-1">
+                            <button type="button" class="flex items-center justify-between w-72 p-4 ml-10 bg-gray-900 font-medium text-left text-white border border-b-0 border-gray-200 rounded-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
+                                <div class="block"> 
+                                    <p>{{ $competence->name }}</p>
+                                    <p>{{ $competence->description }}</p>
+                                </div>
+                                <svg data-accordion-icon class="w-6 h-6 rotate-180 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                            </button>
+                        </h2>
+                        <div id="accordion-collapse-body-1" class="hidden bg-gray-900 w-72 ml-10 rounded-xl mt-1" aria-labelledby="accordion-collapse-heading-1">
+                            <div class="flex justify-center items-center">
+                                <a class="no-underline text-white"
+                                    href="{{ route('editCompetence.edit', $competence) }}">Editar</a>
+                                <span class="mx-4 text-white">|</span>
+                                <form action="{{ route('deleteCompetence.distroy', $competence) }}" method="POST">
 
-                                @csrf
-                                @method('delete')
+                                    @csrf
+                                    @method('delete')
 
-                                <button class="no-underline text-orange-500 px-2 py-2" type="submit">Eliminar</button>
-                            </form>
+                                    <button class="no-underline text-orange-500 px-2 py-2" type="submit">Eliminar</button>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                @endforeach
-
-            </li>
-        </ul>
-    </div>
+                    </div>               
+                </li>
+            </ul>
+        </div>
+    @endforeach
 @endsection

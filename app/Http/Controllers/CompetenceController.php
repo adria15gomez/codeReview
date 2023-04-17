@@ -47,15 +47,6 @@ class CompetenceController extends Controller
         return redirect()->route('competence', $competence);
     }
 
-    // public function destroy(Request $request, $id)
-    // {
-    //     $competence = Competence::findOrFail($id);
-    //     $competence->id = $request->id;
-    //     $competence->delete();
-
-    //     return redirect()->route('competence', $competence);
-    // }
-
     public function destroy($competence_id)
     {
         $competence = Competence::find($competence_id);

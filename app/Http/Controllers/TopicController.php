@@ -11,7 +11,7 @@ class TopicController extends Controller
     public function index()
     {
         $topics = Topic::all();
-        return view('topic', compact('topics'));
+        return view('trainer.topic', compact('topics'));
     }
 
     public function create()
@@ -35,7 +35,7 @@ class TopicController extends Controller
     {
         $topic = Topic::find($id);
         $competences = Competence::all();
-        return view('editTopic', compact('topic', 'competences'));
+        return view('trainer.editTopic', compact('topic', 'competences'));
     }
 
     public function update(Request $request, $id)
