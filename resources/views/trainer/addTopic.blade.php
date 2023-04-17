@@ -1,7 +1,7 @@
-@extends('layouts.superadmin')
+@extends('layouts.formador')
 
 @section('content')
-<p class="font-regular text-3xl text-left mt-5 ml-10">Editar Topic</p>
+<p class="font-regular text-3xl text-left mt-5 ml-10">Agregar Topic</p>
 <img src="../img/trainer/topics.svg" class="mx-auto lg= scale-125 lg= mt-4" alt="topic" />
 <form action="{{route('addTopic.store')}}" method="POST">
     
@@ -27,7 +27,7 @@
     </div>
     <button type="submit"
         class="text-white w-5/6 justify-around text-base mt-9  ml-8 md:ml-2 bg-orange-600 hover:bg-orange-600/80 focus:ring-4 focus:outline-none focus:ring-[orange-600]/50 rounded-lg  px-0.5 py-2 inline-flex ">
-        <p class="no-underline text-white">Editar topic</p>
+        <p class="no-underline text-white">Agregar topic</p>
     </button>
  
 </form>

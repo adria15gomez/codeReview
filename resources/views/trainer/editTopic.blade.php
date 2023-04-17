@@ -1,4 +1,4 @@
-@extends('layouts.superadmin')
+@extends('layouts.formador')
 
 @section('content')
 <p class="font-regular text-3xl text-left mt-5 ml-10">Editar Topic</p>

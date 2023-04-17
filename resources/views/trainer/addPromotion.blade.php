@@ -102,10 +102,10 @@
             </button>
         </form>
         <div class="absolute -bottom-11">
-            <button
-                class="text-white w-80 justify-around text-base my-6  ml-3 bg-[#050708] hover:bg-[#050708]/80 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 rounded-lg  px-0.5 py-2 inline-flex ">
-                <p class="no-underline text-white" href="{{route('trainer.promotions')}}">Cancelar</p>
-            </button>
+            <a
+                href="{{route('trainer.promotions')}}" class="text-white w-80 justify-around text-base my-6  ml-3 bg-[#050708] hover:bg-[#050708]/80 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 rounded-lg  px-0.5 py-2 inline-flex ">
+                <p class="no-underline text-white">Cancelar</p>
+            </a>
         </div>      
     </div>
 

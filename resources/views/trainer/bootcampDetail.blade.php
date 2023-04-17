@@ -53,7 +53,7 @@
     </div>
 
     <div class="mr-5 mt-2 items-center px-2 ml-28">
-        <a type="submit"  value= "Volver" href="{{route('evaluations')}}"
+        <a type="submit"  value= "Volver" href="{{route('trainer.promotions')}}"
         class=" flex text-white bg-[#050708] hover:bg-[#050708] transition-colors cursor-pointer
         uppercase font-medium w-36 p-3 rounded-lg justify-center">Volver</a>
     </div>
