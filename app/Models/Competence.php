@@ -10,6 +10,7 @@ class Competence extends Model
     use HasFactory;
 
     protected $table = 'competences';
+    protected $fillable = ['name', 'description'];
 
     public function topics()
     {
