@@ -15,7 +15,7 @@
             />
             <button
                 class="text-white w-5/6 justify-around my-2  ml-10 bg-orange-600 hover:bg-orange-600/80 focus:ring-4 focus:outline-none focus:ring-[orange-600]/50 rounded-lg  px-0.5 py-4 inline-flex ">
-                <a class="no-underline text-md text-white" href="">Agregar Coder</a>
+                <a class="no-underline text-md text-white" href="{{route('addCoder.create')}}">Agregar Coder</a>
                 <svg class="flex h-7 ml-4 -mr-1 w-8 " aria-hidden="true" focusable="false" data-prefix="fab" data-icon="arrow"
                     role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path fill="currentColor"

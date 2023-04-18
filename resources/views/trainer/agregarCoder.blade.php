@@ -2,15 +2,17 @@
 
 @section('content')
 
-<div class="md:items-center">
+    <div class="md:items-center mb-0 flex flex-col">
     <h1 class="font-medium text-4xl pt-0 ml-2 pl-2 mt-10 md:text-5xl grid ">Agregar Coder</h1>
     <img src="img/trainer/agregareditarcoder.svg" alt="bootcamp"
-        class="w-full h-60 my-8 sm:h-52 sm:col-span-2 md:h-80 w-100 items-center col-span-full" loading="lazy" />
+        class="w-full h-60 my-8 sm:h-52 sm:col-span-2 md:h-80 w-100 items-center col-span-full" loading="lazy" 
+    />
     <div class="flex md:justify-center">
-        <form class="justify-center my-10 mx-4" action="{{ route('addCoder.assignToBootcamp') }}" method="POST">
+        <form class="justify-center my-10 mx-4 relative" action="{{ route('addCoder.assignToBootcamp') }}" method="POST">
             @csrf
-            <div class="mb-6">
-                <label for="promotion" class="block mb-2 text-medium font-medium">Bootcamp</label>
+
+            <p class="block mb-2 text-medium font-medium">Bootcamp</p>
+            <div class="mb-6 bg-white border border-orange-600 text-medium rounded-lg focus:ring-orange-600 focus:border-orange-600 flex flex-col w-full p-2.5">
                 @foreach ($promotions as $promotion)
                 <label for="{{ $promotion->id }}">
                     <input type="checkbox" id="{{ $promotion->id }}" name="promotion_id" value="{{ $promotion->id }}">
@@ -31,10 +33,10 @@
                 <p class="no-underline text-white">Agregar coder</p>
             </button>
         </form>
-        <button
-            class="text-white w-80 justify-around text-base my-6  ml-4 bg-[#050708] hover:bg-[#050708]/80 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 rounded-lg  px-0.5 py-4 inline-flex ">
-            <a class="no-underline text-white" href="">Cancelar</a>
-        </button>
+        <a href="{{route('coders')}}"
+            class="text-white w-80 justify-around text-base my-6  ml-4 bg-[#050708] hover:bg-[#050708]/80 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 rounded-lg  px-0.5 py-4 inline-flex mt-auto ">
+            <p class="no-underline text-white" >Cancelar</p>
+        </a>
     </div>
 
-    @endsection
+@endsection

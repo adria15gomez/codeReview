@@ -88,21 +88,24 @@ class PromotionController extends Controller
         return redirect()->route('promotions.show', compact('promotion', 'topics'));
     }
 
-    public function showTrainer()
+    public function showTrainer($promotion)
     {
-        $promotions = Promotion::all();
-        $users = User::all();
-        $topics = Topic::all();
-        $competences = Competence::all();
-        return view('trainer.bootcampDetail', compact('promotions', 'users', 'topics', 'competences'));
+        $promotions = Promotion::findOrFail($promotion);
+        $topics = $promotions->topics()->orderBy('promotion_topic.id')->get();
+        $competences = $promotions->topics()->with('competence')->get()->pluck('competence')->unique();
+        $coders = User::where('promotion_id', $promotion)->get();
+
+        return view('trainer.bootcampDetail', compact('promotions', 'topics', 'competences', 'coders'));
     }
 
     public function showCoder()
-    {
-        $promotions = Promotion::all();
+    { 
+        $user = auth()->user();
+        $promotions = Promotion::find($user->promotion->id);
+        $topics = $promotions->topics()->orderBy('promotion_topic.id')->get();
+        $competences = $promotions->topics()->with('competence')->get()->pluck('competence')->unique();
         $users = User::all();
-        $topics = Topic::all();
-        $competences = Competence::all();
+
         return view('coder.miBootcamp', compact('promotions', 'users', 'topics', 'competences'));
     }
 

@@ -76,7 +76,7 @@ Route::controller(PromotionController::class)->group(function () {
     Route::post('agregar-promocion', 'store')->name('addPromotion.store');
     Route::get('editar-promocion/{promotion}', 'edit')->name('editPromotion.edit');
     Route::put('editar-promocion/{promotion}', 'update')->name('editPromotion.update');
-    Route::get('bootcamp-detail', 'showTrainer')->name('promotions.show');
+    Route::get('bootcamp-detail/{promotion}', 'showTrainer')->name('promotions.show');
     Route::get('mi-bootcamp', 'showCoder')->name('promotions.showCoder');
     Route::delete('eliminar-promocion/{promotion}', 'destroy')->name('deletePromotion.destroy');
 });
