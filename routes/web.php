@@ -67,29 +67,6 @@ Route::controller(TopicController::class)->group(function () {
     Route::delete('eliminar-topic/{id}', 'destroy')->name('deleteTopic.distroy');
 });
 
-// Route::get('/bootcamps', function () {
-//     return view('layouts.bootcamps');
-// });
-
-// Route::get('/coders', function () {
-//     return view('trainer.coders');
-// });
-Route::get('/coder-detail', function () {
-    return view('trainer.coderDetail');
-});
-
-Route::get('/agregar-coder', function () {
-    return view('trainer.agregarCoder');
-});
-
-Route::get('/editar-coder', function () {
-    return view('trainer.editarCoder');
-});
-
-// Route::get('/bootcamp-detail', function () {
-//     return view('trainer.bootcampDetail');
-// });
-
 Route::controller(PromotionController::class)->group(function () {
     Route::get('/promociones', 'index')->name('trainer.promotions');
     Route::get('agregar-promocion', 'create')->name('addPromotion.create');
@@ -118,7 +95,7 @@ Route::get('/rating-autoevaluacion', function () {
 Route::controller(EvaluationController::class)->group(function () {
     Route::get('mis-evaluaciones', 'dashboard')->name('evaluations');
     Route::get('mi-historico-evaluaciones', 'index')->name('evaluations.index');
-    Route::get('autoevaluacion', 'create')->name('evaluation.create');    
+    Route::get('autoevaluacion', 'create')->name('evaluation.create');
     Route::post('evaluacion', 'store')->name('evaluation.store');
     Route::get('coevaluacion', 'createCoevalua')->name('evaluation.createCoevalua');
     Route::post('coevaluacion', 'store')->name('evaluation.store');
@@ -128,4 +105,8 @@ Route::controller(EvaluationController::class)->group(function () {
 
 Route::controller(CoderController::class)->group(function () {
     Route::get('coders', 'index')->name('coders');
+    Route::get('agregarCoder', 'create')->name('addCoder.create');
+    Route::post('agregarCoder', 'assignToBootcamp')->name('addCoder.assignToBootcamp');
+    //Route::get('coderDetail', 'show')->name('coderDetail.show');
+    Route::get('coderDetail/{id_coder}', 'show')->name('coderDetail.show');
 });
