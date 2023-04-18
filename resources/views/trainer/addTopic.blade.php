@@ -19,7 +19,7 @@
         <div class="bg-white border border-orange-600 text-medium rounded-lg focus:ring-orange-600 focus:border-orange-600 flex flex-col w-full p-2.5">
             @foreach ($competences as $competence)
                 <label for="{{ $competence->id }}">
-                <input type="checkbox" id="{{ $competence->id }}" name="competence[]">
+                <input type="checkbox" id="{{ $competence->id }}" name="competence_id" value="{{ $competence->id }}"> 
                     {{ $competence->name }} - {{$competence->description}}
                 </label>
             @endforeach

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\CoderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CompetenceController;
@@ -24,9 +25,11 @@ Route::get('/', function () {
 });
 
 // Aquí cambiamos para que cuando entremos a la web automáticamente nos redirija a la view de login
-Route::get('/', function () {
-    return view('auth.login');
-});
+// Route::get('/', function () {
+//     return view('auth.login');
+// });
+
+Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('login.create');
 
 // Para poder visualizar la view de Register
 Route::get('/register', function () {
@@ -35,7 +38,7 @@ Route::get('/register', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('evaluations');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -107,6 +110,9 @@ Route::controller(CoderController::class)->group(function () {
     Route::get('coders', 'index')->name('coders');
     Route::get('agregarCoder', 'create')->name('addCoder.create');
     Route::post('agregarCoder', 'assignToBootcamp')->name('addCoder.assignToBootcamp');
-    //Route::get('coderDetail', 'show')->name('coderDetail.show');
-    Route::get('coderDetail/{id_coder}', 'show')->name('coderDetail.show');
+    Route::get('coderDetail/{id}', 'show')->name('coderDetail.show');
+    Route::get('historico-evaluacion/{user_id}/{date}', 'compare')->name('trainer.comparisonEvaluation');
+    Route::get('editar-coder/{id}', 'edit')->name('editCoder.edit');
+    Route::put('editar-coder/{id}', 'update')->name('editCoder.update');
+    Route::delete('eliminar-coder/{id}', 'destroy')->name('deleteCoder.destroy');
 });

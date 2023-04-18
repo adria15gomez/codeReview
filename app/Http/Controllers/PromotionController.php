@@ -15,7 +15,7 @@ class PromotionController extends Controller
     {
         $promotions = Promotion::all();
         $topics = Topic::all();
-        dd($promotions);
+        // dd($promotions);
         return view('trainer.promotions', ['promotions' => $promotions, 'topics' => $topics]);
     }
 
