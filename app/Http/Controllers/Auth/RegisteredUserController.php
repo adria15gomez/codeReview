@@ -22,7 +22,6 @@ class RegisteredUserController extends Controller
     {
         return view('auth.register');
     }
-
     /**
      * Handle an incoming registration request.
      *
@@ -36,23 +35,27 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        // create user with default role
+        $userRol = 'coder';
+
+        if (User::count() === 0) { // first user is admin
+            $userRol = 'admin';
+        } elseif (strpos($request->email, '@factoriaf5.org') !== false) {
+            $userRol = 'trainer';
+        } else {
+            $userRol = 'coder';
+        }
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'rol' => 'coder',
         ]);
-
-
-        if ($user->rol === 'admin') {
-            return redirect()->route('admin.dashboard');
-        }
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        //return redirect(RouteServiceProvider::HOME);
-        return redirect()->route('login.create');
+        return redirect(RouteServiceProvider::HOME);
     }
 }
