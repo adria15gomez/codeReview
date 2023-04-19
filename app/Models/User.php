@@ -10,13 +10,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 use Illuminate\Contracts\Auth\Access\Authorizable;
-
-
-
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements Authorizable
 {
-    use HasFactory, Notifiable, AuthenticableTrait;
+    use HasFactory, Notifiable, AuthenticableTrait, HasRoles;
 
     protected $table = 'users';
     protected $fillable = ['name', 'email', 'password', 'role', 'promotion_id'];
