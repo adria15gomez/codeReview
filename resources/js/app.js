@@ -26,13 +26,6 @@ img.addEventListener('mouseout', () => {
   tooltip.classList.remove('show');
 });
 
-// img.addEventListener('click', () => {
-//     images.forEach(otherImg => otherImg.style.opacity = 0.3);
-//     img.style.opacity = 1;
-//     const input = img.parentElement.previousElementSibling;
-//     input.checked = true;
-// });
-
 img.addEventListener('mouseover', () => {
     const tooltip = img.nextElementSibling;
     tooltip.classList.add('show');
