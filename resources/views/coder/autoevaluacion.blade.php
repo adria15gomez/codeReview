@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="flex flex-col items-center justify-center px-5">
-  <p class="font-regular text-3xl text-center mt-5">Evaluación 1</p>
-  <p class="font-regular text-xl text-center text-orange-600 mt-5 mb-5">Autoevaluación</p>
+  <h1 class="font-regular text-3xl text-center mt-5">Evaluación 1</h1>
+  <h2 class="font-regular text-xl text-center text-orange-600 mt-5 mb-5">Autoevaluación</h2>
   <div class="flex justify-center mb-8">
     <p class="max-w-lg text-base text-center">Estás a punto de realizar tu autoevaluación, selecciona el nivel en el que te encuentras en cada habilidad. 
       Es importante que puedas identificar tus fortalezas y áreas de mejora.<br>

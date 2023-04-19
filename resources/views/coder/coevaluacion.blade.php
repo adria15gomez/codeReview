@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="flex flex-col items-center justify-center px-5">
-    <p class="font-regular text-3xl mt-5 text-center">Evaluación 1</p>
-    <p class="font-regular text-xl text-orange-600 mt-5 mb-5 text-center">Coevaluación</p>
+    <h1 class="font-regular text-3xl mt-5 text-center">Evaluación 1</h1>
+    <h2 class="font-regular text-xl text-orange-600 mt-5 mb-5 text-center">Coevaluación</h2>
     
     <div class="flex justify-center mb-8">
         <p class="max-w-lg text-base text-center">Estás a punto de realizar una coevaluación, elige a tu compañero y selecciona el nivel en el que consideras se encuestra en cada habilidad.<br>
