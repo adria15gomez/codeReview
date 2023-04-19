@@ -14,7 +14,7 @@ class PromotionTest extends TestCase
 {
     public function testCanInsertPromotion(): void
     /**
-     * Test that checks if a topic can be inserted
+     * Test that checks if a promotion can be inserted
      */
     {
         $competence = new Competence([
@@ -31,66 +31,97 @@ class PromotionTest extends TestCase
 
 
         $promotion = new Promotion([
-            'name' => 'SCRUM',
-            'competence_id' => $competence->id,
+            'name' => 'Queens in the North',
+            'trainer' => 'Arya Stark',
+            'start_date' => date("Y-m-d H:i:s"),
+            'end_date' => '2023-09-10',
+            'topic_id' => $topic->id,
+            'evaluation1' => '2023-05-10',
+            'evaluation1' => '2023-06-10',
+            'evaluation1' => '2023-07-10',
+            'evaluation1' => '2023-08-10',
         ]);
         $promotion->save();
 
-        $response = $this->get('/');
+        $response = $this->get('/promociones');
         $response->assertOk();
-        $response->assertSee('Escribir en binario');
-        $response->assertSee('IDE en modo oscuro');
+        $response->assertSee('Queens in the North');;
     }
 
-    public function testCanDisplayTopic(): void
+    public function testCanDisplayPromotion(): void
     /**
-     * Test that checks if a topic can be displayed.
+     * Test that checks if a promotion can be displayed.
      */
     {
-        $response = $this->get('/agregar-topic');
+        $response = $this->get('/agregar-promocion');
         $response->assertStatus(200);
-        $response->assertViewIs('trainer.addTopic');
+        $response->assertViewIs('trainer.addPromotion');
     }
 
-    public function testCanEditTopic(): void
+    public function testCanEditPromotion(): void
     /**
-     * Test that checks if a topic can be edited in the database.
-     *
-     */
-    {
-        $competence = new Competence([
-            'name' => 'Cosas ultranerd',
-            'description' => 'Saber volar con escoba'
-        ]);
-        $competence->save();
-
-        $topic = Topic::create([
-            'name' => 'Quidditch a través de los tiempos',
-            'competence_id' => $competence->id,
-        ]);
-
-        $response = $this->get(route('editTopic.edit',  $topic->id));
-        $response->assertStatus(200);
-        $response->assertSee($topic->name);
-        $response->assertSee($topic->competence_id);
-    }
-
-    public function testCanDeleteTopic(): void
-    /**
-     * Test that checks if a topic can be deleted in the database.
+     * Test that checks if a promotion can be edited in the database.
      *
      */
     {
         $competence = new Competence([
             'name' => 'Cosas meganerd',
-            'description' => 'Estar mal de la cabeza.'
+            'description' => 'Saber pociones avanzadas'
         ]);
         $competence->save();
 
         $topic = Topic::create([
-            'name' => 'Wheel of Doom',
+            'name' => 'Poción multijugos',
+            'competence_id' => $competence->id,
+        ]);
+
+        $promotion = new Promotion([
+            'name' => 'Dumbledores Army',
+            'trainer' => 'Harry Potter',
+            'start_date' => date("Y-m-d H:i:s"),
+            'end_date' => '2023-09-10',
+            'topic_id' => $topic->id,
+            'evaluation1' => '2023-05-10',
+            'evaluation1' => '2023-06-10',
+            'evaluation1' => '2023-07-10',
+            'evaluation1' => '2023-08-10',
+        ]);
+        $promotion->save();
+
+        $response = $this->get(route('editPromotion.edit',  $topic->id));
+        $response->assertStatus(200);
+        $response->assertSee($promotion->name);
+    }
+
+    public function testCanDeletePromotion(): void
+    /**
+     * Test that checks if a promotion can be deleted in the database.
+     *
+     */
+    {
+        $competence = new Competence([
+            'name' => 'Testing y catas de vinos',
+            'description' => 'Identificar lo bueno de lo malo'
+        ]);
+        $competence->save();
+
+        $topic = Topic::create([
+            'name' => 'Nochentera',
             'competence_id' => 5,
         ]);
+
+        $promotion = new Promotion([
+            'name' => 'Medio limón',
+            'trainer' => 'Javi',
+            'start_date' => date("Y-m-d H:i:s"),
+            'end_date' => '2023-09-10',
+            'topic_id' => $topic->id,
+            'evaluation1' => '2023-05-10',
+            'evaluation1' => '2023-06-10',
+            'evaluation1' => '2023-07-10',
+            'evaluation1' => '2023-08-10',
+        ]);
+        $promotion->save();
 
         $response = $this->delete(route('deleteTopic.distroy', $topic->id));
 
