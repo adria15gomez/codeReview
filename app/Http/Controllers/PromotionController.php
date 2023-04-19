@@ -15,7 +15,8 @@ class PromotionController extends Controller
     {
         $promotions = Promotion::all();
         $topics = Topic::all();
-        return view('trainer.promotions', compact('promotions', 'topics'));
+        // dd($promotions);
+        return view('trainer.promotions', ['promotions' => $promotions, 'topics' => $topics]);
     }
 
     public function create()
@@ -51,7 +52,6 @@ class PromotionController extends Controller
             $topics[] = Topic::find(1);
         }
 
-
         return redirect()->route('promotions.show', compact('promotion', 'topics'));
     }
 
@@ -86,25 +86,26 @@ class PromotionController extends Controller
         $promotion->topic_id = $request->topic_id;
 
         return redirect()->route('promotions.show', compact('promotion', 'topics'));
-
-
     }
 
-    public function showTrainer()
+    public function showTrainer($promotion)
     {
-        $promotions = Promotion::all();
-        $users = User::all();
-        $topics = Topic::all();
-        $competences = Competence::all();
-        return view('trainer.bootcampDetail', compact('promotions', 'users', 'topics', 'competences'));
+        $promotions = Promotion::findOrFail($promotion);
+        $topics = $promotions->topics()->orderBy('promotion_topic.id')->get();
+        $competences = $promotions->topics()->with('competence')->get()->pluck('competence')->unique();
+        $coders = User::where('promotion_id', $promotion)->get();
+
+        return view('trainer.bootcampDetail', compact('promotions', 'topics', 'competences', 'coders'));
     }
 
     public function showCoder()
-    {
-        $promotions = Promotion::all();
+    { 
+        $user = auth()->user();
+        $promotions = Promotion::find($user->promotion->id);
+        $topics = $promotions->topics()->orderBy('promotion_topic.id')->get();
+        $competences = $promotions->topics()->with('competence')->get()->pluck('competence')->unique();
         $users = User::all();
-        $topics = Topic::all();
-        $competences = Competence::all();
+
         return view('coder.miBootcamp', compact('promotions', 'users', 'topics', 'competences'));
     }
 

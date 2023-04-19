@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\CoderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CompetenceController;
@@ -24,9 +25,11 @@ Route::get('/', function () {
 });
 
 // Aquí cambiamos para que cuando entremos a la web automáticamente nos redirija a la view de login
-Route::get('/', function () {
-    return view('auth.login');
-});
+// Route::get('/', function () {
+//     return view('auth.login');
+// });
+
+Route::get('/', [AuthenticatedSessionController::class, 'create'])->name('login.create');
 
 // Para poder visualizar la view de Register
 Route::get('/register', function () {
@@ -35,6 +38,7 @@ Route::get('/register', function () {
 
 Route::get('/mis-evaluaciones', function () {
     return view('coder.misEvaluaciones');
+    
 })->middleware(['auth', 'verified'])->name('evaluations');
 
 Route::middleware('auth')->group(function () {
@@ -67,36 +71,13 @@ Route::controller(TopicController::class)->group(function () {
     Route::delete('eliminar-topic/{id}', 'destroy')->name('deleteTopic.distroy');
 });
 
-// Route::get('/bootcamps', function () {
-//     return view('layouts.bootcamps');
-// });
-
-// Route::get('/coders', function () {
-//     return view('trainer.coders');
-// });
-Route::get('/coder-detail', function () {
-    return view('trainer.coderDetail');
-});
-
-Route::get('/agregar-coder', function () {
-    return view('trainer.agregarCoder');
-});
-
-Route::get('/editar-coder', function () {
-    return view('trainer.editarCoder');
-});
-
-// Route::get('/bootcamp-detail', function () {
-//     return view('trainer.bootcampDetail');
-// });
-
 Route::controller(PromotionController::class)->group(function () {
     Route::get('/promociones', 'index')->name('trainer.promotions');
     Route::get('agregar-promocion', 'create')->name('addPromotion.create');
     Route::post('agregar-promocion', 'store')->name('addPromotion.store');
     Route::get('editar-promocion/{promotion}', 'edit')->name('editPromotion.edit');
     Route::put('editar-promocion/{promotion}', 'update')->name('editPromotion.update');
-    Route::get('bootcamp-detail', 'showTrainer')->name('promotions.show');
+    Route::get('bootcamp-detail/{promotion}', 'showTrainer')->name('promotions.show');
     Route::get('mi-bootcamp', 'showCoder')->name('promotions.showCoder');
     Route::delete('eliminar-promocion/{promotion}', 'destroy')->name('deletePromotion.destroy');
 });
@@ -127,4 +108,11 @@ Route::controller(EvaluationController::class)->group(function () {
 
 Route::controller(CoderController::class)->group(function () {
     Route::get('coders', 'index')->name('coders');
+    Route::get('agregarCoder', 'create')->name('addCoder.create');
+    Route::post('agregarCoder', 'assignToBootcamp')->name('addCoder.assignToBootcamp');
+    Route::get('coderDetail/{id}', 'show')->name('coderDetail.show');
+    Route::get('historico-evaluacion/{user_id}/{date}', 'compare')->name('trainer.comparisonEvaluation');
+    Route::get('editar-coder/{id}', 'edit')->name('editCoder.edit');
+    Route::put('editar-coder/{id}', 'update')->name('editCoder.update');
+    Route::delete('eliminar-coder/{id}', 'destroy')->name('deleteCoder.destroy');
 });
