@@ -8,6 +8,7 @@ use App\Http\Controllers\TopicController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\EvaluationController;
+use App\Http\Controllers\TrainerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -115,4 +116,9 @@ Route::controller(CoderController::class)->group(function () {
     Route::get('editar-coder/{id}', 'edit')->name('editCoder.edit');
     Route::put('editar-coder/{id}', 'update')->name('editCoder.update');
     Route::delete('eliminar-coder/{id}', 'destroy')->name('deleteCoder.destroy');
+});
+
+Route::controller(TrainerController::class)->group(function () {
+    Route::get('formadores', 'index')->name('trainers');
+    Route::delete('eliminar-trainer/{id}', 'destroy')->name('deleteTrainer.destroy');
 });

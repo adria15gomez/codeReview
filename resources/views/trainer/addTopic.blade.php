@@ -31,23 +31,13 @@
                         @endforeach
                     </div>
                 </div>
-                <button
+                <button type="submit"
                     class="text-white w-80 justify-around text-base mt-10  ml-4 md:ml-2 bg-orange-600 hover:bg-orange-600/80 focus:ring-4 focus:outline-none focus:ring-[orange-600]/50 rounded-lg  px-0.5 py-4 inline-flex ">
-                    <a class="no-underline text-white" href="">
-                        Agregar topic</a>
+                    <p class="no-underline text-white">Agregar topic</p>
                 </button>
 
             </form>
     <div>
-        <p class="text-medium font-medium mb-6">Selecciona una competencia</p>
-        <div class="bg-white border border-orange-600 text-medium rounded-lg focus:ring-orange-600 focus:border-orange-600 flex flex-col w-full p-2.5">
-            @foreach ($competences as $competence)
-                <label for="{{ $competence->id }}">
-                <input type="checkbox" id="{{ $competence->id }}" name="competence_id" value="{{ $competence->id }}"> 
-                    {{ $competence->name }} - {{$competence->description}}
-                </label>
-            @endforeach
-        </div>
         <button class="text-white w-80 justify-around text-base my-6  ml-4 bg-[#050708] hover:bg-[#050708]/80 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 rounded-lg  px-0.5 py-4 inline-flex ">
                     <a class="no-underline text-white" href="{{ route('topic') }}">
                         Cancelar</a>

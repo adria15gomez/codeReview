@@ -21,8 +21,9 @@ class PromotionController extends Controller
 
     public function create()
     {
+        $users = User::where('role', 'trainer')->get();
         $topics = Topic::all();
-        return view('trainer.addPromotion', compact('topics'));
+        return view('trainer.addPromotion', compact('topics', 'users'));
     }
 
 
@@ -104,9 +105,8 @@ class PromotionController extends Controller
         $promotions = Promotion::find($user->promotion->id);
         $topics = $promotions->topics()->orderBy('promotion_topic.id')->get();
         $competences = $promotions->topics()->with('competence')->get()->pluck('competence')->unique();
-        $users = User::all();
 
-        return view('coder.miBootcamp', compact('promotions', 'users', 'topics', 'competences'));
+        return view('coder.miBootcamp', compact('promotions', 'topics', 'competences'));
     }
 
     public function destroy(Request $request, $promotion)
