@@ -15,7 +15,7 @@
 
 <body>
     <section class="flex items-center justify-center h-screen">
-        <div class="bg-orange-500 p-8 max-w-4xl w-full">
+        <div class="p-8 max-w-4xl w-full">
             <img src="img\whiteLogo.svg" alt="logo" class="w-60 mx-auto my-auto mb-20">
             <form method="POST" action="{{ route('login') }}">
 
@@ -41,11 +41,12 @@
                         <p class="mt-2 text-black">{{ $message }}</p>
                     @enderror
                 </div>
+
                 <button type="submit"
-                    class="text-white bg-zinc-950 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Iniciar
+                    class="text-white bg-zinc-900 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Iniciar
                     sesión</button>
             </form>
-            <p class="block mb-2 mt-5 ml-6 text-sm font-regular text-white">¿Aún no tienes una cuenta?<a
+            <p class="block mb-2 mt-5 ml-6 text-sm font-regular text-white xl:ml-0">¿Aún no tienes una cuenta?<a
                     href="{{ route('register') }}" class="text-sm ml-1 font-semibold text-black">Regístrate</a></p>
         </div>
     </section>

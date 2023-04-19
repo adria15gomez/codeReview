@@ -40,20 +40,17 @@
                 <label for="fecha_inicio" class="block mb-2 text-medium font-medium"> Fecha de Fin</label>
                 <input type="date" name="end_date"
                     class="bg-white border border-orange-600 placeholder-orange-600 text-sm rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5">
-            </div>
-        </div>
-
-        <div>
-            <p class="text-medium font-medium mb-6">Selecciona las habilidades</p>
-            <div
-                class="bg-white border border-orange-600 text-medium rounded-lg focus:ring-orange-600 focus:border-orange-600 flex flex-col w-full p-2.5">
-                @foreach ($topics as $topic)
-                <label for="{{ $topic->id }}">
-                    <input type="checkbox" id="topic" name="topics[]" value="{{ $topic->id }}">
-                    {{ $topic->name }}
-                </label>
-                @endforeach
-            </div>
+            <div>
+                <p class="text-medium font-medium mb-6">Selecciona las habilidades</p>
+                <div
+                    class="bg-white border border-orange-600 text-medium rounded-lg focus:ring-orange-600 focus:border-orange-600 flex flex-col w-full p-2.5">
+                    @foreach ($topics as $topic)
+                        <label for="{{ $topic->id }}">
+                            <input type="checkbox" id="{{ $topic->id }}" name="topics[]" value="{{ $topic->id }}">
+                            {{ $topic->name }}
+                        </label>
+                    @endforeach
+                </div>
         </div>
 
         <div id="new-topic-input" style="display: none;">
@@ -109,7 +106,6 @@
         </a>
     </div>
 </div>
-
 
 <script>
 const selectElement = document.getElementById('topics');

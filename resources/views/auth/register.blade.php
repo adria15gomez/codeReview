@@ -51,7 +51,7 @@
                     class="text-white bg-gray-900 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
                     href="{{ route('login') }}">Registrarse</button>
             </form>
-            <p class="block mb-2 mt-5 ml-8 text-sm font-regular text-black">¿Ya tienes una cuenta?<a
+            <p class="block mb-2 mt-5 ml-8 text-sm font-regular text-black xl:ml-0">¿Ya tienes una cuenta?<a
                     href="{{ route('login') }}" class="text-sm ml-1 font-semibold text-orange-600">Inicia Sesión</a></p>
         </div>
     </section>

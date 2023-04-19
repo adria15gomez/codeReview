@@ -115,6 +115,6 @@ class PromotionController extends Controller
         $promotion->id = $request->id;
         $promotion->delete();
 
-        return redirect()->route('promotions');
+        return redirect()->route('trainer.promotions');
     }
 }

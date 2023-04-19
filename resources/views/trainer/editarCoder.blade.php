@@ -1,6 +1,5 @@
 @extends('layouts.formador')
 @section('content')
-
     <div class="md:items-center mb-0 flex flex-col">
         <h1 class="font-medium text-4xl pt-0 ml-2 pl-2 mt-10 md:text-5xl grid xl:text-center ">Editar Coder</h1>
         <img src="{{('../img/trainer/agregareditarbootcamp.svg')}}"alt="bootcamp"
@@ -42,4 +41,3 @@
         </a>
     </div>
 @endsection
-

@@ -26,8 +26,7 @@
 
         <div class="md:w-6/12 p-6 ">
             <h3 class="font-medium text-2xl pt-8 ml-10 md:flex md:justify-center">Lista de coders</h3>
-
-            @foreach ($users as $user)
+   @foreach ($users as $user)
                 <div class="text-white w-5/6 justify-around text-base my-10  ml-10 bg-[#111827] hover:bg-[#111827]/80 focus:ring-4 focus:outline-none focus:ring-[#111827]/50 rounded-lg text-md py-4 px-2  text-center items-center block">
                     <div class="pt-4 mb-1">
                         <div class="flex pl-2">

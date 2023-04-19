@@ -40,8 +40,7 @@
                     </div>
                 </div>
             @endforeach
-        </div>
-        
+        </div>        
         <div class="flex flex-col items-center mt-auto mx-auto md:mt-auto md:flex md:justify-items-center">
             <a href="{{route('coders')}}" class="py-5 justify-center mb-8 text-white bg-[#050708] hover:bg-[#050708] transition-colors cursor-pointerinline-flex uppercase font-medium w-40 rounded-lg text-center">
                 Volver

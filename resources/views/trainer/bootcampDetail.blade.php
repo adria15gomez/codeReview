@@ -49,7 +49,6 @@
 @endforeach
 
 <h3 class="font-medium text-2xl px-10 pb-2 pt-2 ml-2 pl-2">Lista de Coders</h3>
-
 <div class="mr-5 mt-2 py-8 px-2 md:flex text-center">
     @foreach ($coders as $coder)
         <button type="button"
@@ -65,7 +64,6 @@
 </div>
 
 <div class="mr-5 mt-2 items-center px-2 ml-28">
-    <a type="submit" value="Volver" href="{{route('trainer.promotions')}}" class=" flex text-white bg-[#050708] hover:bg-[#050708] transition-colors cursor-pointer
-        uppercase font-medium w-36 p-3 rounded-lg justify-center">Volver</a>
+    <a type="submit" value="Volver" href="{{route('trainer.promotions')}}" class=" flex text-white bg-[#050708] hover:bg-[#050708] transition-colors cursor-pointer uppercase font-medium w-36 p-3 rounded-lg justify-center">Volver</a>
 </div>
 @endsection
