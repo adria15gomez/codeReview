@@ -1,8 +1,8 @@
 @extends('layouts.coder')
 
 @section('content')
-    <p class="font-regular text-3xl text-left mt-5 ml-10  xl:text-center">Evaluación 1</p>
-    <p class="font-regular text-xl text-left text-orange-600 mt-5 ml-10 mb-5  xl:text-center">Coevaluación</p>
+    <p class="font-regular text-3xl text-left mt-5 xl:text-center">Evaluación 1</p>
+    <p class="font-regular text-xl text-left text-orange-600 mt-5 mb-5 xl:text-center">Coevaluación</p>
     <form action="{{route('evaluation.store')}}" method="POST">
         @csrf
 
@@ -10,7 +10,7 @@
 
         <div class=" xl:text-center mb-4">
             <label for="user"></label>
-            <select name="id_user_coevaluator" id="id_user_coevaluator" class=" border-orange-600">
+            <select name="id_user_coevaluator" id="id_user_coevaluator" class=" border-orange-600 rounded-lg">
                 <option value="">Selecciona un Coder</option>
                 @foreach ($users as $user)
                     <option value="{{$user->id}}">{{$user->name}}</option>
@@ -20,8 +20,8 @@
 
         <div class="rating">
             @foreach ($topics as $topic)
-                <p class="font-bold ml-10 mb-2 xl:text-center">{{$topic->name}}</p>  
-                    <div class="flex mb-10 justify-center">
+                <p class="font-bold mb-2 xl:text-center">{{$topic->name}}</p>  
+                    <div class="flex mb-10 justify-center gap-4">
                     <input type="radio" name="topics[{{$topic->id}}]" id="{{$topic->id}}-rating-1" value="1" class="cara-input" />
                     <label for="{{$topic->id}}-rating-1" class="cara" title="Mal"><img src="img/coder/1cara.svg" alt="Mal" /></label>
                     
