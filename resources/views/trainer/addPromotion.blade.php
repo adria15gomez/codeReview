@@ -2,9 +2,8 @@
 
 @section('content')
     <h1 class="gap-6 mb-6 grid-cols-2 font-medium text-4xl pt-0 ml-2 pl-2 mt-10 md:text-5xl grid">Agregar Bootcamp</h1>
-    <img src="{{('img/trainer/agregareditarbootcamp.svg')}}"alt="bootcamp"
-        class="w-full h-60 my-8 sm:h-52 sm:col-span-2 md:h-80 w-100 items-center col-span-full" loading="lazy"
-    />
+    <img src="{{ 'img/trainer/agregareditarbootcamp.svg' }}"alt="bootcamp"
+        class="w-full h-60 my-8 sm:h-52 sm:col-span-2 md:h-80 w-100 items-center col-span-full" loading="lazy" />
 
     <div class="flex md:justify-center">
         <form class="justify-center my-10 mx-4"action="{{ route('addPromotion.store') }}" method="POST">
@@ -45,7 +44,8 @@
 
             <div>
                 <p class="text-medium font-medium mb-6">Selecciona las habilidades</p>
-                <div class="bg-white border border-orange-600 text-medium rounded-lg focus:ring-orange-600 focus:border-orange-600 flex flex-col w-full p-2.5">
+                <div
+                    class="bg-white border border-orange-600 text-medium rounded-lg focus:ring-orange-600 focus:border-orange-600 flex flex-col w-full p-2.5">
                     @foreach ($topics as $topic)
                         <label for="{{ $topic->id }}">
                             <input type="checkbox" id="{{ $topic->id }}" name="topics[]" value="{{ $topic->id }}">
@@ -94,17 +94,18 @@
                     placeholder="Introducir Url Slack">
                 <p class="mt-2 text-sm text-green-600 dark:text-green-500"><span class="font-medium">
             </div>
-             <button
-                class="text-white w-80 justify-around text-base mt-10  ml-4 md:ml-2 bg-orange-600 hover:bg-orange-600/80 focus:ring-4 focus:outline-none focus:ring-[orange-600]/50 rounded-lg  px-0.5 py-4 inline-flex ">
+            <button
+                   type="submit" class= " text-white w-80 justify-around text-base mt-10  ml-4 md:ml-2 bg-orange-600 hover:bg-orange-600/80 focus:ring-4 focus:outline-none focus:ring-[orange-600]/50 rounded-lg  px-0.5 py-4 inline-flex ">
                 <a class="no-underline text-white" href="">Agregar bootcamp</a>
             </button>
 
-             <button
-                class="text-white w-80 justify-around text-base mt-10  ml-4 md:ml-2 bg-[#050708] hover:bg-[#050708]/80 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 rounded-lg  px-0.5 py-4 inline-flex ">
-                <a class="no-underline text-white" href="href="{{route('trainer.promotions')}}">Cancelar</a>
-            </button>
-         </form>
+
+        </form>
     </div>
+    <button
+                class="text-white w-80 justify-around text-base mt-10  ml-4 md:ml-2 bg-[#050708] hover:bg-[#050708]/80 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 rounded-lg  px-0.5 py-4 inline-flex ">
+                <a class="no-underline text-white" href="href="{{ route('trainer.promotions') }}">Cancelar</a>
+            </button>
 
 
     <script>

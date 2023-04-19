@@ -4,6 +4,7 @@
 
         <div class="flex flex-col  mt-2 py-8 px-2 md:items-center">
             <h1 class="font-normal text-4xl pt-0 ml-2 pl-2 md:text-5xl">Mi bootcamp</h1>
+
             @foreach ($promotions as $promotion)
                 <h2 class="font-normal text-orange-600 text-4xl pt-6 ml-2 pl-2 md:text-5xl"> {{$promotion->name}} </h2>
             @endforeach
@@ -51,7 +52,7 @@
         @endforeach
     </div>
 
-    <div class="mr-5 mt-2 items-center px-2 ml-8 flex justify-center">
+    <div class="mr-5 mt-2 items-center px-2 ml-8 md:flex md:justify-center">
         <a type="submit"  value= "Volver" href="{{route('trainer.promotions')}}"
         class=" flex text-white bg-[#050708] hover:bg-[#050708] transition-colors cursor-pointer
         uppercase font-medium w-36 p-3 rounded-lg justify-center">Volver</a>
