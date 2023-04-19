@@ -1,16 +1,17 @@
 @extends('layouts.coder')
 
 @section('content')
-  <p class="font-regular text-3xl text-left mt-5 xl:text-center">Evaluación 1</p>
-  <p class="font-regular text-xl text-left text-orange-600 mt-5 mb-5 xl:text-center">Autoevaluación</p>
+<div class="flex flex-col items-center justify-center px-5">
+  <p class="font-regular text-3xl text-center mt-5">Evaluación 1</p>
+  <p class="font-regular text-xl text-center text-orange-600 mt-5 mb-5">Autoevaluación</p>
   <div class="flex justify-center mb-8">
-    <p class="md:w-5/12 text-justify">Estás a punto de realizar tu autoevaluación, selecciona el nivel en el que te encuentras en cada habilidad. 
+    <p class="max-w-lg text-base text-center">Estás a punto de realizar tu autoevaluación, selecciona el nivel en el que te encuentras en cada habilidad. 
       Es importante que puedas identificar tus fortalezas y áreas de mejora.<br>
       <span class="font-semibold">¡El éxito es la suma de pequeños esfuerzos repetidos día tras día!</span>
     </p>
   </div>
   <div class="flex justify-center mb-8">
-    <img src="..\img\coder\reviewToEvaluate.svg" alt="Reseña">
+    <img class="h-40" src="..\img\coder\reviewToEvaluate.svg" alt="Leyenda">
   </div>
   
   <form action="{{route('evaluation.store')}}" method="POST" id="rating-form">
@@ -20,7 +21,7 @@
     
     <div class="rating">
       @foreach ($topics as $topic)
-        <p class="font-bold mb-2 xl:text-center">{{$topic->name}}</p>  
+        <p class="font-bold mb-2 text-center">{{$topic->name}}</p>  
         <div class="flex mb-10 justify-center gap-4">
           <input type="radio" name="topics[{{$topic->id}}]" id="{{$topic->id}}-rating-1" value="1" class="cara-input" />
           <label for="{{$topic->id}}-rating-1" class="cara" title="Saber Investigar"><img src="img/coder/1cara.svg" alt="Saber Investigar"/></label>
@@ -46,5 +47,5 @@
   </form>
   
   <a href="{{route('evaluations')}}" class="bg-black text-white text-sm font-light py-2 px-4 mt-4 rounded-lg mx-auto block w-24">Cancelar</a>
-
+</div>
 @endsection
