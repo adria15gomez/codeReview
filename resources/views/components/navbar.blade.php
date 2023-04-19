@@ -1,7 +1,7 @@
 <nav class="bg-white border-t shadow border-gray-200 px-2 sm:px-4 py-2.5 rounded">
     <div class="container flex flex-wrap items-center justify-between mx-auto">
         <a href="#" class="flex items-center">
-            <img src="img\isotype.svg" class="w-10 mr-3 ml-2" alt="Factoria F5 Logo" />
+            <img src="{{ asset('img/isotype.svg') }}" class="w-10 mr-3 ml-2" alt="Factoria F5 Logo" />
         </a>
 
         <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-default" aria-expanded="false">
