@@ -11,7 +11,7 @@
             <form class="justify-center my-10 mx-4" action="{{ route('addTopic.store') }}" method="POST">
 
                 @csrf
-
+                
                 <div class="mb-6">
                     <label for="name" class="block ml-8 mb-2 text-medium font-medium">Nombre</label>
                     <input type="text" name="name"
@@ -38,6 +38,7 @@
                 </button>
 
             </form>
+
         </div>
         <button class="text-white w-80 justify-around text-base my-6  ml-4 bg-[#050708] hover:bg-[#050708]/80 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 rounded-lg  px-0.5 py-4 inline-flex ">
                     <a class="no-underline text-white" href="{{ route('topic') }}">
