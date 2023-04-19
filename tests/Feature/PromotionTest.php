@@ -123,10 +123,8 @@ class PromotionTest extends TestCase
         ]);
         $promotion->save();
 
-        $response = $this->delete(route('deleteTopic.distroy', $topic->id));
+        $response = $this->delete(route('deletePromotion.destroy', $promotion->id));
 
-        $response->assertRedirect(route('topic', $topic->id));
-
-        $this->assertNull(Topic::find($topic->id));
+        $this->assertNull(Promotion::find($promotion->id));
     }
 }
