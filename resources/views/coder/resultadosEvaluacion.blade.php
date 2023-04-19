@@ -10,4 +10,4 @@
             </div>
         @endforeach
         <a href="{{route('evaluations')}}" class="bg-black text-white text-sm font-light py-2 px-4 mt-4 rounded-lg mx-auto block w-24 text-center">Volver</a>
-    @endsection
+ @endsection

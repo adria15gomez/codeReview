@@ -33,9 +33,9 @@ Route::get('/register', function () {
     return view('auth.register');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/mis-evaluaciones', function () {
+    return view('coder.misEvaluaciones');
+})->middleware(['auth', 'verified'])->name('evaluations');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -43,7 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::post('/users/assign-role', [UserController::class, 'assignRole'])->name('users.assign-role');
+//Route::post('/users/assign-role', [UserController::class, 'assignRole'])->name('users.assign-role');
 
 require __DIR__ . '/auth.php';
 
@@ -101,7 +101,7 @@ Route::controller(PromotionController::class)->group(function () {
     Route::delete('eliminar-promocion/{promotion}', 'destroy')->name('deletePromotion.destroy');
 });
 
-Route::post('/users/assign-role', [UserController::class, 'assignRole'])->name('users.assign-role');
+//Route::post('/users/assign-role', [UserController::class, 'assignRole'])->name('users.assign-role');
 
 Route::get('/resultados-evaluacion', function () {
     return view('coder.resultadosEvaluacion');
@@ -118,11 +118,10 @@ Route::get('/rating-autoevaluacion', function () {
 Route::controller(EvaluationController::class)->group(function () {
     Route::get('mis-evaluaciones', 'dashboard')->name('evaluations');
     Route::get('mi-historico-evaluaciones', 'index')->name('evaluations.index');
-    Route::get('autoevaluacion', 'create')->name('evaluation.create');    
+    Route::get('autoevaluacion', 'create')->name('evaluation.create');
     Route::post('evaluacion', 'store')->name('evaluation.store');
     Route::get('coevaluacion', 'createCoevalua')->name('evaluation.createCoevalua');
     Route::post('coevaluacion', 'store')->name('evaluation.store');
-    Route::get('resultados-evaluacion', 'show')->name('evaluationResults.show');
     Route::get('evaluacion/{user_id}/{date}', 'compare')->name('coder.comparison');
 });
 

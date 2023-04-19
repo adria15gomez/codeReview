@@ -1,3 +1,7 @@
+@php
+    $progressBarData = app('\App\Http\Controllers\EvaluationController')->showProgressBar();
+@endphp
+
 @extends('layouts.coder')
 
 @section('content')
