@@ -2,9 +2,10 @@
 
 namespace Tests\Feature;
 
-use App\Model\Promotion;
-use App\Model\Topic;
-use App\Model\Competence;
+use App\Models\Promotion;
+use App\Models\Topic;
+use App\Models\Competence;
+use App\Models\Competence as ModelsCompetence;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -16,25 +17,26 @@ class PromotionTest extends TestCase
      * Test that checks if a topic can be inserted
      */
     {
-        $topic = new Topic([
-            'name' => 'Cosas supernerd',
-            'description' => 'Controlar binario, ascii, y otros.'
+        $competence = new Competence([
+            'name' => 'SCRUM Máster',
+            'description' => 'Trello, Jira, Asana y su familia'
         ]);
         $competence->save();
 
-        $topic1 = new Topic([
-            'name' => 'Escribir en binario',
+        $topic = new Topic([
+            'name' => 'SCRUM',
             'competence_id' => $competence->id,
         ]);
-        $topic1->save();
+        $topic->save();
 
-        $topic2 = new Topic([
-            'name' => 'IDE en modo oscuro',
+
+        $promotion = new Promotion([
+            'name' => 'SCRUM',
             'competence_id' => $competence->id,
         ]);
-        $topic2->save();
+        $promotion->save();
 
-        $response = $this->get('/topic');
+        $response = $this->get('/');
         $response->assertOk();
         $response->assertSee('Escribir en binario');
         $response->assertSee('IDE en modo oscuro');
