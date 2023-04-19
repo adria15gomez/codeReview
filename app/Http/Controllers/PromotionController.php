@@ -51,8 +51,8 @@ class PromotionController extends Controller
             $topics[] = Topic::find(1);
         }
 
-        // return view('trainer.bootcampDetail', ['promotion' => $promotion, 'topics' => $topics]);
-       return redirect()->route('promotions.show', compact('promotion', 'topics'));
+
+        return redirect()->route('promotions.show', compact('promotion', 'topics'));
     }
 
 
@@ -85,9 +85,9 @@ class PromotionController extends Controller
         $topics = Topic::all();
         $promotion->topic_id = $request->topic_id;
 
-        //return view('editPromotion', ['promotion' => $promotion, 'topics' => $topics]);
+        return redirect()->route('promotions.show', compact('promotion', 'topics'));
 
-        return redirect()->route('promotions.show', $promotion);
+
     }
 
     public function showTrainer()
