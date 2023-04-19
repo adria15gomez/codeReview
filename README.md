@@ -96,7 +96,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Authors
 
-| [<img src="https://avatars.githubusercontent.com/u/117080944?v=4" width=115><br><sub>Adria Gomez</sub>](https://github.com/camilafernanda) |  [<img src="https://avatars.githubusercontent.com/u/117079546?v=4" width=115><br><sub>Sara Àlvarez</sub>](https://github.com/saralvz) |  [<img src="https://avatars.githubusercontent.com/u/117080861?v=4" width=115><br><sub>Gabriela Fernandez</sub>](https://github.com/gabyfdez90) |  [<img src="https://avatars.githubusercontent.com/u/117080841?v=4" width=115><br><sub>Sharon Infante</sub>](https://github.com/genesysaluralatam) |  [<img src="https://avatars.githubusercontent.com/u/56439746?s=400&u=4b8b8d51763c41ab43ff7e4cfbd073d8c54aa69b&v=4" width=115><br><sub>Marjane Oliveira</sub>](https://github.com/Marjane506) |
+| [<img src="https://avatars.githubusercontent.com/u/117080944?v=4" width=115><br><sub>Adria Gomez</sub>](https://github.com/adria15gomez) |  [<img src="https://avatars.githubusercontent.com/u/117079546?v=4" width=115><br><sub>Sara Àlvarez</sub>](https://github.com/saralvz) |  [<img src="https://avatars.githubusercontent.com/u/117080861?v=4" width=115><br><sub>Gabriela Fernandez</sub>](https://github.com/gabyfdez90) |  [<img src="https://avatars.githubusercontent.com/u/117080841?v=4" width=115><br><sub>Sharon Infante</sub>](https://github.com/SharonInfante) |  [<img src="https://avatars.githubusercontent.com/u/56439746?s=400&u=4b8b8d51763c41ab43ff7e4cfbd073d8c54aa69b&v=4" width=115><br><sub>Marjane Oliveira</sub>](https://github.com/Marjane506) |
 | :---: | :---: | :---: | :---: | :---: |
 
 
