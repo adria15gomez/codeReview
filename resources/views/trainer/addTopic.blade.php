@@ -1,47 +1,37 @@
 @extends('layouts.formador')
 
 @section('content')
-    <h1 class="font-medium text-4xl pt-10 ml-2 pl-2 mt-2 md:text-5xl md:flex md:justify-center">Agregar Topic</h1>
-    <img src="{{ 'img/trainer/topics.svg' }}"alt="topic"
-        class="w-full h-60 pt-10 my-8 sm:h-52 sm:col-span-2 md:h-80 w-100 items-center col-span-full" loading="lazy" />
-    <div class="md:flex md:justify-center">
-
-        <div class="flex md:justify-center">
-
-            <form class="justify-center my-10 mx-4" action="{{ route('addTopic.store') }}" method="POST">
-
-                @csrf
-                
-                <div class="mb-6">
-                    <label for="name" class="block ml-8 mb-2 text-medium font-medium">Nombre</label>
-                    <input type="text" name="name"
-                        class="bg-white border border-orange-600 text-sm rounded-lg focus:ring-orange-600 focus:border-orange-600 w-5/6  ml-8 md:ml-2"
-                        placeholder="Nombre " />
-                </div>
-
-                <div>
-                    <p class="text-medium font-medium mb-2">Selecciona una competencia</p>
-                    <div
-                        class="bg-white border border-orange-600 text-medium rounded-lg focus:ring-orange-600 focus:border-orange-600 flex flex-col w-full p-2.5">
-                        @foreach ($competences as $competence)
-                            <label for="{{ $competence->id }}">
-                                <input type="checkbox" id="{{ $competence->id }}" name="competence_id" value="{{ $competence->id }}">
-                                {{ $competence->name }} - {{ $competence->description }}
-                            </label>
-                        @endforeach
-                    </div>
-                </div>
-                <button type="submit"
-                    class="text-white w-80 justify-around text-base mt-10  ml-4 md:ml-2 bg-orange-600 hover:bg-orange-600/80 focus:ring-4 focus:outline-none focus:ring-[orange-600]/50 rounded-lg  px-0.5 py-4 inline-flex ">
-                    <p class="no-underline text-white">Agregar topic</p>
-                </button>
-
-            </form>
+<div class="flex flex-col items-center justify-center">
+    <h1 class="font-regular text-3xl text-center mt-5">Agregar Topic</h1>
+    <img src="{{ 'img/trainer/topics.svg' }}" alt="topic" class="h-50 xl:h-72 mt-5" loading="lazy" />
     <div>
-        <button class="text-white w-80 justify-around text-base my-6  ml-4 bg-[#050708] hover:bg-[#050708]/80 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 rounded-lg  px-0.5 py-4 inline-flex ">
-                    <a class="no-underline text-white" href="{{ route('topic') }}">
-                        Cancelar</a>
-        </button>
+        <form class="justify-center my-10 mx-4" action="{{ route('addTopic.store') }}" method="POST">
+            @csrf
+            <div class="mb-6">
+                <label for="name" class="block mb-2 text-medium font-medium">Nombre</label>
+                <input type="text" name="name" class="bg-white border border-orange-600 text-sm rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5" placeholder="Nombre" />
+            </div>
+            <div>
+                <p class="block mb-2 text-medium font-medium">Selecciona una competencia</p>
+                <div class="mb-10 bg-white border border-orange-600 text-sm rounded-lg focus:ring-orange-600 focus:border-orange-600 flex flex-col w-full p-2.5">
+                    @foreach ($competences as $competence)
+                    <label class="" for="{{ $competence->id }}">
+                        <input type="checkbox" id="{{ $competence->id }}" name="competence_id" value="{{ $competence->id }}">
+                        {{ $competence->name }} - {{ $competence->description }}
+                    </label>
+                    @endforeach
+                </div>
+            </div>
+            <button type="submit" class="bg-orange-600 text-white text-sm font-light py-2 px-10 rounded-lg mx-auto block hover:bg-black">
+                <p class="no-underline">Agregar topic</p>
+            </button>
+        </form>
+        <div>
+            <button class="bg-gray-900 text-white text-sm font-light py-2 rounded-lg mx-auto block text-center w-40 hover:bg-black">
+                <a class="no-underline" href="{{ route('topic') }}">Cancelar</a>
+            </button>
+        </div>
     </div>
-
+</div>
 @endsection
+

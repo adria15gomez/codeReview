@@ -8,7 +8,7 @@
         class="h-50 xl:h-80 mt-5" loading="lazy" 
     />
             <button class="flex items-center justify-between w-72 px-4 py-2 bg-orange-600 font-regular text-left text-white rounded-xl hover:bg-black">
-                <a class="font-regular text-md text-white" href="{{route('addCoder.create')}}">Agregar Coder</a>
+                <a class="font-regular text-md text-white" href="{{route('addCoder.create')}}">Asignar Coder</a>
                 <svg class="flex h-7 w-8 text-white" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="arrow"
                     role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path fill="currentColor"

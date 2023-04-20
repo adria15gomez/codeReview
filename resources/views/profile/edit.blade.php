@@ -1,13 +1,13 @@
 @extends('layouts.coder')
 
 @section('content')
-    <section class="flex justify-center">
+    <section class="flex flex-col items-center justify-center">
         <x-app-layout>
-            <img src="img\coder\misevaluaciones.svg" class="h-50 mx-auto md:h-80 lg:h-80 xl:h-80" alt="Mi perfil" />
+            <img src="img\coder\misevaluaciones.svg" class="h-50 xl:h-80 mx-auto" alt="Mi perfil" />
             <x-slot name="header">
-                <h2 class="text-xl text-gray-800 leading-tight font-regular text-left mt-5 ml-10">
-                    {{ __('Profile') }}
-                </h2>
+                <h1 class="font-regular text-3xl text-center mt-5">
+                    {{ __('Mi perfil') }}
+                </h1>
             </x-slot>
 
             <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6 items-center">

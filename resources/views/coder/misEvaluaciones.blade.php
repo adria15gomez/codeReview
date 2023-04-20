@@ -13,7 +13,7 @@ $progressBarData = app('\App\Http\Controllers\EvaluationController')->showProgre
         <div class="mt-5">
             <x-progressBar :average="$progressBarData['average']" />
         </div>
-        <p class="font-regular text-xl text-center mt-10">Lista de evaluaciones</p>
+        <p class="font-regular text-xl text-center mt-10">Gestionar evaluaciones</p>
         <div class="w-72 mt-5 flex justify-center">
             <div id="accordion-collapse" data-accordion="collapse">
                 <h2 id="accordion-collapse-heading-1">

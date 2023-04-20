@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="flex flex-col items-center justify-center">
-    <h1 class="font-regular text-3xl text-center mt-5">Agregar Coder</h1>
+    <h1 class="font-regular text-3xl text-center mt-5">Asignar Coder</h1>
     <img src="img/trainer/agregareditarcoder.svg" alt="bootcamp"
         class="h-50 xl:h-80 mt-5" loading="lazy" 
     />
@@ -35,7 +35,7 @@
         </form>
         <a href="{{route('coders')}}"
             class="bg-gray-900 text-white text-sm font-light py-2 rounded-lg mx-auto block text-center w-40 hover:bg-black">
-            <p class="no-underline text-white">Cancelar</p>
+            <p class="no-underline">Cancelar</p>
         </a>
     </div>
 
