@@ -28,7 +28,7 @@
                 </div>
                 <div class="mb-6">
                     <label for="email"
-                        class="block mb-2 text-sm font-medium text-black">Email</label>
+                        class="block mb-2 text-sm font-medium text-black">Correo electrónico</label>
                     <input type="email" id="email" name="email"
                         class="bg-gray-50 border-2 border-solid border-orange-600 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         placeholder="Escribe tu email" required>
