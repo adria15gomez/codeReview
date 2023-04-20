@@ -43,11 +43,13 @@
                 </div>
 
                 <button type="submit"
-                    class="text-white bg-zinc-900 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Iniciar
+                    class="text-white bg-zinc-900 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center flex justify-center md:justify-center xl:justify-center md:w-full xl:w-full">Iniciar
                     sesión</button>
             </form>
-            <p class="block mb-2 mt-5 ml-6 text-sm font-regular text-white xl:ml-0">¿Aún no tienes una cuenta?<a
-                    href="{{ route('register') }}" class="text-sm ml-1 font-semibold text-black">Regístrate</a></p>
+            <p class="mb-2 mt-5 text-sm font-regular text-white xl:ml-0 flex justify-center">
+                ¿Aún no tienes una cuenta?
+                <a href="{{ route('register') }}" class="text-sm ml-1 font-semibold text-black">Regístrate</a>
+            </p>
         </div>
     </section>
 </body>

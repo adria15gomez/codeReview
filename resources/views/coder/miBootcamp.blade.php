@@ -10,7 +10,6 @@
         alt=" bootcamp"class="w-full h-60 sm:h-52 sm:col-span-2 md:h-80 w-100 items-center col-span-full" loading="lazy" 
     />
 
-
     <div class="mr-5 mt-2 py-2 px-2 ml-10 md:ml-50 pb-10 md:justify-center">            
         <p><strong>Formador:</strong>{{$promotions->trainer}}</p>
         <p><strong>Fecha de inicio:</strong>{{$promotions->start_date}}</p>

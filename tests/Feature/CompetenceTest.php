@@ -48,15 +48,21 @@ class CompetenceTest extends TestCase
      *
      */
     {
-        $competence = Competence::create([
+        $competence = new Competence([
             'name' => 'Escuchar música al programar',
             'description' => 'Concentrarse con música pero apagarla cuando un error se hace pesado.'
         ]);
+        $competence->save();
+
+        $newDescription = 'Poder solucionar un bug con Taylor Swift de fondo.';
+        $competence->update(['description' => $newDescription]);
+
+        $updatedDescription = Competence::find($competence->id);
 
         $response = $this->get(route('editCompetence.edit',  $competence->id));
         $response->assertStatus(200);
-        $response->assertSee($competence->name);
-        $response->assertSee($competence->description);
+        $response->assertSee($newDescription);
+        $this->assertEquals($newDescription, $updatedDescription->description);
     }
 
     public function testCanDeleteCompetence(): void

@@ -43,6 +43,8 @@ class AuthTest extends TestCase
             'name' => 'Sheldon Cooper',
             'email' => 'drcooper@caltech.com',
         ]);
+
+        $this->assertAuthenticated();
     }
 
     /**

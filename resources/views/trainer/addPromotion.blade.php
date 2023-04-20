@@ -19,14 +19,13 @@
         </div>
         <div class="mb-6">
 
-            <label for="formador" class="block mb-2 text-medium font-medium">Formador</label>
-            <select id="formador" name="trainer"
+            <label for="trainer" class="block mb-2 text-medium font-medium">Formador</label>
+            <select id="trainer" name="trainer"
                 class="bg-white border border-orange-600  text-sm rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5">
                 <option selected>Formador</option>
-                <option value="Manuela">Manuela </option>
-                <option value="Gabriela">Gabriela</option>
-                <option value="Diego">Diego</option>
-                <option value="Pedro">Pedro</option>
+                @foreach ($users as $user)
+                    <option value="{{$user->name}}">{{$user->name}}</option>
+                @endforeach
             </select>
         </div>
         <div class="grid gap-6 mb-6 md:grid-cols-2">

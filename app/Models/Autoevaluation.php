@@ -10,6 +10,7 @@ class Autoevaluation extends Model
     use HasFactory;
 
     protected $table = 'evaluations_topics_autoevaluations';
+    protected $fillable = ['evaluation_id'];
 
     public function topics()
     {

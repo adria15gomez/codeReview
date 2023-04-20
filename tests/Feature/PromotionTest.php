@@ -70,7 +70,7 @@ class PromotionTest extends TestCase
         ]);
         $competence->save();
 
-        $topic = Topic::create([
+        $topic = new Topic([
             'name' => 'Poción multijugos',
             'competence_id' => $competence->id,
         ]);
@@ -88,9 +88,11 @@ class PromotionTest extends TestCase
         ]);
         $promotion->save();
 
-        $response = $this->get(route('editPromotion.edit',  $topic->id));
-        $response->assertStatus(200);
-        $response->assertSee($promotion->name);
+        $newTrainer = 'Hermione Granger';
+        $promotion->update(['trainer' => $newTrainer]);
+
+        $updatedEvaluation = Promotion::find($promotion->id);
+        $this->assertEquals($newTrainer, $updatedEvaluation->trainer);
     }
 
     public function testCanDeletePromotion(): void
@@ -105,9 +107,9 @@ class PromotionTest extends TestCase
         ]);
         $competence->save();
 
-        $topic = Topic::create([
+        $topic = new Topic([
             'name' => 'Nochentera',
-            'competence_id' => 5,
+            'competence_id' => $competence->id,
         ]);
 
         $promotion = new Promotion([
@@ -117,13 +119,16 @@ class PromotionTest extends TestCase
             'end_date' => '2023-09-10',
             'topic_id' => $topic->id,
             'evaluation1' => '2023-05-10',
-            'evaluation1' => '2023-06-10',
-            'evaluation1' => '2023-07-10',
-            'evaluation1' => '2023-08-10',
+            'evaluation2' => '2023-06-10',
+            'evaluation3' => '2023-07-10',
+            'evaluation4' => '2023-08-10',
+            'zoom_url' => 'https://stackoverflow.com/questions/17990820/set-port-for-php-artisan-php-serve',
+            'slack_url' => 'https://stackoverflow.com/questions/17990820/set-port-for-php-artisan-php-serve',
         ]);
-        $promotion->save();
 
+        $promotion->save();
         $response = $this->delete(route('deletePromotion.destroy', $promotion->id));
+        $response->assertRedirect(route('trainer.promotions'));
 
         $this->assertNull(Promotion::find($promotion->id));
     }

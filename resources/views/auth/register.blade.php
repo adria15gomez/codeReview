@@ -16,7 +16,7 @@
 <body>
     <section class="flex items-center justify-center h-screen">
         <div class="bg-white p-8 max-w-4xl w-full">
-            <img src="img\orangeLogo.svg" alt="logo" class="w-60 mx-auto my-auto mb-20">
+            <img src="img\orangeLogo.svg" alt="logo" class="w-60 mx-auto my-auto mb-10">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <div class="mb-6">
@@ -48,10 +48,10 @@
                         placeholder="Repite tu contraseña" required>
                 </div>
                 <button type="submit"
-                    class="text-white bg-gray-900 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                    class="text-white bg-gray-900 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center flex justify-center md:justify-center xl:justify-center md:w-full xl:w-full"
                     href="{{ route('login') }}">Registrarse</button>
             </form>
-            <p class="block mb-2 mt-5 ml-8 text-sm font-regular text-black xl:ml-0">¿Ya tienes una cuenta?<a
+            <p class="mb-2 mt-5 text-sm font-regular text-black xl:ml-0 flex justify-center">¿Ya tienes una cuenta?<a
                     href="{{ route('login') }}" class="text-sm ml-1 font-semibold text-orange-600">Inicia Sesión</a></p>
         </div>
     </section>
