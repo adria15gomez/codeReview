@@ -105,19 +105,6 @@ class EvaluationController extends Controller
             ->where('evaluations.evaluation_date', $date)
             ->get();
 
-        // Si da tiempo a relacionar con las fechas de la tabla Promotion
-        // if ($date == Promotion::find('evaluation1')){
-        //     $evaluation = 1;
-        // } else if ($date == Promotion::find('evaluation2')){
-        //     $evaluation = 2;
-        // } else if ($date == Promotion::find('evaluation3')){
-        //     $evaluation = 3;
-        // } else {
-        //     $evaluation = 4
-        // }
-
-        //dd($coevaluations);
-
         return view('coder.comparison', [
             'user_id' => $user_id,
             'date' => $date,
@@ -127,19 +114,19 @@ class EvaluationController extends Controller
     }
 
     public function showProgressBar()
-    {      
+    {
         $user_id = auth()->user()->id;
 
         $autoevaluacion = Evaluation::where('id_user_evaluated', $user_id)
             ->whereNull('id_user_coevaluator')
             ->value('pp_autoeval') ?? 0.0;
-    
+
         $coevaluacion = Evaluation::where('id_user_evaluated', $user_id)
             ->whereNotNull('id_user_coevaluator')
             ->value('pp_coeval') ?? 0.0;
-    
+
         $average = round(($autoevaluacion + $coevaluacion) / 2, 2);
-    
+
         return [
             'average' => $average,
             'autoevaluacion' => $autoevaluacion,

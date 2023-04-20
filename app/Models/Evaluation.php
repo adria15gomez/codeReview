@@ -10,6 +10,7 @@ class Evaluation extends Model
     use HasFactory;
 
     protected $table = 'evaluations';
+    protected $fillable = ['evaluation_date', 'id_user_evaluated', 'id_user_coevaluator'];
 
     public function user()
     {
