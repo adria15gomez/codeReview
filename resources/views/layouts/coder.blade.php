@@ -31,9 +31,9 @@
         @include('components.navbar', ['links' => $links])
         
         {{-- Aqui va a ir el contenido de la vista --}}
-        <section>
+        <section class="min-h-screen">
             @yield('content')
-        </section>   
+        </section>  
         @include('components.footer')  
     </body>
 </html>

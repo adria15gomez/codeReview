@@ -12,7 +12,7 @@ class CoderController extends Controller
 {
     public function index()
     {
-        $users = User::paginate(2);
+        $users = User::where('role', 'coder')->paginate(2);
         return view('trainer.coders', compact('users'));
     }
 
@@ -39,12 +39,13 @@ class CoderController extends Controller
     public function show($id)
     {
         $coder = User::findOrFail($id);
-        $evaluations = Evaluation::where('id_user_evaluated', $coder->id)->distinct()->get();
+        $evaluations = Evaluation::where('id_user_evaluated', $coder->id)->select('evaluation_date')->distinct()->get();
         return view('trainer.coderDetail', compact('coder', 'evaluations'));
     }
 
     public function compare($user_id, $date)
     {
+        $coder = User::findOrFail($user_id);
 
         $autoevaluation = DB::table('evaluations_topics_autoevaluations')
             ->join('evaluations', 'evaluations.id', '=', 'evaluations_topics_autoevaluations.evaluation_id')
@@ -68,6 +69,7 @@ class CoderController extends Controller
             'date' => $date,
             'autoevaluation' => $autoevaluation,
             'coevaluations' => $coevaluations,
+            'coder' => $coder
         ]);
     }
 

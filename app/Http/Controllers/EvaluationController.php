@@ -37,7 +37,7 @@ class EvaluationController extends Controller
     public function createCoevalua()
     {
         $topics = Topic::all();
-        $users = User::all();
+        $users = User::where('role', 'coder')->get();;
         return view('coder.coevaluacion', compact('topics', 'users'));
     }
 
@@ -105,19 +105,6 @@ class EvaluationController extends Controller
             ->where('evaluations.id_user_evaluated', $user_id)
             ->where('evaluations.evaluation_date', $date)
             ->get();
-
-        // Si da tiempo a relacionar con las fechas de la tabla Promotion
-        // if ($date == Promotion::find('evaluation1')){
-        //     $evaluation = 1;
-        // } else if ($date == Promotion::find('evaluation2')){
-        //     $evaluation = 2;
-        // } else if ($date == Promotion::find('evaluation3')){
-        //     $evaluation = 3;
-        // } else {
-        //     $evaluation = 4
-        // }
-
-        //dd($coevaluations);
 
         return view('coder.comparison', [
             'user_id' => $user_id,

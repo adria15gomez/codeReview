@@ -7,9 +7,12 @@ use App\Models\Competence;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class TopicTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function testCanInsertTopic(): void
     /**
      * Test that checks if a topic can be inserted
@@ -66,10 +69,15 @@ class TopicTest extends TestCase
             'competence_id' => $competence->id,
         ]);
 
+        $newName = 'Defensa contra los Bugs oscuros';
+        $topic->update(['name' => $newName]);
+
+        $updatedTopic = Topic::find($topic->id);
+
         $response = $this->get(route('editTopic.edit',  $topic->id));
         $response->assertStatus(200);
-        $response->assertSee($topic->name);
-        $response->assertSee($topic->competence_id);
+        $response->assertSee($newName);
+        $this->assertEquals($newName, $updatedTopic->name);
     }
 
     public function testCanDeleteTopic(): void
