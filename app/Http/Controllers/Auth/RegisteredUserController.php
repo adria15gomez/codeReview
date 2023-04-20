@@ -57,6 +57,19 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+
+
+        // return redirect(RouteServiceProvider::HOME);
+
+        switch ($userRol) {
+            case 'admin':
+                return redirect()->route('competence');
+                break;
+            case 'trainer':
+                return redirect()->route('trainer.promotions');
+                break;
+            default:
+                return redirect()->route('evaluations');
+        }
     }
 }
