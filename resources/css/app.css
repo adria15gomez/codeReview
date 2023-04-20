@@ -4,6 +4,10 @@
 
 @import "node_modules/font-awesome/scss/font-awesome.scss";
 
+body {
+  font-family: 'Poppins';
+}
+
 .rating input[type="radio"] {
   display: none;
 }
