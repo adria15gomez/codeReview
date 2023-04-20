@@ -7,10 +7,12 @@ use App\Models\Competence;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class TopicTest extends TestCase
 {
     use RefreshDatabase;
+
     public function testCanInsertTopic(): void
     /**
      * Test that checks if a topic can be inserted
