@@ -1,6 +1,4 @@
-<p align="center">
-![logo](https://github.com/adria15gomez/codeReview/blob/main/orangeLogo.svg)
-</p>
+
 
 # Project Title
 
