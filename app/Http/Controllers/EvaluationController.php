@@ -36,7 +36,7 @@ class EvaluationController extends Controller
     public function createCoevalua()
     {
         $topics = Topic::all();
-        $users = User::all();
+        $users = User::where('role', 'coder')->get();;
         return view('coder.coevaluacion', compact('topics', 'users'));
     }
 

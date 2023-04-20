@@ -19,7 +19,7 @@ class User extends Authenticatable implements Authorizable
     use HasFactory, Notifiable, AuthenticableTrait;
 
     protected $table = 'users';
-    protected $fillable = ['name', 'email', 'password', 'rol', 'promotion_id'];
+    protected $fillable = ['name', 'email', 'password', 'role', 'promotion_id'];
 
     public $timestamps = false;
 
@@ -36,5 +36,34 @@ class User extends Authenticatable implements Authorizable
     public function setPasswordAtributte($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'permissions_roles_users', 'users_id', 'roles_id');
+    }
+
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class, 'permissions_roles_users', 'users_id', 'permissions_id');
+    }
+
+    public static function create(array $attributes = [])
+    {
+        static::unguard();
+
+        $attributes['role'] = 'coder';
+
+        if (static::count() === 0) {
+            $attributes['role'] = 'admin';
+        } elseif (strpos($attributes['email'], '@factoriaf5.org') !== false) {
+            $attributes['role'] = 'trainer';
+        }
+
+        static::reguard();
+
+        return tap(new static($attributes), function ($instance) {
+            $instance->save();
+        });
     }
 }

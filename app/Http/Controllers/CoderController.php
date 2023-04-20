@@ -12,7 +12,7 @@ class CoderController extends Controller
 {
     public function index()
     {
-        $users = User::paginate(2);
+        $users = User::where('role', 'coder')->paginate(2);
         return view('trainer.coders', compact('users'));
     }
 
