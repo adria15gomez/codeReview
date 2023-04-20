@@ -36,15 +36,15 @@ class User extends Authenticatable implements Authorizable
         $this->attributes['password'] = bcrypt($value);
     }
 
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class, 'permissions_roles_users', 'users_id', 'roles_id');
-    }
+    // public function roles()
+    // {
+    //     return $this->belongsToMany(Role::class, 'permissions_roles_users', 'users_id', 'roles_id');
+    // }
 
-    public function permissions()
-    {
-        return $this->belongsToMany(Permission::class, 'permissions_roles_users', 'users_id', 'permissions_id');
-    }
+    // public function permissions()
+    // {
+    //     return $this->belongsToMany(Permission::class, 'permissions_roles_users', 'users_id', 'permissions_id');
+    // }
 
     public static function create(array $attributes = [])
     {

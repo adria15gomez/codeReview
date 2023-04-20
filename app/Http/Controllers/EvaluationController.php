@@ -29,6 +29,7 @@ class EvaluationController extends Controller
 
     public function create()
     {
+        $this->authorize('createEvaluations', Evaluation::class);
         $topics = Topic::all();
         return view('coder.autoevaluacion', compact('topics'));
     }
@@ -127,19 +128,19 @@ class EvaluationController extends Controller
     }
 
     public function showProgressBar()
-    {      
+    {
         $user_id = auth()->user()->id;
 
         $autoevaluacion = Evaluation::where('id_user_evaluated', $user_id)
             ->whereNull('id_user_coevaluator')
             ->value('pp_autoeval') ?? 0.0;
-    
+
         $coevaluacion = Evaluation::where('id_user_evaluated', $user_id)
             ->whereNotNull('id_user_coevaluator')
             ->value('pp_coeval') ?? 0.0;
-    
+
         $average = round(($autoevaluacion + $coevaluacion) / 2, 2);
-    
+
         return [
             'average' => $average,
             'autoevaluacion' => $autoevaluacion,
