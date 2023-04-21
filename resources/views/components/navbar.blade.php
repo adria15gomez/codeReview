@@ -13,15 +13,14 @@
             {{-- Aqui estamos haciendo que los links pasen a ser dinámicos, por lo que despues, en cada layout le pasaremos el array de links que debe recorrer --}}
             <ul class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
                 @foreach ($links as $link)
-                <li><a href="{{ $link['url'] }}" class="block py-2 pl-3 pr-4 text-gray-700 text-center rounded hover:text-orange-600">{{ $link['title'] }}</a></li>
+                <li><a href="{{ $link['url'] }}" class="block py-2 pl-3 pr-4 text-gray-700 text-center rounded hover:text-orange-600 active:text-orange-600">{{ $link['title'] }}</a></li>
                 @endforeach
                 {{-- En este botón tenemos luego que incluir en el href la ruta que lleve a la vista de login  --}}
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
                     <a href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();" 
-                       class="inline-block px-4 py-2 bg-black text-white text-center rounded hover:bg-orange-600 active:text-orange-600">
-                        Sign Out
+                    class="flex px-4 py-2 bg-black text-white text-center rounded hover:bg-orange-600 active:text-orange-600 justify-center">
+                    Cerrar Sesión
                     </a>
                 </form>
                 

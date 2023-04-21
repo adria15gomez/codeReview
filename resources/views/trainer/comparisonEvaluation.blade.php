@@ -108,7 +108,7 @@
         </div>
 
         <div class="mt-5 items-center px-2 flex flex-col">
-            <a type="submit" value="Volver" href="{{route('evaluations')}}" class=" flex text-white bg-[#050708] hover:bg-[#050708] transition-colors cursor-pointer
+            <a type="submit" value="Volver" href="{{route('coders')}}" class=" flex text-white bg-[#050708] hover:bg-[#050708] transition-colors cursor-pointer
             uppercase font-medium w-36 p-3 rounded-lg justify-center">Volver</a>
         </div>        
     </div>

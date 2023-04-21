@@ -28,10 +28,9 @@
         @include('components.navbar', ['links' => $links])
 
         {{-- Aqui va a ir el contenido de la vista --}}
-
+        <section class="min-h-screen">
             @yield('content')
-
-
+        </section> 
         {{-- Importamos el componente footer --}}
         @include('components.footer')
     </body>
