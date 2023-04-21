@@ -21,6 +21,14 @@ class CompetenceController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([    
+            'name' => 'required',    
+            'description' => 'required'], 
+            [
+                'name.required' => 'El campo marco de competencia es obligatorio',    
+                'description.required' => 'El campo competencia es obligatorio'
+        ]);
+        
         $competences = new Competence();
 
         $competences->name = $request->name;

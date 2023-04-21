@@ -7,8 +7,19 @@
     <div>
         <form class="justify-center my-10 mx-4" action="{{ route('addTopic.store') }}" method="POST">
             @csrf
+            <div>
+                @if ($errors->has('name'))
+                    <div class="alert alert-danger mb-1 text-center font-bold">{{ $errors->first('name') }}</div>
+                @endif
+
+                @if ($errors->has('competence_id'))
+                    <div class="alert alert-danger mb-1 text-center font-bold">{{ $errors->first('competence_id') }}</div>
+                @endif
+            </div>
+            
+            <p class="block mb-2 text-medium font-medium">Topic</p>
             <div class="mb-6">
-                <label for="name" class="block mb-2 text-medium font-medium">Nombre</label>
+                <label for="name" class="block mb-2 text-medium font-medium"></label>
                 <input type="text" name="name" class="bg-white border border-orange-600 text-sm rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5" placeholder="Nombre" />
             </div>
             <div>
@@ -27,9 +38,9 @@
             </button>
         </form>
         <div>
-            <button class="bg-gray-900 text-white text-sm font-light py-2 rounded-lg mx-auto block text-center w-40 hover:bg-black">
-                <a class="no-underline" href="{{ route('topic') }}">Cancelar</a>
-            </button>
+            <a href="{{ route('topic') }}" class="bg-gray-900 text-white text-sm font-light py-2 rounded-lg mx-auto block text-center w-40 hover:bg-black">
+                <p class="no-underline">Cancelar</p>
+            </a>
         </div>
     </div>
 </div>

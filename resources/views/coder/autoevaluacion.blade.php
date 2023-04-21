@@ -42,7 +42,7 @@
           <label for="{{$topic->id}}-rating-6" class="cara" title="Saber Crear"><img src="img/coder/6cara.svg" alt="Saber Crear"/></label>
         </div>
       @endforeach
-      <button class="bg-gray-900 text-white text-sm font-light  py-2 px-4 rounded-lg mx-auto block">Enviar autoevaluación</button>
+      <button type="submit" class="bg-gray-900 text-white text-sm font-light  py-2 px-4 rounded-lg mx-auto block">Enviar autoevaluación</button>
     </div>
   </form>
   

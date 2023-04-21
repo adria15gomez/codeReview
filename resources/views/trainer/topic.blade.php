@@ -4,14 +4,14 @@
 <div class="flex flex-col items-center justify-center gap-4">
     <h1 class="font-regular text-3xl text-center mt-5">Topics</h1>
     <img src="{{ 'img/trainer/topics.svg' }}"alt="topic"
-        class="h-50 xl:h-72 mt-5" loading="lazy" />
+        class="h-50 xl:h-72 mt-5" loading="lazy" 
+    />
     <div class="md:flex md:justify-center">
         <a  href="{{ route('addTopic.create') }}"
-           class="flex items-center justify-between w-72 px-4 py-2 bg-orange-600 font-regular text-left text-white rounded-xl mt-5 hover:bg-black">
+           class="flex items-center justify-center w-72 px-4 py-2 bg-orange-600 font-regular text-left text-white rounded-xl mt-5 hover:bg-black">
             <p class="no-underline">Agregar Topic</p>
         </a>
     </div>
-
     <p class="font-regular text-xl mt-5 mb-3 text-center">Lista de Topics</p>
     <div class="flex flex-wrap justify-center gap-5 px-3">
         @foreach ($topics as $topic)

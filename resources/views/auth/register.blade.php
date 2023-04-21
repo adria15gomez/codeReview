@@ -48,11 +48,12 @@
                         placeholder="Repite tu contraseña" required>
                 </div>
                 <button type="submit"
-                    class="text-white bg-gray-900 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center flex justify-center md:justify-center xl:justify-center md:w-full xl:w-full"
-                    href="{{ route('login') }}">Registrarse</button>
+                    class="text-white bg-gray-900 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center flex justify-center md:justify-center xl:justify-center md:w-full xl:w-full">
+                    Registrarse
+                </button>
             </form>
-            <p class="mb-2 mt-5 text-sm font-regular text-black xl:ml-0 flex justify-center">¿Ya tienes una cuenta?<a
-                    href="{{ route('login') }}" class="text-sm ml-1 font-semibold text-orange-600">Inicia Sesión</a></p>
+            <p class="mb-2 mt-5 text-sm font-regular text-black xl:ml-0 flex justify-center">¿Ya tienes una cuenta?
+                <a href="{{ route('login') }}" class="text-sm ml-1 font-semibold text-orange-600">Inicia Sesión</a></p>
         </div>
     </section>
 </body>

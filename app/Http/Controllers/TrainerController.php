@@ -9,7 +9,7 @@ class TrainerController extends Controller
 {
     public function index() 
     {
-        $trainers = User::where('role', 'trainer')->paginate(2);
+        $trainers = User::where('role', 'trainer')->paginate(8);
         return view('superAdmin.trainers', compact('trainers'));
     }
 

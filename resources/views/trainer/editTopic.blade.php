@@ -15,13 +15,12 @@
                 class="bg-white border border-orange-600 text-sm rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5"
                 placeholder="Nombre " />
         </div>
-
         <div>
             <p class="block mb-2 text-medium font-medium">Selecciona una competencia</p>
             <div class="mb-10 bg-white border border-orange-600 text-sm rounded-lg focus:ring-orange-600 focus:border-orange-600 flex flex-col w-full p-2.5">
                 @foreach ($competences as $competence)
                     <label for="{{ $competence->id }}">
-                    <input type="checkbox" id="{{ $competence->id }}" name="competence[]" value="{{ $competence->id }}">
+                    <input type="checkbox" id="{{ $competence->id }}" name="competence_id" value="{{ $competence->id }}">
                         {{ $competence->name }} - {{$competence->description}}
                     </label>
                 @endforeach

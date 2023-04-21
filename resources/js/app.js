@@ -35,3 +35,15 @@ img.addEventListener('mouseout', () => {
     const tooltip = img.nextElementSibling;
     tooltip.classList.remove('show');
 });
+
+const selectElement = document.getElementById('topics');
+const newTopicInput = document.getElementById('new-topic-input');
+
+selectElement.addEventListener('change', () => {
+    const selectedValue = selectElement.value;
+    if (selectedValue === '') {
+        newTopicInput.style.display = 'block';
+    } else {
+        newTopicInput.style.display = 'none';
+    }
+});

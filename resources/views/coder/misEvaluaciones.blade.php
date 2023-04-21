@@ -1,7 +1,3 @@
-{{-- @php
-$progressBarData = app('\App\Http\Controllers\EvaluationController')->showProgressBar($id);
-@endphp --}}
-
 @extends('layouts.coder')
 
 @section('content')
@@ -18,7 +14,7 @@ $progressBarData = app('\App\Http\Controllers\EvaluationController')->showProgre
             <div id="accordion-collapse" data-accordion="collapse">
                 <h2 id="accordion-collapse-heading-1">
                     <button type="button"
-                            class="flex items-center justify-between w-72 px-4 py-2 bg-gray-900 font-medium text-left text-white border border-b-0 border-gray-200 rounded-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                            class="flex items-center justify-between w-72 px-4 py-2 bg-gray-900 font-medium text-left text-white border border-b-0 border-gray-200 rounded-xl"
                             data-accordion-target="#accordion-collapse-body-1" aria-expanded="false" aria-controls="accordion-collapse-body-1"
                             x-data="{ isOpen: false }" x-bind:class="{ 'collapsed': !isOpen }" @click="isOpen = !isOpen">
                             Evaluaciones

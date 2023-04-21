@@ -9,20 +9,20 @@
             @csrf
             @method('put')
             <div class="mb-6">
-                <label for="name" class="block mb-2 text-medium font-medium">Nombre</label>
+                <label for="name" class="block mb-2 text-medium font-medium">Marco de competencias</label>
                 <input type="text" name="name" value="{{ $competence->name }}"
                     class="bg-white border border-orange-600 text-sm rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-72 p-2.5"
                     placeholder="Nombre " />
             </div>
 
             <div class="mb-6">
-                <label for="name" class="block ml-8 mb-2 text-medium font-medium">Descripcion</label>
+                <label for="name" class="block ml-8 mb-2 text-medium font-medium">Competencia</label>
                 <input type="text" name="description" value="{{ $competence->description }}"
                     class="bg-white border border-orange-600 text-sm rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-72 p-2.5"
                     placeholder="Descripción" />
             </div>
             <button type="submit"
-            class="bg-orange-600 text-white text-sm font-light py-2 px-10 rounded-lg mx-auto block hover:bg-black">
+                class="bg-orange-600 text-white text-sm font-light py-2 px-10 rounded-lg mx-auto block hover:bg-black">
                 <p class="no-underline">Editar competencia</p>
             </button>
 
