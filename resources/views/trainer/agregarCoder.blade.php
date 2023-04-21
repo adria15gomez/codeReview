@@ -27,7 +27,7 @@
                 <select name="email" id="email" class=" border-orange-600 rounded-lg">
                     <option value="">Selecciona un Coder</option>
                     @foreach ($users as $user)
-                        <option value="{{$user->id}}">{{$user->email}}</option>
+                        <option value="{{$user->email}}">{{$user->email}}</option>
                     @endforeach
                 </select><br>
             </div>
