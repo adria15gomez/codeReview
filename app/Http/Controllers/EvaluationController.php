@@ -33,6 +33,7 @@ class EvaluationController extends Controller
         $promotion = $user->promotion;
         $topics = Topic::join('promotion_topic', 'topics.id', '=', 'promotion_topic.topic_id')->where('promotion_topic.promotion_id', $promotion->id)->get();
         $users = User::where('role', 'coder')->get();
+        
         return view('coder.autoevaluacion', compact('topics'));
     }
 
