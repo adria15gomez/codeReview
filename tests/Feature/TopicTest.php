@@ -11,7 +11,12 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class TopicTest extends TestCase
 {
-    use RefreshDatabase;
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->artisan('migrate');
+    }
 
     public function testCanInsertTopic(): void
     /**

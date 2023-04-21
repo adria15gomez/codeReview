@@ -3,16 +3,16 @@
 @section('content')
 <div class="flex flex-col items-center justify-center">
     <h1 class="font-regular text-3xl text-center mt-5">Asignar Coder</h1>
-    <img src="img/trainer/agregareditarcoder.svg" alt="bootcamp"
-        class="h-50 xl:h-80 mt-5" loading="lazy" 
-    />
+    <img src="img/trainer/agregareditarcoder.svg" alt="bootcamp" class="h-50 xl:h-80 mt-5" loading="lazy" />
     <div class="text-left">
-        <form class="justify-center my-10 mx-4 relative" action="{{ route('addCoder.assignToBootcamp') }}" method="POST">
-            
+        <form class="justify-center my-10 mx-4 relative" action="{{ route('addCoder.assignToBootcamp') }}"
+            method="POST">
+
             @csrf
 
             <p class="block mb-2 text-medium font-medium">Bootcamp</p>
-            <div class="mb-6 bg-white border border-orange-600 text-sm rounded-lg focus:ring-orange-600 focus:border-orange-600 flex flex-col w-full p-2.5">
+            <div
+                class="mb-6 bg-white border border-orange-600 text-sm rounded-lg focus:ring-orange-600 focus:border-orange-600 flex flex-col w-full p-2.5">
                 @foreach ($promotions as $promotion)
                 <label for="{{ $promotion->id }}">
                     <input type="checkbox" id="{{ $promotion->id }}" name="promotion_id" value="{{ $promotion->id }}">
@@ -27,7 +27,7 @@
                 <select name="email" id="email" class=" border-orange-600 rounded-lg">
                     <option value="">Selecciona un Coder</option>
                     @foreach ($users as $user)
-                        <option value="{{$user->id}}">{{$user->email}}</option>
+                    <option value="{{$user->email}}">{{$user->email}}</option>
                     @endforeach
                 </select><br>
             </div>
@@ -43,4 +43,4 @@
         </a>
     </div>
 
-@endsection
+    @endsection
