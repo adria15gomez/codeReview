@@ -8,7 +8,13 @@ use Tests\TestCase;
 
 class ProfileTest extends TestCase
 {
-    use RefreshDatabase;
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->artisan('migrate');
+    }
+
 
     // public function test_profile_page_is_displayed(): void
     // {

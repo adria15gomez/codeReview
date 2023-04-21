@@ -9,6 +9,13 @@ use Tests\TestCase;
 
 class CompetenceTest extends TestCase
 {
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->artisan('migrate');
+    }
+
     public function testCanInsertCompetence(): void
     /**
      * Test that checks if a competence can be inserted

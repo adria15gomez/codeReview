@@ -6,7 +6,7 @@
 
     @if($autoevaluation->isNotEmpty())
     <div class="flex justify-center mb-4">
-        <p class="font-regular text-lg text-left mt-5 ml-10 mb-5 md:w-2/4 md:text-justify">En este apartado, puedes observar la comparativa de la autoevaluación y coevaluación de las habilidades de <span class="font-medium">{{$coder->name}}</span> según la percepción de si
+        <p class="font-regular text-lg text-left mt-5 ml-10 mb-5 md:w-2/4 md:text-justify">En este apartado, puedes observar la comparativa de la autoevaluación y coevaluación de las habilidades de <span class="font-medium">{{$user->name}}</span> según la percepción de si
            mismo/a con la opinión de su compañero. De izquierda a derecha, la escala cubre desde "Saber investigar" hasta
             "Saber crear".
         </p>

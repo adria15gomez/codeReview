@@ -12,6 +12,13 @@ use Tests\TestCase;
 
 class PromotionTest extends TestCase
 {
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->artisan('migrate');
+    }
+
     public function testCanInsertPromotion(): void
     /**
      * Test that checks if a promotion can be inserted

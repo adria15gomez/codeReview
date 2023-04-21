@@ -16,7 +16,9 @@ class EvaluationController extends Controller
 {
     public function dashboard()
     {
-        return view('coder.misEvaluaciones');
+        $user = auth()->user();
+        $progressBarData = $this->showProgressBar($user->id);
+        return view('coder.misEvaluaciones', compact('user', 'progressBarData'));
     }
 
     public function index()
@@ -33,7 +35,7 @@ class EvaluationController extends Controller
         $promotion = $user->promotion;
         $topics = Topic::join('promotion_topic', 'topics.id', '=', 'promotion_topic.topic_id')->where('promotion_topic.promotion_id', $promotion->id)->get();
         $users = User::where('role', 'coder')->get();
-        
+
         return view('coder.autoevaluacion', compact('topics'));
     }
 
@@ -120,19 +122,18 @@ class EvaluationController extends Controller
         ]);
     }
 
-    public function showProgressBar()
+    public function showProgressBar($id)
     {
-        $user_id = auth()->user()->id;
 
-        $autoevaluacion = Evaluation::where('id_user_evaluated', $user_id)
+        $autoevaluacion = Evaluation::where('id_user_evaluated', $id)
             ->whereNull('id_user_coevaluator')
             ->value('pp_autoeval') ?? 0.0;
 
-        $coevaluacion = Evaluation::where('id_user_evaluated', $user_id)
+        $coevaluacion = Evaluation::where('id_user_evaluated', $id)
             ->whereNotNull('id_user_coevaluator')
             ->value('pp_coeval') ?? 0.0;
 
-        $average = round(($autoevaluacion + $coevaluacion) / 2, 2);
+        $average = round(($autoevaluacion + $coevaluacion) / 2);
 
         return [
             'average' => $average,
