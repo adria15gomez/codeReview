@@ -22,12 +22,16 @@
                 @endforeach
             </div>
 
-            <div class="mb-10">
-                <label for="email" class="block mb-2 text-medium font-medium">Email</label>
-                <input type="text" id="email" name="email"
-                    class="bg-white border border-orange-600 text-sm rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-full p-2.5"
-                    placeholder="Introduce el email">
+            <div class="text-center mb-4">
+                <label for="email"></label>
+                <select name="email" id="email" class=" border-orange-600 rounded-lg">
+                    <option value="">Selecciona un Coder</option>
+                    @foreach ($users as $user)
+                        <option value="{{$user->id}}">{{$user->email}}</option>
+                    @endforeach
+                </select><br>
             </div>
+
             <button type="submit"
                 class="bg-orange-600 text-white text-sm font-light py-2 px-10 rounded-lg mx-auto block hover:bg-black">
                 <p class="no-underline">Agregar coder</p>
