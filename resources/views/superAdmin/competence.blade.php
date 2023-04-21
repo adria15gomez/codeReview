@@ -13,16 +13,17 @@
                     d="M334.5 414c8.8 3.8 19 2 26-4.6l144-136c4.8-4.5 7.5-10.8 7.5-17.4s-2.7-12.9-7.5-17.4l-144-136c-7-6.6-17.2-8.4-26-4.6s-14.5 12.5-14.5 22l0 72L32 192c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l288 0 0 72c0 9.6 5.7 18.2 14.5 22z" />
             </svg>
         </a>
-        <p class="font-regular text-xl text-center my-5">Lista de competencias</p>
-        @foreach ($competences as $competence)
-            <div id="accordion-collapse-{{ $competence->id }}" data-accordion="collapse" class="mt-2">
-                <div>
-                    <button id="accordion-collapse-heading-{{ $competence->id }}" class="flex items-center justify-between w-72 p-4 bg-gray-900 font-medium text-left text-white border border-b-0 border-gray-200 rounded-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800" data-accordion-target="#accordion-collapse-body-{{ $competence->id }}" aria-expanded="false" aria-controls="accordion-collapse-body-{{ $competence->id }}">
+        <p class="font-regular text-xl mt-5 mb-3 text-center">Lista de competencias</p>
+        <div class="flex flex-wrap justify-center gap-5 px-3">
+            @foreach ($competences as $competence)
+                <div id="accordion-collapse-{{ $competence->id }}" data-accordion="collapse" class="mb-6">
+                    <button id="accordion-collapse-heading-{{ $competence->id }}" class="w-72 p-4 bg-gray-900 font-medium text-left text-white rounded-xl flex justify-between" 
+                        data-accordion-target="#accordion-collapse-body-{{ $competence->id }}" aria-expanded="false" aria-controls="accordion-collapse-body-{{ $competence->id }}" x-data="{ isOpen: false }" x-bind:class="{ 'collapsed': !isOpen }" @click="isOpen = !isOpen">
                         <h2 class="block text-white"> 
                             <p>{{ $competence->name }}</p>
                             <p>{{ $competence->description }}</p>
                         </h2>
-                        <svg data-accordion-icon class="w-6 h-6 rotate-180 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        <svg data-accordion-icon class="w-6 h-6 rotate-180 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" x-bind:class="{ 'rotate-180': isOpen }"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                     </button>
                     <div id="accordion-collapse-body-{{ $competence->id }}" class="hidden bg-gray-900 w-72 rounded-xl mt-1" aria-labelledby="accordion-collapse-heading-{{ $competence->id }}">
                         <div class="flex justify-center items-center">
@@ -37,9 +38,9 @@
                                 <button class="no-underline text-orange-500 px-2 py-2" type="submit">Eliminar</button>
                             </form>
                         </div>
-                    </div>
-                </div>           
-            </div>
-        @endforeach
+                    </div>         
+                </div>
+            @endforeach
+        </div>
     </div>
 @endsection

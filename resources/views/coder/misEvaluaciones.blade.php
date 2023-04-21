@@ -19,11 +19,11 @@ $progressBarData = app('\App\Http\Controllers\EvaluationController')->showProgre
                 <h2 id="accordion-collapse-heading-1">
                     <button type="button"
                             class="flex items-center justify-between w-72 px-4 py-2 bg-gray-900 font-medium text-left text-white border border-b-0 border-gray-200 rounded-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-                            data-accordion-target="#accordion-collapse-body-1" aria-expanded="true"
-                            aria-controls="accordion-collapse-body-1">
-                        Evaluaciones
+                            data-accordion-target="#accordion-collapse-body-1" aria-expanded="false" aria-controls="accordion-collapse-body-1"
+                            x-data="{ isOpen: false }" x-bind:class="{ 'collapsed': !isOpen }" @click="isOpen = !isOpen">
+                            Evaluaciones
                         <svg data-accordion-icon class="w-6 h-6 rotate-180" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
+                            xmlns="http://www.w3.org/2000/svg" x-bind:class="{ 'rotate-180': isOpen }">
                             <path fill-rule="evenodd"
                                 d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                                 clip-rule="evenodd"></path>
