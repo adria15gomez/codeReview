@@ -9,16 +9,12 @@
 
                 @csrf
 
-                <p class="block mb-2 text-medium font-medium">Bootcamp</p>
-                <div
-                    class="mb-6 bg-white border border-orange-600 text-sm rounded-lg focus:ring-orange-600 focus:border-orange-600 flex flex-col w-full p-2.5">
-                    @foreach ($promotions as $promotion)
-                        <label for="{{ $promotion->id }}">
-                            <input type="checkbox" id="{{ $promotion->id }}" name="promotion_id"
-                                value="{{ $promotion->id }}">
-                            {{ $promotion->name }}
-                        </label>
-                        <br>
+            <div class="text-center mb-4">
+                <label for="email"></label>
+                <select name="email" id="email" class=" border-orange-600 rounded-lg">
+                    <option value="">Selecciona un Coder</option>
+                    @foreach ($users as $user)
+                        <option value="{{$user->email}}">{{$user->email}}</option>
                     @endforeach
                 </div>
 

@@ -5,8 +5,9 @@
     <h1 class="font-medium text-4xl mt-10 md:text-5xl">{{$coder->name}}</h1>
     <img src="{{ '../img/trainer/coderdetail.svg' }}" alt="bootcamp" class="w-full h-60 my-8 sm:h-52 sm:col-span-2 md:h-80 w-100 items-center col-span-full" loading="lazy" />
     <h3 class="font-medium text-2xl py-8 md:text-medium">Media global</h3>
-    
-    
+    <div class="mt-5">
+        <x-progressBar :userId="$coder->id" :average="$progressBarData['average']" />
+    </div>
     <h3 class="font-medium text-2xl py-4 md:text-medium">Lista de evaluaciones</h3>
     <div class="flex flex-col gap-4">
         @foreach ($evaluations as $evaluation)
