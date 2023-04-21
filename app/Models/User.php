@@ -10,13 +10,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 use Illuminate\Contracts\Auth\Access\Authorizable;
-
-
-
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements Authorizable
 {
-    use HasFactory, Notifiable, AuthenticableTrait;
+    use HasFactory, Notifiable, AuthenticableTrait, HasRoles;
 
     protected $table = 'users';
     protected $fillable = ['name', 'email', 'password', 'role', 'promotion_id'];
@@ -38,15 +36,15 @@ class User extends Authenticatable implements Authorizable
         $this->attributes['password'] = bcrypt($value);
     }
 
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class, 'permissions_roles_users', 'users_id', 'roles_id');
-    }
+    // public function roles()
+    // {
+    //     return $this->belongsToMany(Role::class, 'permissions_roles_users', 'users_id', 'roles_id');
+    // }
 
-    public function permissions()
-    {
-        return $this->belongsToMany(Permission::class, 'permissions_roles_users', 'users_id', 'permissions_id');
-    }
+    // public function permissions()
+    // {
+    //     return $this->belongsToMany(Permission::class, 'permissions_roles_users', 'users_id', 'permissions_id');
+    // }
 
     public static function create(array $attributes = [])
     {

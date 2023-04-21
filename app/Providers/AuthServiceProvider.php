@@ -2,25 +2,38 @@
 
 namespace App\Providers;
 
-// use Illuminate\Support\Facades\Gate;
+use App\Models\Autoevaluation;
+use App\Models\Coevaluation;
+use App\Models\Evaluation;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use App\Models\Post;
+use App\Models\Promotion;
+use App\Models\Topic;
+use App\Policies\AutoevaluationPolicy;
+use App\Policies\CoevaluationPolicy;
+use App\Policies\CompetencePolicy;
+use App\Policies\EvaluationPolicy;
+use App\Policies\PromotionPolicy;
+use App\Policies\TopicPolicy;
+use Illuminate\Support\Facades\Gate;
+
 
 class AuthServiceProvider extends ServiceProvider
 {
-    /**
-     * The model to policy mappings for the application.
-     *
-     * @var array<class-string, class-string>
-     */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        Competence::class => CompetencePolicy::class,
+        Promotion::class => PromotionPolicy::class,
+        Topic::class => TopicPolicy::class,
+        Evaluation::class => EvaluationPolicy::class,
+        Autoevaluation::class => AutoevaluationPolicy::class,
+        Coevaluation::class => CoevaluationPolicy::class,
+
     ];
 
-    /**
-     * Register any authentication / authorization services.
-     */
-    public function boot(): void
+    public function boot()
     {
-        //
+        $this->registerPolicies();
+
+        // ...
     }
 }

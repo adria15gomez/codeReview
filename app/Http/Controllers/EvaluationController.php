@@ -29,6 +29,7 @@ class EvaluationController extends Controller
 
     public function create()
     {
+        $this->authorize('createEvaluations', Evaluation::class);
         $topics = Topic::all();
         return view('coder.autoevaluacion', compact('topics'));
     }
