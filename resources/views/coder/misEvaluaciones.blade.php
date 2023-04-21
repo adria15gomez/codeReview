@@ -1,6 +1,6 @@
-@php
-$progressBarData = app('\App\Http\Controllers\EvaluationController')->showProgressBar();
-@endphp
+{{-- @php
+$progressBarData = app('\App\Http\Controllers\EvaluationController')->showProgressBar($id);
+@endphp --}}
 
 @extends('layouts.coder')
 
@@ -11,7 +11,7 @@ $progressBarData = app('\App\Http\Controllers\EvaluationController')->showProgre
         <img src="img\coder\misevaluaciones.svg" class="h-50 xl:h-80 mt-5" alt="Factoria F5 Logo" />
         <p class="font-regular text-xl text-center mt-5">Media global</p>
         <div class="mt-5">
-            <x-progressBar :average="$progressBarData['average']" />
+            <x-progressBar :userId="$user->id" :average="$progressBarData['average']" />
         </div>
         <p class="font-regular text-xl text-center mt-10">Gestionar evaluaciones</p>
         <div class="w-72 mt-5 flex justify-center">
