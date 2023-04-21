@@ -5,9 +5,10 @@
     <h1 class="font-regular text-3xl text-center mt-5">{{$coder->name}}</h1>
     <img src="{{ '../img/trainer/coderdetail.svg' }}" alt="bootcamp" class="h-50 xl:h-80 mt-5" loading="lazy" />
     <h3 class="font-regular text-xl mt-5 mb-5 text-center">Media global</h3>
-    
-    
-    <h3 class="font-regular text-xl mt-5 text-center mb-5">Lista de evaluaciones</h3>
+    <div class="mt-5">
+        <x-progressBar :userId="$coder->id" :average="$progressBarData['average']" />
+    </div>
+    <h3 class="font-regular text-xl mt-5 mb-5 text-center">Lista de evaluaciones</h3>
     <div class="flex flex-col gap-4">
         @foreach ($evaluations as $evaluation)
             <div class="flex-col justify-center px-4 py-2 w-72 h-20 rounded-lg shadow bg-gray-900">
