@@ -7,13 +7,18 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Promotion;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\EvaluationController;
 
 class CoderController extends Controller
 {
-    public function index()
+    public function index(EvaluationController $evaluationController)
     {
         $users = User::where('role', 'coder')->paginate(2);
-        return view('trainer.coders', compact('users'));
+        $progressBarData = [];
+        foreach ($users as $user) {
+            $progressBarData[$user->id] = (new EvaluationController)->showProgressBar($user->id);
+        }
+        return view('trainer.coders', compact('users', 'progressBarData'));
     }
 
     public function create()
@@ -40,8 +45,9 @@ class CoderController extends Controller
     public function show($id)
     {
         $coder = User::findOrFail($id);
-        $evaluations = Evaluation::where('id_user_evaluated', $coder->id)->distinct()->get();
-        return view('trainer.coderDetail', compact('coder', 'evaluations'));
+        $progressBarData = (new EvaluationController)->showProgressBar($coder->id);
+        $evaluations = Evaluation::where('id_user_evaluated', $coder->id)->select('evaluation_date')->distinct()->get();
+        return view('trainer.coderDetail', compact('coder', 'evaluations', 'progressBarData'));
     }
 
     public function compare($user_id, $date)
@@ -64,8 +70,10 @@ class CoderController extends Controller
             ->where('evaluations.evaluation_date', $date)
             ->get();
 
+        $user = User::findOrFail($user_id);
+
         return view('trainer.comparisonEvaluation', [
-            'user_id' => $user_id,
+            'user' => $user,
             'date' => $date,
             'autoevaluation' => $autoevaluation,
             'coevaluations' => $coevaluations,
