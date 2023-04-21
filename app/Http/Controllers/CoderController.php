@@ -35,7 +35,7 @@ class CoderController extends Controller
 
         $user = User::where('email', $email)->first();
 
-        $user->promotion_id = (int)$promotionID;
+        $user->promotion_id = $promotionID;
 
         $user->save();
 
@@ -94,9 +94,9 @@ class CoderController extends Controller
 
         $user = User::find($id);
 
-        $user->email = $email;  
+        $user->email = $email;
         $user->promotion_id = (int)$promotionID;
-        
+
         $user->save();
 
         return redirect()->route('coderDetail.show', ['id' => $user->id]);
