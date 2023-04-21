@@ -29,15 +29,20 @@ class EvaluationController extends Controller
 
     public function create()
     {
-        $this->authorize('createEvaluations', Evaluation::class);
-        $topics = Topic::all();
+        $user = auth()->user();
+        $promotion = $user->promotion;
+        $topics = Topic::join('promotion_topic', 'topics.id', '=', 'promotion_topic.topic_id')->where('promotion_topic.promotion_id', $promotion->id)->get();
+        $users = User::where('role', 'coder')->get();
+        
         return view('coder.autoevaluacion', compact('topics'));
     }
 
-    public function createCoevalua()
+    public function createCoevalua(Request $request)
     {
-        $topics = Topic::all();
-        $users = User::where('role', 'coder')->get();;
+        $auth_user = auth()->user();
+        $promotion = $auth_user->promotion;
+        $users = User::where('promotion_id', $promotion->id)->where('role', 'coder')->get();
+        $topics = Topic::join('promotion_topic', 'topics.id', '=', 'promotion_topic.topic_id')->where('promotion_topic.promotion_id', $promotion->id)->get();
         return view('coder.coevaluacion', compact('topics', 'users'));
     }
 
@@ -62,6 +67,7 @@ class EvaluationController extends Controller
             $evaluation->save();
 
             foreach ($request->topics as $topicId => $level) {
+
                 if ($evaluationType === 'autoevaluacion') {
                     $evaluations = new Autoevaluation();
                 } else {
