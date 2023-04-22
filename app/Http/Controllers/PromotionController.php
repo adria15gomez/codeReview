@@ -91,6 +91,7 @@ class PromotionController extends Controller
         return redirect()->route('promotions.show', compact('promotion', 'topics'));
     }
 
+
     public function showTrainer($promotion)
     {
         $trainer = User::where('id', Auth::id())->where('role', 'trainer')->firstOrFail();
