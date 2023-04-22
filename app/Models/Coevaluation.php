@@ -10,6 +10,7 @@ class Coevaluation extends Model
     use HasFactory;
 
     protected $table = 'evaluations_topics_coevaluations';
+    protected $fillable = ['id_user_evaluated'];
 
     public function topics()
     {

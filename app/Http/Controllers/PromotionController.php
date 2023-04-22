@@ -15,7 +15,6 @@ class PromotionController extends Controller
     {
         $promotions = Promotion::all();
         $topics = Topic::all();
-        // dd($promotions);
         return view('trainer.promotions', ['promotions' => $promotions, 'topics' => $topics]);
     }
 
@@ -35,7 +34,6 @@ class PromotionController extends Controller
         $promotion->trainer = $request->trainer;
         $promotion->start_date = $request->start_date;
         $promotion->end_date = $request->end_date;
-        //$promotion->topic_id = $request->topic_id;
         $promotion->evaluation1 = $request->evaluation1;
         $promotion->evaluation2 = $request->evaluation2;
         $promotion->evaluation3 = $request->evaluation3;
@@ -87,26 +85,6 @@ class PromotionController extends Controller
         $promotion->topic_id = $request->topic_id;
 
         return redirect()->route('promotions.show', compact('promotion', 'topics'));
-    }
-
-    public function showTrainer($promotion)
-    {
-        $promotions = Promotion::findOrFail($promotion);
-        $topics = $promotions->topics()->orderBy('promotion_topic.id')->get();
-        $competences = $promotions->topics()->with('competence')->get()->pluck('competence')->unique();
-        $coders = User::where('promotion_id', $promotion)->get();
-
-        return view('trainer.bootcampDetail', compact('promotions', 'topics', 'competences', 'coders'));
-    }
-
-    public function showCoder()
-    { 
-        $user = auth()->user();
-        $promotions = Promotion::find($user->promotion->id);
-        $topics = $promotions->topics()->orderBy('promotion_topic.id')->get();
-        $competences = $promotions->topics()->with('competence')->get()->pluck('competence')->unique();
-
-        return view('coder.miBootcamp', compact('promotions', 'topics', 'competences'));
     }
 
     public function destroy(Request $request, $promotion)
