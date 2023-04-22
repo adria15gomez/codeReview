@@ -15,7 +15,7 @@ class CoderController extends Controller
     public function index(EvaluationController $evaluationController)
     {
         $trainer = User::where('id', Auth::id())->where('role', 'trainer')->firstOrFail();
-        $users = User::where('role', 'coder')->paginate(2);
+        $users = User::where('role', 'coder')->paginate(6);
         $progressBarData = [];
         foreach ($users as $user) {
             $progressBarData[$user->id] = (new EvaluationController)->showProgressBar($user->id);
@@ -33,6 +33,14 @@ class CoderController extends Controller
 
     public function assignToBootcamp(Request $request)
     {
+        $request->validate([    
+            'promotion_id' => 'required',    
+            'email' => 'required'], 
+            [
+                'promotion_id' => 'Debes seleccionar una promoción',    
+                'email.required' => 'Debes seleccionar un coder'
+        ]);
+
         $email = $request->input('email');
         $promotionID = $request->input('promotion_id');
 

@@ -11,7 +11,7 @@ class TrainerController extends Controller
     public function index()
     {
         $user = User::where('id', Auth::id())->where('role', 'admin')->firstOrFail();
-        $trainers = User::where('role', 'trainer')->paginate(2);
+        $trainers = User::where('role', 'trainer')->paginate(8);
         return view('superAdmin.trainers', compact('trainers'));
     }
 

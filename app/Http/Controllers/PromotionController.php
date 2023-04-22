@@ -15,7 +15,7 @@ class PromotionController extends Controller
     public function index()
     {
         $trainer = User::where('id', Auth::id())->where('role', 'trainer')->firstOrFail();
-        $promotions = Promotion::all();
+        $promotions = Promotion::paginate(8);
         $topics = Topic::all();
         return view('trainer.promotions', ['promotions' => $promotions, 'topics' => $topics]);
     }
@@ -31,6 +31,33 @@ class PromotionController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([    
+            'name' => 'required',    
+            'trainer' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'topic_id' => 'required',
+            'evaluation1' => 'required',
+            'evaluation2' => 'required',
+            'evaluation3' => 'required',
+            'evaluation4' => 'required',
+            'zoom_url' => 'required',
+            'slack_url' => 'required',
+        ], 
+            [
+                'name.required' => 'El campo promoción es obligatorio',    
+                'trainer.required' => 'El campo formador/a es obligatorio',
+                'start_date.required' => 'El campo fecha inicio es obligatorio',
+                'end_date.required' => 'El campo fecha fin es obligatorio',
+                'topic_id.required' => 'Debes seleccionar un topic',
+                'evaluation1.required' => 'El campo evaluacion1 es obligatorio',
+                'evaluation2' => 'El campo evaluacion2 es obligatorio',
+                'evaluation3.required' => 'El campo evaluacion3 es obligatorio',
+                'evaluation4.required' => 'El campo evaluacion4 es obligatorio',
+                'zoom_url.required' => 'El campo zoom URL es obligatorio',
+                'slack_url.required' => 'El campo slack URL es obligatorio',
+        ]);
+        
         $promotion = new Promotion();
 
         $promotion->name = $request->name;
@@ -64,7 +91,7 @@ class PromotionController extends Controller
         $promotion = Promotion::find($promotion);
         $topics = Topic::all();
 
-        return view('trainer.editPromotion', compact('promotion', 'topics'));
+        return view('trainer.editPromotion', compact('promotion', 'topics', 'users'));
     }
 
     public function update(Request $request, Promotion $promotion)

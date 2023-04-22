@@ -50,7 +50,7 @@ class EvaluationController extends Controller
     }
 
     public function store(Request $request)
-    {
+    {   
         DB::transaction(function () use ($request) {
 
             $evaluationType = $request->input('evaluationType');
@@ -61,6 +61,12 @@ class EvaluationController extends Controller
             } else {
                 $id_user_evaluated = $request->input('id_user_coevaluator');
                 $id_user_coevaluator = auth()->id();
+
+                $request->validate([    
+                    'id_user_coevaluator' => 'required',    
+                ], [
+                    'id_user_coevaluator.required' => 'El campo seleccionar coder es requerido',
+                ]);
             }
 
             $evaluation = new Evaluation;

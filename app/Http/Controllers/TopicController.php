@@ -26,6 +26,14 @@ class TopicController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([    
+            'name' => 'required',    
+            'competence_id' => 'required'], 
+            [
+                'name.required' => 'El campo topic es obligatorio',    
+                'competence_id.required' => 'El campo competencia es obligatorio'
+        ]);
+
         $topics = new Topic();
 
         $topics->name = $request->name;
