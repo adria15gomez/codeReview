@@ -14,7 +14,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
         {{--Font Awasome--}}
         <script src="https://kit.fontawesome.com/afad73b29b.js"crossorigin="anonymous"></script>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
 
     </head>
 
