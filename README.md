@@ -1,6 +1,6 @@
+<p align="center"><img src="public\img\codereview.png" width="600" alt="CodeReview Logo"></p>
 
-
-# Project Title
+# Description
 
 The purpose of this project is to encourage students to advance in their knowledge. To achieve this, we have developed an app that allows each student to assess themselves and their classmates. Teachers can also manage student evaluations by creating, editing, and deleting promotions.
 
@@ -76,11 +76,16 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-- [MySQL](https://www.mysql.com/)
-- [Laravel 10](https://laravel.com/)
-- [PHP 8](https://www.php.net/)
-- [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/)
+| Tech | Type | Use |
+| --- | --- | --- |
+| ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white) | Language | Backend |
+| ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) | Language | Frontend |
+| ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) | Language | Frontend |
+| ![Laravel](https://img.shields.io/badge/laravel-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white) | Framework | Frontend and Backend |
+| ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white) | Library | Frontend |
+| ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white) | Library | Package Manager |
+| ![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white) | Database Management System | Database |
+| ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white) | Design Software | Prototype |
 
 ## Contributing
 
@@ -96,8 +101,4 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-
-
-
+© CodeReview 2023

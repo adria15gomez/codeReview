@@ -2,43 +2,56 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Auth\Authenticatable as AuthenticableTrait;
+use Illuminate\Contracts\Auth\Access\Authorizable;
+use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements Authorizable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory, Notifiable, AuthenticableTrait;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $table = 'users';
+    protected $fillable = ['name', 'email', 'password', 'role', 'promotion_id'];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    public $timestamps = false;
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function promotion()
+    {
+        return $this->belongsTo(Promotion::class, 'promotion_id');
+    }
+
+    public function evaluation()
+    {
+        return $this->hasOne(Evaluation::class, 'evaluation_id');
+    }
+
+    public function setPasswordAtributte($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
+    public static function create(array $attributes = [])
+    {
+        static::unguard();
+
+        $attributes['role'] = 'coder';
+
+        if (static::count() === 0) {
+            $attributes['role'] = 'admin';
+        } elseif (strpos($attributes['email'], '@factoriaf5.org') !== false) {
+            $attributes['role'] = 'trainer';
+        }
+
+        static::reguard();
+
+        return tap(new static($attributes), function ($instance) {
+            $instance->save();
+        });
+    }
 }
