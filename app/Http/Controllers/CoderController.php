@@ -14,7 +14,6 @@ class CoderController extends Controller
 {
     public function index(EvaluationController $evaluationController)
     {
-        $trainer = User::where('id', Auth::id())->where('role', 'trainer')->firstOrFail();
         $users = User::where('role', 'coder')->paginate(6);
         $progressBarData = [];
         foreach ($users as $user) {
@@ -25,7 +24,6 @@ class CoderController extends Controller
 
     public function create()
     {
-        $trainer = User::where('id', Auth::id())->where('role', 'trainer')->firstOrFail();
         $promotions = Promotion::all();
         $users = User::where('role', 'coder')->get();
         return view('trainer.agregarCoder', compact('promotions', 'users'));
@@ -33,13 +31,16 @@ class CoderController extends Controller
 
     public function assignToBootcamp(Request $request)
     {
-        $request->validate([    
-            'promotion_id' => 'required',    
-            'email' => 'required'], 
+        $request->validate(
             [
-                'promotion_id' => 'Debes seleccionar una promoción',    
+                'promotion_id' => 'required',
+                'email' => 'required'
+            ],
+            [
+                'promotion_id' => 'Debes seleccionar una promoción',
                 'email.required' => 'Debes seleccionar un coder'
-        ]);
+            ]
+        );
 
         $email = $request->input('email');
         $promotionID = $request->input('promotion_id');
@@ -55,7 +56,6 @@ class CoderController extends Controller
 
     public function show($id)
     {
-        $trainer = User::where('id', Auth::id())->where('role', 'trainer')->firstOrFail();
         $coder = User::findOrFail($id);
         $progressBarData = (new EvaluationController)->showProgressBar($coder->id);
         $evaluations = Evaluation::where('id_user_evaluated', $coder->id)->select('evaluation_date')->distinct()->get();
@@ -64,7 +64,6 @@ class CoderController extends Controller
 
     public function compare($user_id, $date)
     {
-        $trainer = User::where('id', Auth::id())->where('role', 'trainer')->firstOrFail();
         $autoevaluation = DB::table('evaluations_topics_autoevaluations')
             ->join('evaluations', 'evaluations.id', '=', 'evaluations_topics_autoevaluations.evaluation_id')
             ->join('topics', 'topics.id', '=', 'evaluations_topics_autoevaluations.topic_id')
@@ -94,7 +93,6 @@ class CoderController extends Controller
 
     public function edit($id)
     {
-        $trainer = User::where('id', Auth::id())->where('role', 'trainer')->firstOrFail();
         $coder = User::find($id);
         $promotions = Promotion::all();
         return view('trainer.editarCoder', compact('coder', 'promotions'));

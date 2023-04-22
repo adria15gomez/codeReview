@@ -12,14 +12,12 @@ class TopicController extends Controller
 {
     public function index()
     {
-        $trainer = User::where('id', Auth::id())->where('role', 'trainer')->firstOrFail();
         $topics = Topic::all();
         return view('trainer.topic', compact('topics'));
     }
 
     public function create()
     {
-        $trainer = User::where('id', Auth::id())->where('role', 'trainer')->firstOrFail();
         $competences = Competence::all();
         return view('trainer.addTopic', compact('competences'));
     }
@@ -45,7 +43,6 @@ class TopicController extends Controller
 
     public function edit($id)
     {
-        $trainer = User::where('id', Auth::id())->where('role', 'trainer')->firstOrFail();
         $topic = Topic::find($id);
         $competences = Competence::all();
         return view('trainer.editTopic', compact('topic', 'competences'));

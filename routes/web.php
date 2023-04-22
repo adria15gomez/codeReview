@@ -30,57 +30,57 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::controller(CompetenceController::class)->group(function () {
-    Route::get('competencias', 'index')->name('competence')->middleware('auth');
-    Route::get('agregar-competencia', 'create')->name('addCompetence.create')->middleware('auth');
+    Route::get('competencias', 'index')->name('competence');
+    Route::get('agregar-competencia', 'create')->name('addCompetence.create');
     Route::post('agregar-competencia', 'store')->name('addCompetence.store');
-    Route::get('editar-competencia/{id}', 'edit')->name('editCompetence.edit')->middleware('auth');
+    Route::get('editar-competencia/{id}', 'edit')->name('editCompetence.edit');
     Route::put('editar-competencia/{id}', 'update')->name('editCompetence.update');
     Route::delete('eliminar-competencia/{id}', 'destroy')->name('deleteCompetence.distroy');
 });
 
 Route::controller(TopicController::class)->group(function () {
-    Route::get('topic', 'index')->name('topic')->middleware('auth');
-    Route::get('agregar-topic', 'create')->name('addTopic.create')->middleware('auth');
+    Route::get('topic', 'index')->name('topic');
+    Route::get('agregar-topic', 'create')->name('addTopic.create');
     Route::post('agregar-topic', 'store')->name('addTopic.store');
-    Route::get('editar-topic/{id}', 'edit')->name('editTopic.edit')->middleware('auth');
+    Route::get('editar-topic/{id}', 'edit')->name('editTopic.edit');
     Route::put('editar-topic/{id}', 'update')->name('editTopic.update');
     Route::delete('eliminar-topic/{id}', 'destroy')->name('deleteTopic.distroy');
 });
 
 Route::controller(PromotionController::class)->group(function () {
-    Route::get('/promociones', 'index')->name('trainer.promotions')->middleware('auth');
-    Route::get('agregar-promocion', 'create')->name('addPromotion.create')->middleware('auth');
+    Route::get('/promociones', 'index')->name('trainer.promotions');
+    Route::get('agregar-promocion', 'create')->name('addPromotion.create');
     Route::post('agregar-promocion', 'store')->name('addPromotion.store');
-    Route::get('editar-promocion/{promotion}', 'edit')->name('editPromotion.edit')->middleware('auth');
+    Route::get('editar-promocion/{promotion}', 'edit')->name('editPromotion.edit');
     Route::put('editar-promocion/{promotion}', 'update')->name('editPromotion.update');
-    Route::get('bootcamp-detail/{promotion}', 'showTrainer')->name('promotions.show')->middleware('auth');
-    Route::get('mi-bootcamp', 'showCoder')->name('promotions.showCoder')->middleware('auth');
+    Route::get('bootcamp-detail/{promotion}', 'showTrainer')->name('promotions.show');
+    Route::get('mi-bootcamp', 'showCoder')->name('promotions.showCoder');
     Route::delete('eliminar-promocion/{promotion}', 'destroy')->name('deletePromotion.destroy');
 });
 
 Route::controller(EvaluationController::class)->group(function () {
-    Route::get('mis-evaluaciones', 'dashboard')->name('evaluations')->middleware('auth');
-    Route::get('mi-historico-evaluaciones', 'index')->name('evaluations.index')->middleware('auth');
-    Route::get('autoevaluacion', 'create')->name('evaluation.create')->middleware('auth');
+    Route::get('mis-evaluaciones', 'dashboard')->name('evaluations');
+    Route::get('mi-historico-evaluaciones', 'index')->name('evaluations.index');
+    Route::get('autoevaluacion', 'create')->name('evaluation.create');
     Route::post('evaluacion', 'store')->name('evaluation.store');
-    Route::get('coevaluacion', 'createCoevalua')->name('evaluation.createCoevalua')->middleware('auth');
+    Route::get('coevaluacion', 'createCoevalua')->name('evaluation.createCoevalua');
     Route::post('coevaluacion', 'store')->name('evaluation.store');
-    Route::get('evaluacion/{user_id}/{date}', 'compare')->name('coder.comparison')->middleware('auth');
+    Route::get('evaluacion/{user_id}/{date}', 'compare')->name('coder.comparison');
 });
 
 Route::controller(CoderController::class)->group(function () {
-    Route::get('coders', 'index')->name('coders')->middleware('auth');
-    Route::get('agregar-coder', 'create')->name('addCoder.create')->middleware('auth');
+    Route::get('coders', 'index')->name('coders');
+    Route::get('agregar-coder', 'create')->name('addCoder.create');
     Route::post('agregar-coder', 'assignToBootcamp')->name('addCoder.assignToBootcamp');
-    Route::get('coder-detail/{id}', 'show')->name('coderDetail.show')->middleware('auth');
-    Route::get('historico-evaluacion/{user_id}/{date}', 'compare')->name('trainer.comparisonEvaluation')->middleware('auth');
-    Route::get('editar-coder/{id}', 'edit')->name('editCoder.edit')->middleware('auth');
+    Route::get('coder-detail/{id}', 'show')->name('coderDetail.show');
+    Route::get('historico-evaluacion/{user_id}/{date}', 'compare')->name('trainer.comparisonEvaluation');
+    Route::get('editar-coder/{id}', 'edit')->name('editCoder.edit');
     Route::put('editar-coder/{id}', 'update')->name('editCoder.update');
     Route::delete('eliminar-coder/{id}', 'destroy')->name('deleteCoder.destroy');
 });
 
 Route::controller(TrainerController::class)->group(function () {
-    Route::get('formadores', 'index')->name('trainers')->middleware('auth');
+    Route::get('formadores', 'index')->name('trainers');
     Route::delete('eliminar-trainer/{id}', 'destroy')->name('deleteTrainer.destroy');
 });
 
