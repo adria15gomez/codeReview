@@ -109,7 +109,7 @@
         </div>
 
         <div class="mt-5 items-center px-2 flex flex-col">
-            <a type="submit" value="Volver" href="{{route('evaluations')}}" class="bg-black text-white text-sm font-light py-2 px-4 mt-4 rounded-lg mx-auto block w-24">Volver</a>
+            <a type="submit" value="Volver" href="{{route('evaluations')}}" class="bg-black text-white text-sm text-center font-light py-2 px-4 mt-4 rounded-lg block w-24">Volver</a>
         </div>        
     </div>
 </div>

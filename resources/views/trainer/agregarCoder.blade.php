@@ -19,7 +19,7 @@
                     @endif
                 </div>
 
-                <div class="text-center mb-4">
+                <div class="text-left mb-4">
                     <p class="block mb-2 text-medium font-medium">Bootcamp</p>
                     <div class="mb-6 bg-white border border-orange-600 text-sm rounded-lg focus:ring-orange-600 focus:border-orange-600 flex flex-col w-full p-2.5">
                         @foreach ($promotions as $promotion)

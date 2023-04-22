@@ -6,7 +6,7 @@
     <p class="font-regular text-xl text-orange-600 mt-5 mb-5 text-center">Resultados evaluación</p>
     <img src="../img/trainer/coderdetail.svg" class="h-50 mx-auto xl:h-80" alt="Agregar competencia" />
         @foreach ($evaluations as $evaluation)
-            <div class="flex-col justify-center px-4 py-2 w-72 h-20 rounded-lg shadow bg-gray-900">
+            <div class="flex-col justify-center px-4 py-2 w-72 h-20 mb-5 rounded-lg shadow bg-gray-900">
                 <div class="mb-1">
                     <p><span class="text-lg font-medium text-white">Evaluacion {{$evaluation->evaluation_date}}</span></p>
                 </div>
