@@ -1,12 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
-class TrainerController extends Controller
+
+class TrainerTest extends TestCase
 {
+    /**
+     * A basic feature test example.
+     */
     public function index()
     {
         $trainers = User::where('role', 'trainer')->paginate(2);
