@@ -8,19 +8,21 @@ use Illuminate\Http\Request;
 use App\Models\Promotion;
 use App\Models\Topic;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class PromotionController extends Controller
 {
     public function index()
     {
+        $trainer = User::where('id', Auth::id())->where('role', 'trainer')->firstOrFail();
         $promotions = Promotion::all();
         $topics = Topic::all();
-        // dd($promotions);
         return view('trainer.promotions', ['promotions' => $promotions, 'topics' => $topics]);
     }
 
     public function create()
     {
+        $users = User::where('id', Auth::id())->where('role', 'trainer')->firstOrFail();
         $users = User::where('role', 'trainer')->get();
         $topics = Topic::all();
         return view('trainer.addPromotion', compact('topics', 'users'));
@@ -35,7 +37,6 @@ class PromotionController extends Controller
         $promotion->trainer = $request->trainer;
         $promotion->start_date = $request->start_date;
         $promotion->end_date = $request->end_date;
-        //$promotion->topic_id = $request->topic_id;
         $promotion->evaluation1 = $request->evaluation1;
         $promotion->evaluation2 = $request->evaluation2;
         $promotion->evaluation3 = $request->evaluation3;
@@ -59,6 +60,7 @@ class PromotionController extends Controller
 
     public function edit($promotion)
     {
+        $trainer = User::where('id', Auth::id())->where('role', 'trainer')->firstOrFail();
         $promotion = Promotion::find($promotion);
         $topics = Topic::all();
 
@@ -91,6 +93,7 @@ class PromotionController extends Controller
 
     public function showTrainer($promotion)
     {
+        $trainer = User::where('id', Auth::id())->where('role', 'trainer')->firstOrFail();
         $promotions = Promotion::findOrFail($promotion);
         $topics = $promotions->topics()->orderBy('promotion_topic.id')->get();
         $competences = $promotions->topics()->with('competence')->get()->pluck('competence')->unique();
@@ -100,9 +103,9 @@ class PromotionController extends Controller
     }
 
     public function showCoder()
-    { 
-        $user = auth()->user();
-        $promotions = Promotion::find($user->promotion->id);
+    {
+        $coder = User::where('id', Auth::id())->where('role', 'coder')->firstOrFail();
+        $promotions = Promotion::find($coder->promotion->id);
         $topics = $promotions->topics()->orderBy('promotion_topic.id')->get();
         $competences = $promotions->topics()->with('competence')->get()->pluck('competence')->unique();
 
