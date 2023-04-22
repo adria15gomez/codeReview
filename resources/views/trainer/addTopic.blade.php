@@ -32,6 +32,16 @@
                     </label>
                     @endforeach
                 </div>
+                <button type="submit"
+                    class="bg-orange-600 text-white text-sm font-light py-2 px-10 rounded-lg mx-auto block hover:bg-black">
+                    <p class="no-underline">Agregar topic</p>
+                </button>
+            </form>
+            <div>
+                <button
+                    class="bg-gray-900 text-white text-sm font-light py-2 rounded-lg mx-auto block text-center w-40 hover:bg-black">
+                    <a class="no-underline" href="{{ route('topic') }}">Cancelar</a>
+                </button>
             </div>
             <button type="submit" class="bg-orange-600 text-white text-sm font-light py-2 px-10 rounded-lg mx-auto block hover:bg-black">
                 <p class="no-underline">Agregar topic</p>
@@ -43,6 +53,4 @@
             </a>
         </div>
     </div>
-</div>
 @endsection
-

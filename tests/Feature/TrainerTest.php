@@ -1,17 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Tests\Feature;
 
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
 
-class TrainerController extends Controller
+
+class TrainerTest extends TestCase
 {
+    /**
+     * A basic feature test example.
+     */
     public function index()
     {
-        $user = User::where('id', Auth::id())->where('role', 'admin')->firstOrFail();
-        $trainers = User::where('role', 'trainer')->paginate(8);
+        $trainers = User::where('role', 'trainer')->paginate(2);
         return view('superAdmin.trainers', compact('trainers'));
     }
 

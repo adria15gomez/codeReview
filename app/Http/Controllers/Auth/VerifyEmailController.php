@@ -18,10 +18,10 @@ class VerifyEmailController extends Controller
         if ($request->user()->hasVerifiedEmail()) {
             switch ($request->user()->role) {
                 case 'admin':
-                    return redirect()->route('competence')->with('verified', '1');
+                    return redirect()->route('trainers')->with('verified', '1');
                     break;
                 case 'trainer':
-                    return redirect()->route('trainer.promotions')->with('verified', '1');
+                    return redirect()->route('coders')->with('verified', '1');
                     break;
                 default:
                     return redirect()->route('evaluations')->with('verified', '1');

@@ -63,10 +63,10 @@ class RegisteredUserController extends Controller
 
         switch ($userRol) {
             case 'admin':
-                return redirect()->route('competence');
+                return redirect()->route('trainers');
                 break;
             case 'trainer':
-                return redirect()->route('trainer.promotions');
+                return redirect()->route('coders');
                 break;
             default:
                 return redirect()->route('evaluations');

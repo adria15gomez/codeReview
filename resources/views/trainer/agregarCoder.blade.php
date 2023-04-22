@@ -13,7 +13,7 @@
                     @if ($errors->has('promotion_id'))
                         <div class="alert alert-danger mb-1 text-center font-bold">{{ $errors->first('promotion_id') }}</div>
                     @endif
-    
+   
                     @if ($errors->has('email'))
                         <div class="alert alert-danger mb-1 text-center font-bold">{{ $errors->first('email') }}</div>
                     @endif
@@ -50,4 +50,3 @@
         </div>
     </div>
 @endsection
-

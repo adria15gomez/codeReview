@@ -4,18 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Competence;
 use App\Models\Topic;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CompetenceController extends Controller
 {
     public function index()
     {
+        $admin = User::where('id', Auth::id())->where('role', 'admin')->firstOrFail();
         $competences = Competence::all();
         return view('superAdmin.competence', compact('competences'));
     }
 
     public function create()
     {
+        $admin = User::where('id', Auth::id())->where('role', 'admin')->firstOrFail();
         return view('superAdmin.addCompetence');
     }
 
@@ -40,6 +44,7 @@ class CompetenceController extends Controller
 
     public function edit($id)
     {
+        $admin = User::where('id', Auth::id())->where('role', 'admin')->firstOrFail();
         $competence = Competence::find($id);
         return view('superAdmin.editCompetence', compact('competence'));
     }

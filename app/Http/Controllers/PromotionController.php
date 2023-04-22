@@ -8,11 +8,13 @@ use Illuminate\Http\Request;
 use App\Models\Promotion;
 use App\Models\Topic;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class PromotionController extends Controller
 {
     public function index()
     {
+        $trainer = User::where('id', Auth::id())->where('role', 'trainer')->firstOrFail();
         $promotions = Promotion::paginate(8);
         $topics = Topic::all();
         return view('trainer.promotions', ['promotions' => $promotions, 'topics' => $topics]);
@@ -20,6 +22,7 @@ class PromotionController extends Controller
 
     public function create()
     {
+        $users = User::where('id', Auth::id())->where('role', 'trainer')->firstOrFail();
         $users = User::where('role', 'trainer')->get();
         $topics = Topic::all();
         return view('trainer.addPromotion', compact('topics', 'users'));
@@ -84,7 +87,7 @@ class PromotionController extends Controller
 
     public function edit($promotion)
     {
-        $users = User::where('role', 'trainer')->get();
+        $trainer = User::where('id', Auth::id())->where('role', 'trainer')->firstOrFail();
         $promotion = Promotion::find($promotion);
         $topics = Topic::all();
 
@@ -115,8 +118,10 @@ class PromotionController extends Controller
         return redirect()->route('promotions.show', compact('promotion', 'topics'));
     }
 
+
     public function showTrainer($promotion)
     {
+        $trainer = User::where('id', Auth::id())->where('role', 'trainer')->firstOrFail();
         $promotions = Promotion::findOrFail($promotion);
         $topics = $promotions->topics()->orderBy('promotion_topic.id')->get();
         $competences = $promotions->topics()->with('competence')->get()->pluck('competence')->unique();
@@ -126,9 +131,9 @@ class PromotionController extends Controller
     }
 
     public function showCoder()
-    { 
-        $user = auth()->user();
-        $promotions = Promotion::find($user->promotion->id);
+    {
+        $coder = User::where('id', Auth::id())->where('role', 'coder')->firstOrFail();
+        $promotions = Promotion::find($coder->promotion->id);
         $topics = $promotions->topics()->orderBy('promotion_topic.id')->get();
         $competences = $promotions->topics()->with('competence')->get()->pluck('competence')->unique();
 
