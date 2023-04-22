@@ -12,27 +12,28 @@ class CompetenceController extends Controller
 {
     public function index()
     {
-        $admin = User::where('id', Auth::id())->where('role', 'admin')->firstOrFail();
         $competences = Competence::all();
         return view('superAdmin.competence', compact('competences'));
     }
 
     public function create()
     {
-        $admin = User::where('id', Auth::id())->where('role', 'admin')->firstOrFail();
         return view('superAdmin.addCompetence');
     }
 
     public function store(Request $request)
     {
-        $request->validate([    
-            'name' => 'required',    
-            'description' => 'required'], 
+        $request->validate(
             [
-                'name.required' => 'El campo marco de competencia es obligatorio',    
+                'name' => 'required',
+                'description' => 'required'
+            ],
+            [
+                'name.required' => 'El campo marco de competencia es obligatorio',
                 'description.required' => 'El campo competencia es obligatorio'
-        ]);
-        
+            ]
+        );
+
         $competences = new Competence();
 
         $competences->name = $request->name;
@@ -44,7 +45,6 @@ class CompetenceController extends Controller
 
     public function edit($id)
     {
-        $admin = User::where('id', Auth::id())->where('role', 'admin')->firstOrFail();
         $competence = Competence::find($id);
         return view('superAdmin.editCompetence', compact('competence'));
     }

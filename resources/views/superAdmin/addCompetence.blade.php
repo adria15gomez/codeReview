@@ -1,6 +1,6 @@
 @extends('layouts.superadmin')
 
-@section('content') 
+@section('content')
     <section class="flex flex-col items-center justify-center">
         <h1 class="font-regular text-3xl text-center mt-5">Agregar Competencia</h1>
         <img src="../img/admin/agregareditarcompetencia.svg" class="h-50 mt-5 xl:h-80" alt="Agregar competencia" />
@@ -22,8 +22,7 @@
                 <label for="name" class="block mb-2 text-medium font-medium">Marco de competencias</label>
                 <input type="text" name="name"
                     class="bg-white border border-orange-600 text-sm rounded-lg focus:ring-orange-600 focus:border-orange-600 block w-72 p-2.5"
-                    placeholder="Nombre " 
-                />
+                    placeholder="Nombre " />
             </div>
 
             <div class="mb-6">
@@ -38,9 +37,9 @@
             </button>
 
         </form>
-        <a  href="{{ route('competence') }}"
+        <a href="{{ route('competence') }}"
             class="bg-gray-900 text-white text-sm font-light py-2 rounded-lg mx-auto block text-center w-40 hover:bg-black mt-6">
             <p class="no-underline">Cancelar</p>
-        </a>        
+        </a>
     </section>
 @endsection
