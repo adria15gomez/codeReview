@@ -16,7 +16,6 @@ class EvaluationController extends Controller
 {
     public function dashboard()
     {
-        //$coder = User::where('id', Auth::id())->where('role', 'coder')->firstOrFail();
         $user = auth()->user();
         $progressBarData = $this->showProgressBar($user->id);
         return view('coder.misEvaluaciones', compact('user', 'progressBarData'));
@@ -24,7 +23,6 @@ class EvaluationController extends Controller
 
     public function index()
     {
-        //$coder = User::where('id', Auth::id())->where('role', 'coder')->firstOrFail();
         $user = auth()->user();
         $evaluations = Evaluation::where('id_user_evaluated', $user->id)->select('evaluation_date')->distinct()->get();
 
@@ -33,7 +31,6 @@ class EvaluationController extends Controller
 
     public function create()
     {
-        //$coder = User::where('id', Auth::id())->where('role', 'coder')->firstOrFail();
         $user = auth()->user();
         $promotion = $user->promotion;
         $topics = Topic::join('promotion_topic', 'topics.id', '=', 'promotion_topic.topic_id')->where('promotion_topic.promotion_id', $promotion->id)->get();
@@ -43,7 +40,6 @@ class EvaluationController extends Controller
 
     public function createCoevalua(Request $request)
     {
-        //$coder = User::where('id', Auth::id())->where('role', 'coder')->firstOrFail();
         $user = auth()->user();
         $promotion = $user->promotion;
         $users = User::where('promotion_id', $promotion->id)->where('role', 'coder')->get();
@@ -105,7 +101,6 @@ class EvaluationController extends Controller
 
     public function compare($user_id, $date)
     {
-        //$coder = User::where('id', Auth::id())->where('role', 'coder')->firstOrFail();
         $autoevaluation = DB::table('evaluations_topics_autoevaluations')
             ->join('evaluations', 'evaluations.id', '=', 'evaluations_topics_autoevaluations.evaluation_id')
             ->join('topics', 'topics.id', '=', 'evaluations_topics_autoevaluations.topic_id')
