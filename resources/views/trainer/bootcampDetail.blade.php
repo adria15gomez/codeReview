@@ -33,15 +33,29 @@
                 </svg>
             </a>
         </div>
-        <h3 class="font-regular text-xl text-center mt-10">Lista de Topics</h3>
-        @foreach ($competences as $competence)
-            <div class="flex justify-center mt-2">
-                <p class="mr-1"><strong>{{$competence->name}}:</strong></p>
-                @foreach ($topics as $topic)
-                <p class="mr-1">{{$topic->name}},</p>
-                @endforeach  
-            </div> 
-        @endforeach
+        <h3 class="font-regular text-xl text-center mt-10 mb-5">Lista de Topics</h3>
+        <table class="table-auto border-2 border-collapse border-orange-600 rounded-lg">
+            <thead class="border-2 px-4 py-2 border-orange-600 rounded-lg">
+              <tr>
+                <th>COMPETENCIAS</th>
+                <th class="border-2 px-4 py-2 border-orange-600 rounded-lg">TOPICS</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($competences as $competence)
+                <tr class="border-2 px-4 py-2 border-orange-600 rounded-lg">
+                  <td class="px-4 py-2 w-96"><strong>{{$competence->name}}<br><span class="text-sm font-medium">{{$competence->description}}</span></strong></td>
+                  <td class="border-2 px-4 py-2 border-orange-600 rounded-lg">
+                    @foreach ($topics as $topic)
+                      @if ($topic->competence_id == $competence->id)
+                        <p>{{$topic->name}}</p>
+                      @endif
+                    @endforeach
+                  </td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
         <h3 class="font-regular text-xl text-center mt-10 mb-5">Lista de Coders</h3>
         <table class="table-auto border-2 border-collapse border-orange-600 rounded-lg">
             @foreach ($coders->chunk(2) as $chunk)
