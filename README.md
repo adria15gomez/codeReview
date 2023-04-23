@@ -2,9 +2,12 @@
 
 # Descripción
 
-El objetivo de este proyecto es estimular a los estudiantes de Factoría F5 a que se sientan seguros de sí mismos y avancen en su aprendizaje. Para lograrlo, desarrollamos una aplicación que permite a cada coder evaluar sus habilidades y la de sus compañeros. Los profesores pueden gestionar todas esas evaluaciones y estudiantes al crear, editar y eliminar promociones, temas ("topics") y competencias.
+El objetivo de este proyecto es estimular a los estudiantes de Factoría F5 a que se sientan seguros de sí mismos y avancen en su aprendizaje. Para lograrlo, desarrollamos una aplicación que permite a cada coder puntuar sus habilidades y la de sus compañeros. Los profesores pueden gestionar todas esas evaluaciones y estudiantes al crear, editar y eliminar promociones, temas ("topics") y competencias.
 
-La aplicación es responsive, de modo que pueda emplearse por formadores y coders tanto en su ordenador, como desde un dispositivo móvil.
+La aplicación es responsive, de modo que pueda emplearse por formadores y coders tanto en su ordenador como desde un dispositivo móvil.
+
+![coderReview_eva](https://user-images.githubusercontent.com/117080861/233859320-583c1970-2f19-4d23-8d21-6e0d539e9e22.png)
+
 
 ## Funcionalidades
 
@@ -25,7 +28,7 @@ La aplicación es responsive, de modo que pueda emplearse por formadores y coder
 
 ## Instalación
 
-Seguir estas instrucciones garantiza crearse una copia del proyecto y ejecutarla en una máquina local para desarrollo o testing. 
+Seguir las siguientes instrucciones permite crear una copia del proyecto y ejecutarla en una máquina local para desarrollo o testing. 
 
 ### Prerequisitos
 
@@ -123,7 +126,7 @@ public function testCanInsertCompetence(): void
 
 Nos plegamos a códigos de conducta estándar de la comunidad de software, entre ellos: [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426). 
 
-Cualquier persona puede clonar y solicitar pull requests a los administradores de este repo siguiendo esas normas.
+Cualquier persona puede clonar y solicitar pull requests a los administradores de este repositorio siguiendo esas normas.
 
 ## Autores
 
