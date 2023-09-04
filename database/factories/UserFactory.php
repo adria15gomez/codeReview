@@ -24,7 +24,7 @@ class UserFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->email(),
             'password' => $this->faker->password(),
-            'rol' => $this->faker->randomElement(['admin', 'coder', 'trainer']),
+            'role' => $this->faker->randomElement(['admin', 'coder', 'trainer']),
             'promotion_id' => $promotion->id,
         ];
     }
